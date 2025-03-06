@@ -2,7 +2,7 @@
 using Nickel;
 using System.Reflection;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class CandyArtifact : Artifact, IRegisterable
 {

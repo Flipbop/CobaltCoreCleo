@@ -1,11 +1,11 @@
-﻿using Nanoray.PluginManager;
+using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
-internal sealed class BurnOutCard : Card, IRegisterable
+internal sealed class SmallRepairsCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -14,13 +14,13 @@ internal sealed class BurnOutCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.JohnsonDeck.Deck,
+				deck = ModEntry.Instance.CleoDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Special/BurnOut.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "BurnOut", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Special/Brainstorm.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SmallRepairs", "name"]).Localize
 		});
 	}
 
@@ -29,26 +29,25 @@ internal sealed class BurnOutCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			temporary = true,
-			exhaust = true,
-			retain = true
+			temporary = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-	{
-		List<CardAction> actions = [
-			new AEnergy
+		=> [
+			new ADrawCard
 			{
-				changeAmount = upgrade == Upgrade.A ? 3 : 2
-			}
-		];
-		if (upgrade != Upgrade.B)
-			actions.Add(new AStatus
+				count = upgrade switch
+				{
+					Upgrade.A => 2,
+					Upgrade.B => 3,
+					_ => 1
+				}
+			},
+			new AStatus
 			{
 				targetPlayer = true,
-				status = Status.energyLessNextTurn,
-				statusAmount = 1
-			});
-		return actions;
-	}
+				status = Status.drawNextTurn,
+				statusAmount = upgrade == Upgrade.A ? 4 : 3,
+			}
+		];
 }

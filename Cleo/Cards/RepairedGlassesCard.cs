@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class RepairedGlassesCard : Card, IRegisterable
 {

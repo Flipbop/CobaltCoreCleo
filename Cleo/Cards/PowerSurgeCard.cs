@@ -3,7 +3,7 @@ using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class PowerSurgeCard : Card, IRegisterable
 {

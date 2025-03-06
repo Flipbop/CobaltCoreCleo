@@ -1,7 +1,7 @@
 ﻿using Nickel;
 using System.Linq;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal static class StrengthenExt
 {

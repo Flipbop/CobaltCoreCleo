@@ -1,7 +1,7 @@
-﻿using Nanoray.PluginManager;
+using Nanoray.PluginManager;
 using Nickel;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal interface IRegisterable
 {

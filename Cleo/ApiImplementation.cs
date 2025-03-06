@@ -1,6 +1,6 @@
 ﻿using Nickel;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 public sealed class ApiImplementation : IJohnsonApi
 {

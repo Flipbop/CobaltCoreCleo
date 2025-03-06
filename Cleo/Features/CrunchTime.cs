@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class CrunchTimeManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 {

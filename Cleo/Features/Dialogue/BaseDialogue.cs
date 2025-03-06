@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal abstract class BaseDialogue(Func<string, Stream> localeStreamFunction)
 {

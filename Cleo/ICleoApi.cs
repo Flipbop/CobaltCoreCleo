@@ -1,8 +1,8 @@
 using Nickel;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
-public interface IJohnsonApi
+public interface ICleoApi
 {
 	IDeckEntry CleoDeck { get; }
 	IStatusEntry CrunchTimeStatus { get; }

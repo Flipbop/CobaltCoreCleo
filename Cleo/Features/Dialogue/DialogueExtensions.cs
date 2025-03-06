@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal static class DialogueExt
 {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class ATooltipAction : ADummyAction
 {

@@ -1,8 +1,8 @@
 {
-  "UniqueName": "Shockah.Johnson",
-  "Version": "1.3.0",
+  "UniqueName": "Flipbop.Cleo",
+  "Version": "0.1.0",
   "RequiredApiVersion": "1.6.0",
-  "EntryPointAssembly": "Johnson.dll",
+  "EntryPointAssembly": "Cleo.dll",
   "LoadPhase": "AfterDbInit",
   "Dependencies": [
     {

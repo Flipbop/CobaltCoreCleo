@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class CustomSay : Say
 {

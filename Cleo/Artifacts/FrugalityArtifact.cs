@@ -4,7 +4,7 @@ using Nickel;
 using System.Linq;
 using System.Reflection;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 internal sealed class FrugalityArtifact : Artifact, IRegisterable
 {

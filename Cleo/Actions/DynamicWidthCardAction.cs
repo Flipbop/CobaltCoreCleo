@@ -4,7 +4,7 @@ using Nickel;
 using System;
 using System.Reflection;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 public abstract class DynamicWidthCardAction : CardAction
 {

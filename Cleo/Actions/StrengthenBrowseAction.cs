@@ -1,4 +1,4 @@
-﻿namespace Shockah.Johnson;
+﻿namespace Flipbop.Cleo;
 
 public sealed class StrengthenBrowseAction : CardAction
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Shockah.Johnson;
+namespace Flipbop.Cleo;
 
 public sealed class TemporarilyUpgradeBrowseAction : CardAction
 {
