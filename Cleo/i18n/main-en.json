@@ -1,0 +1,294 @@
+{
+    "character": {
+        "name": "Cleo",
+        "description": [
+            "<c=2D3F61>CLEO</c>",
+            "Your shopkeeper.",
+            "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+        ]
+    },
+    "action": {
+        "ImproveA": {
+            "name": "Improve A",
+            "description": "<c=boldPink>{{Upgrade}}</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+        },
+        "ImproveB": {
+            "name": "Improve B",
+            "description": "<c=boldPink>{{Upgrade}}</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+        },
+        "Impair": {
+            "name": "Impair",
+            "description": "<c=boldPink>{{Downgrade}}</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+        }
+    },
+    "browseSource": {
+        "UpgradableCardsAnywhereToTypeABrowseSource": "Upgrade a Card to type A",
+        "UpgradableCardsAnywhereToTypeBBrowseSource": "Upgrade a Card to type B",
+        "DiscountCardAnywhereBrowseSource": "Discount a Card",
+        "StrengthenBrowseSource": "Strengthen a Card"
+    },
+    "cardTrait": {
+        "ImprovedA": {
+            "name": "Improved A",
+            "description": "The next time this card is played it acts as an <c=boldPink>{{Upgraded}}</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
+        },
+        "ImprovedB": {
+            "name": "Improved B",
+            "description": "The next time this card is played it acts as an <c=boldPink>{{Upgraded}}</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
+        },
+        "Impair": {
+            "name": "Impaired",
+            "description": "The next time this card is played it acts as a <c=boldPink>{{Non-upgraded}}</c> version of itself. Lost on play and the end of the fight."
+        }
+    },
+    "status": {
+        "CleanUp": {
+            "name": "Clean Up",
+            "description": "At the end of your turn, exhaust the leftmost <c=boldPink>{{Non-upgraded}}</c> card in your hand and gain Temp Shield equal to its cost. <c=downside>Reduced by one afterwards.</c>"
+        },
+        "Swapper": {
+            "name": "Swapper",
+            "description": "During your turn, you may spend this on a card. If it is not upgraded, give it <c=cardtrait>Improved A</c>. Otherwise, give it <c=cardtrait>Discount</c> and <c=cardtrait>Impaired</c>."
+        },
+        "Nanomachines": {
+            "name": "Nanomachines",
+            "description": "When you are hit by an attack gain Temp Shield equal to the attack's damage. <c=downside>Goes away at the end of the turn.</c>"
+        }
+
+    },
+
+
+
+    "artifact": {
+        "Briefcase": {
+            "name": "BRIEFCASE",
+            "description": "On your first turn, put a <c=card>Bullet Point</c>, <c=card>Slide Transition</c>, <c=card>Leverage</c>, or <c=card>Brainstorm</c> into your <c=keyword>hand</c>."
+        },
+        "Candy": {
+            "name": "CANDY",
+            "description": "Choose 2 unupgraded cards in your deck. Upgrade the first one to type A, and the second to type B."
+        },
+        "Coupon": {
+            "name": "COUPON",
+            "description": "On your first turn, choose a card in your deck. <c=cardtrait>Discount</c> it."
+        },
+        "EspressoShot": {
+            "name": "ESPRESSO SHOT",
+            "description": "On your first turn, put a <c=card>Burn Out</c> into your <c=keyword>hand</c>."
+        },
+        "Frugality": {
+            "name": "FRUGALITY",
+            "description": "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>You can no longer visit repair yards.</c>",
+            "dialogue": [
+                "A penny saved is a penny earned.",
+                "No time to stop, we're very busy.",
+                "I'd rather not."
+            ]
+        },
+        "JumpTheCurve": {
+            "name": "JUMP THE CURVE",
+            "description": "When a card is added to your deck outside of combat, <c=cardtrait>discount</c> and <c=cardtrait>temporarily upgrade</c> it."
+        },
+        "RAndD": {
+            "name": "R&D",
+            "description": "Each turn, add 1 of 2 <c=cardtrait>temp</c> cards from any of the current crewmates to your <c=keyword>hand</c>."
+        },
+        "Duo": {
+            "JohnsonBooks": {
+                "name": "SUMMONING STAFF",
+                "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+            },
+            "JohnsonBucket": {
+                "name": "TRIMMING FAT",
+                "description": "<c=cardtrait>Discount</c> the first <c=trash>trash</c> card drawn each turn."
+            },
+            "JohnsonCat": {
+                "name": "NEVERMIND",
+                "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+            },
+            "JohnsonDizzy": {
+                "name": "FORTIFY",
+                "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+            },
+            "JohnsonDrake": {
+                "name": "ICED COFFEE",
+                "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+            },
+            "JohnsonIsaac": {
+                "name": "CARE PACKAGE",
+                "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+            },
+            "JohnsonMax": {
+                "name": "TREND CHASER",
+                "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
+                "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
+                "hasNoEffect": "Currently has no effect."
+            },
+            "JohnsonPeri": {
+                "name": "MILITARY SPENDING",
+                "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+            },
+            "JohnsonRiggs": {
+                "name": "PLAN B",
+                "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+            },
+            "JohnsonTy": {
+                "name": "GUERILLA MARKETING",
+                "description": "The first time a <c=cardtrait>Wild</c> card is played each turn, <c=cardtrait>temp upgrade</c> it."
+            }
+        }
+    },
+
+
+
+    "card": {
+        "Quick Boost": {
+            "name": "Quick Boost"
+        },
+        "TurtleShot": {
+            "name": "Turtle Shot"
+        },
+        "Choices": {
+            "name": "Choices"
+        },
+        "MemoryRecovery": {
+            "name": "Memory Recovery",
+            "description": {
+                "None": "Put an Upgraded card from your <c=keyword>Discard pile</c> into your hand.",
+                "A": "Put an Upgraded card from your <c=keyword>Discard pile</c> into your hand. <c=cardtrait>Discount</c> it.",
+                "B": "Put an Upgraded card from your <c=keyword>Exhaust pile</c> into your hand."
+            }
+        },
+        "ShuffleUpgrade": {
+            "name": "Shuffle Upgrade"
+        },
+        "ResourceSwap": {
+            "name": "Resource Swap"
+        },
+        "ReroutePower": {
+            "name": "Reroute Power"
+        },
+        "Nanomachines": {
+            "name": "Nanomachines"
+        },
+        "SlipShot": {
+            "name": "Slip Shot"
+        },
+        "PowerSurge": {
+            "name": "Power Surge"
+        },
+        "Improved Cannon": {
+            "name": "Improved Cannon"
+        },
+        "DoItYourself": {
+            "name": "Do It Yourself",
+            "description": {
+                "None": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 Shield.",
+                "A": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs A</c>. Gain 2 Shield.",
+                "B": "Gain 2 <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 Shield."
+            }
+        },
+        "RepairedGlasses": {
+            "name": "Repaired Glasses"
+        },
+        "ScalpedParts": {
+            "name": "Scalped Parts",
+            "description": {
+                "None": "<c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each.",
+                "A": "Draw 3. <c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each.",
+                "B": "<c=cardtrait>Impair</c> all upgraded cards in your hand. <c=cardtrait>Improve A</c> all other cards in your hand."
+            }
+        },
+        "SwapNotes": {
+            "name": "Swap Notes"
+        },
+        "PowerSwitch": {
+            "name": "Power Switch"
+        },
+        "SeekerBarrage": {
+            "name": "Seeker Barrage",
+            "description": {
+                "None": "Move right 1 and fire a Seeker for every <c=cardtrait>Upgraded</c> card you have in your <c=keyword>hand</c>.",
+                "A": "Move right 1 and fire a Seeker for every <c=cardtrait>Upgraded</c> card you have in your <c=keyword>Discard pile</c>.",
+                "B": "Move right 1 and fire a Seeker for every <c=cardtrait>Upgraded</c> card you have in your <c=keyword>Exhaust pile</c>."
+            }
+        },
+        "HarnessEnergy": {
+            "name": "Harness Energy"
+        },
+        "CleanSlate": {
+            "name": "Clean Slate"
+        },
+        "ApologizeNextLoop": {
+            "name": "Apologize Next Loop",
+            "description": {
+                "None": "Attack once for every <c=cardtrait>Upgraded</c> card in your hand. Deal 1 damage, increasing by 1 for every attack you make.",
+                "A": "Attack once for every <c=cardtrait>Upgraded</c> card in your hand. Deal 1 damage, increasing by 2 for every attack you make.",
+                "B": "Attack once for every <c=cardtrait>Upgraded</c> card in your hand. Deal 1 piercing damage, increasing by 1 for every attack you make."
+            }
+        },
+
+        "HardReset": {
+            "name": "Hard Reset"
+        },
+        "SmallRepairs": {
+            "name": "Small Repairs"
+        },
+
+
+
+        "Quarter3": {
+            "name": "Third Quarter",
+            "description": {
+                "None": "Add a <c=card>Deadline</c> to your <c=keyword>draw pile</c>.",
+                "A": "Add a <c=card>Deadline</c> to the top of your <c=keyword>draw pile</c>.",
+                "B": "Add a <c=card>Deadline</c> to your <c=keyword>draw and discard pile</c>."
+            }
+        },
+        "Deadline": {
+            "name": "Deadline"
+        },
+
+        "Brainstorm": {
+            "name": "Brainstorm"
+        },
+        "BulletPoint": {
+            "name": "Bullet Point"
+        },
+        "BurnOut": {
+            "name": "Burn Out"
+        },
+        "Leverage": {
+            "name": "Leverage"
+        },
+        "SellHigh": {
+            "name": "Sell High"
+        },
+        "SlideTransition": {
+            "name": "Slide Transition"
+        },
+
+
+
+        "CleoExe": {
+            "name": "Cleo .EXE",
+            "description": {
+                "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand.",
+                "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand.",
+                "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand."
+            }
+        },
+
+        "Duo": {
+            "JohnsonCatNoneOfTheAbove": {
+                "name": "None of the Above"
+            },
+            "JohnsonIsaacSupply": {
+                "name": "Supply"
+            },
+            "JohnsonIsaacDemand": {
+                "name": "Demand"
+            }
+        }
+    }
+}
