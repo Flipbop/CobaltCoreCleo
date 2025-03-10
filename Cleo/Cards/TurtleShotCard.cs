@@ -27,22 +27,27 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 1 : 0,
-			exhaust = true,
+			cost = 2,
+			exhaust = upgrade == Upgrade.B ? true : false,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AAddCard
-			{
-				destination = CardDestination.Hand,
-				
-				amount = upgrade switch
-				{
-					Upgrade.A => 3,
-					Upgrade.B => 4,
-					_ => 2
-				}
-			}
-		];
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AAttack { damage = GetDmg(s, 3) },
+				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
+			],
+			Upgrade.B => [
+				new AAttack { damage = GetDmg(s, 4) },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 4 },
+			],
+			_ => [
+				new AAttack { damage = GetDmg(s, 2) },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
+			]
+			
+		};
 }
