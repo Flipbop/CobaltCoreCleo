@@ -165,7 +165,7 @@ public sealed class ModEntry : SimpleMod
 			{
 				CharacterType = CleoDeck.UniqueName,
 				LoopTag = "neutral",
-				Frames = Enumerable.Range(0, 4)
+				Frames = Enumerable.Range(0, 5)
 					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Neutral/{i}.png")).Sprite)
 					.ToList()
 			},
@@ -174,7 +174,7 @@ public sealed class ModEntry : SimpleMod
 				CharacterType = CleoDeck.UniqueName,
 				LoopTag = "mini",
 				Frames = [
-					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Character/Mini.png")).Sprite
+					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Character/mini.png")).Sprite
 				]
 			},
 			Starters = new()
@@ -206,17 +206,17 @@ public sealed class ModEntry : SimpleMod
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CleoDeck.UniqueName,
-			LoopTag = "fiddling",
+			LoopTag = "explaining",
 			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Fiddling/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Explain/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CleoDeck.UniqueName,
-			LoopTag = "flashing",
+			LoopTag = "nervous",
 			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Flashing/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
