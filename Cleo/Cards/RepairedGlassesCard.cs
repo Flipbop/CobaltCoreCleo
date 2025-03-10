@@ -41,7 +41,6 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 			art = StableSpr.cards_SecondOpinions,
 			cost = 0,
 			exhaust = upgrade != Upgrade.B,
-			description = ModEntry.Instance.Localizations.Localize(["card", "Outsource", "description"], new { Count = CardCount })
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

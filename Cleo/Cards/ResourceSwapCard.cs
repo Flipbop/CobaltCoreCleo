@@ -32,7 +32,6 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 			singleUse = upgrade != Upgrade.A,
 			exhaust = upgrade == Upgrade.A,
 			retain = upgrade == Upgrade.B,
-			description = ModEntry.Instance.Localizations.Localize(["card", "ResourceSwap", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

@@ -29,7 +29,8 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = 1,
 			exhaust = upgrade != Upgrade.B,
-			retain = true
+			retain = true,
+			description = ModEntry.Instance.Localizations.Localize(["card", "DoItYourself", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

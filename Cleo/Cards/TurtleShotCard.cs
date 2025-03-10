@@ -29,7 +29,6 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.B ? 1 : 0,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "TurtleShot", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

@@ -28,7 +28,6 @@ internal sealed class QuickBoostCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 0,
-			description = ModEntry.Instance.Localizations.Localize(["card", "QuickBoost", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

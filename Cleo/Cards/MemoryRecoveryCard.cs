@@ -28,7 +28,8 @@ internal sealed class MemoryRecoveryCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 2,
-			recycle = upgrade != Upgrade.B
+			recycle = upgrade != Upgrade.B,
+			description = ModEntry.Instance.Localizations.Localize(["card", "MemoryRecovery", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

@@ -30,7 +30,6 @@ internal sealed class NanomachinesCard : Card, IRegisterable
 			cost = 0,
 			buoyant = true,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "Nanomachines", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

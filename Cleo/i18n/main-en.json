@@ -213,7 +213,12 @@
             "name": "Harness Energy"
         },
         "CleanSlate": {
-            "name": "Clean Slate"
+            "name": "Clean Slate",
+            "description": {
+                "None": "",
+                "A": "",
+                "B": ""
+            }
         },
         "ApologizeNextLoop": {
             "name": "Apologize Next Loop",
@@ -233,41 +238,8 @@
 
 
 
-        "Quarter3": {
-            "name": "Third Quarter",
-            "description": {
-                "None": "Add a <c=card>Deadline</c> to your <c=keyword>draw pile</c>.",
-                "A": "Add a <c=card>Deadline</c> to the top of your <c=keyword>draw pile</c>.",
-                "B": "Add a <c=card>Deadline</c> to your <c=keyword>draw and discard pile</c>."
-            }
-        },
-        "Deadline": {
-            "name": "Deadline"
-        },
-
-        "Brainstorm": {
-            "name": "Brainstorm"
-        },
-        "BulletPoint": {
-            "name": "Bullet Point"
-        },
-        "BurnOut": {
-            "name": "Burn Out"
-        },
-        "Leverage": {
-            "name": "Leverage"
-        },
-        "SellHigh": {
-            "name": "Sell High"
-        },
-        "SlideTransition": {
-            "name": "Slide Transition"
-        },
-
-
-
         "CleoExe": {
-            "name": "Cleo .EXE",
+            "name": "Cleo.EXE",
             "description": {
                 "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand.",
                 "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand.",

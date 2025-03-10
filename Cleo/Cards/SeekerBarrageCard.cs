@@ -29,7 +29,7 @@ internal sealed class SeekerBarrageCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = 0,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "Quarter1", "description", upgrade.ToString()])
+			description = ModEntry.Instance.Localizations.Localize(["card", "SeekerBarrage", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

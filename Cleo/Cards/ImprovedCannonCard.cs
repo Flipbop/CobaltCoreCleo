@@ -29,7 +29,7 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = 2,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "Mint", "description", upgrade.ToString()], new { Damage = GetDmg(state, 2) })
+			description = ModEntry.Instance.Localizations.Localize(["card", "ImprovedCannon", "description", upgrade.ToString()], new { Damage = GetDmg(state, 2) })
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

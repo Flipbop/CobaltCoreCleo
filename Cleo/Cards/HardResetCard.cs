@@ -29,7 +29,6 @@ internal sealed class HardResetCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = 0,
 			exhaust = upgrade != Upgrade.B,
-			description = ModEntry.Instance.Localizations.Localize(["card", "HardReset", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

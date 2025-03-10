@@ -31,7 +31,6 @@ internal sealed class HarnessEnergyCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 0 : 1,
-			description = ModEntry.Instance.Localizations.Localize(["card", "Revamp", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
