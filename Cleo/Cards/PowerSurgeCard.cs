@@ -33,8 +33,8 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 	private int GetX(State state)
 	{
 		var x = state.ship.Get(Status.shield);
-		if (ModEntry.Instance.TyAndSashaApi is { } api)
-			x += state.ship.Get(api.XFactorStatus) + state.ship.Get(api.ExtremeMeasuresStatus);
+		if (ModEntry.Instance.Api is { } api)
+			x += 1;
 		return x;
 	}
 

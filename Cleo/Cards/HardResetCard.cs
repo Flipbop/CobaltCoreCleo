@@ -29,49 +29,11 @@ internal sealed class HardResetCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = 0,
 			exhaust = upgrade != Upgrade.B,
-			description = ModEntry.Instance.Localizations.Localize(["card", "TheWorks", "description", upgrade.ToString()])
+			description = ModEntry.Instance.Localizations.Localize(["card", "HardReset", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AAddCard { card = new LayoutCard { temporaryOverride = true }, destination = CardDestination.Hand },
-				new AAddCard { card = new StrategizeCard { temporaryOverride = true }, destination = CardDestination.Hand },
-			],
-			Upgrade.B => [
-				new ASpecificCardOffering
-				{
-					Destination = CardDestination.Deck,
-					Cards = [
-						new LayoutCard { temporaryOverride = true },
-						new StrategizeCard { temporaryOverride = true },
-					],
-				},
-				new ATooltipAction
-				{
-					Tooltips = [
-						new TTCard { card = new LayoutCard { temporaryOverride = true } },
-						new TTCard { card = new StrategizeCard { temporaryOverride = true } },
-					]
-				},
-			],
-			_ => [
-				new ASpecificCardOffering
-				{
-					Destination = CardDestination.Hand,
-					Cards = [
-						new LayoutCard { temporaryOverride = true },
-						new StrategizeCard { temporaryOverride = true },
-					],
-				},
-				new ATooltipAction
-				{
-					Tooltips = [
-						new TTCard { card = new LayoutCard { temporaryOverride = true } },
-						new TTCard { card = new StrategizeCard { temporaryOverride = true } },
-					]
-				},
-			]
 		};
 }

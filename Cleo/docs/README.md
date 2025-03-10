@@ -1,16 +1,15 @@
-# Johnson
+# Cleo
 
 **THE MOD REQUIRES [Kokoro](https://github.com/Shockah/Cobalt-Core-Mods/blob/master/Kokoro).**
 
-**Johnson** -- Your coworker. Capable of *creating* and *improving* cards.
+**Cleo** -- Your shopkeeper. Capable of *upgrading* and *downgrading* cards mid-battle.
 
 Core mechanics:
-* ![](icons/Temporary.png) **Temporary**: Johnson has several ways of creating temporary cards which you can choose, depending on your current situation.
-* ![](icons/TemporaryUpgrade.png) **Temporary Upgrades**: The main way Johnson improves cards. These upgrades only last until the end of combat.
-* ![](icons/Strengthen.png) **Strengthen**: The second way Johnson improves cards. Strengthening cards increases their attack damage.
+* ![](icons/Improved.png) **Improve**: Cleo's main method of upgrading your cards. It will always target the rightmost eligible card in your hand to the letter specified. 
+* ![](icons/Impaired.png) **Impair**: The opposite of Improve. Downgrades your rightmost eligible card to its non-upgraded version. Usually has some other benefit following suit.
 
-Code by Shockah  
-Art and Design by Soggoru Waffle
+Code by Flipbop  
+Art and Design by Flipbop
 
 [![Card preview screenshot](images/preview-none-thumb.png)](images/preview-none.png)
 [![Card A upgrade preview screenshot](images/preview-a-thumb.png)](images/preview-a.png)

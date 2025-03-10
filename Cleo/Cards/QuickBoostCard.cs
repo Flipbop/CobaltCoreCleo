@@ -36,7 +36,7 @@ internal sealed class QuickBoostCard : Card, IRegisterable
 			new AAddCard
 			{
 				destination = upgrade == Upgrade.B ? CardDestination.Deck : CardDestination.Hand,
-				card = new SellHighCard
+				card = new SmallRepairsCard
 				{
 					discount = upgrade == Upgrade.B ? -1 : 0
 				},

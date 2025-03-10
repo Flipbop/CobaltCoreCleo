@@ -7,8 +7,8 @@ internal sealed class EventDialogue : BaseDialogue
 {
 	public EventDialogue() : base(locale => ModEntry.Instance.Package.PackageRoot.GetRelativeFile($"i18n/dialogue-event-{locale}.json").OpenRead())
 	{
-		var johnsonDeck = ModEntry.Instance.JohnsonDeck.Deck;
-		var johnsonType = ModEntry.Instance.JohnsonCharacter.CharacterType;
+		var cleoDeck = ModEntry.Instance.CleoDeck.Deck;
+		var cleoType = ModEntry.Instance.CleoCharacter.CharacterType;
 		var newNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var newHardcodedNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var saySwitchNodes = new Dictionary<IReadOnlyList<string>, Say>();
@@ -25,10 +25,9 @@ internal sealed class EventDialogue : BaseDialogue
 		{
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
-			allPresent = [johnsonType],
+			allPresent = [cleoType],
 			lines = [
-				new Say { who = johnsonType, loopTag = "flashing" },
-				new Say { who = "nerd", loopTag = "neutral", flipped = true },
+				new Say { who = cleoType, loopTag = "flashing" },
 				new Jump() { key = "NewShop" }
 			],
 		};
@@ -36,10 +35,9 @@ internal sealed class EventDialogue : BaseDialogue
 		{
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
-			allPresent = [johnsonType],
+			allPresent = [cleoType],
 			lines = [
-				new Say { who = johnsonType, loopTag = "neutral" },
-				new Say { who = "nerd", loopTag = "neutral", flipped = true },
+				new Say { who = cleoType, loopTag = "neutral" },
 				new Jump() { key = "NewShop" }
 			],
 		};
@@ -48,75 +46,75 @@ internal sealed class EventDialogue : BaseDialogue
 		{
 			oncePerRun = true,
 			bg = typeof(BGSupernova).Name,
-			allPresent = [johnsonType],
+			allPresent = [cleoType],
 			lines = [
-				new Say { who = johnsonType, loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 		newHardcodedNodes[["CrystallizedFriendEvent_{{CharacterType}}"]] = new()
 		{
 			oncePerRun = true,
 			bg = typeof(BGCrystalizedFriend).Name,
-			allPresent = [johnsonType],
+			allPresent = [cleoType],
 			lines = [
 				new Wait() { secs = 1.5 },
-				new Say { who = johnsonType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "fiddling" },
 			],
 		};
 		newHardcodedNodes[["ChoiceCardRewardOfYourColorChoice_{{CharacterType}}"]] = new()
 		{
 			oncePerRun = true,
 			bg = typeof(BGBootSequence).Name,
-			allPresent = [johnsonType],
+			allPresent = [cleoType],
 			lines = [
-				new Say { who = johnsonType, loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "squint" },
 				new Say { who = "comp", loopTag = "neutral" },
 			],
 		};
 
 		saySwitchNodes[["GrandmaShop"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "neutral"
 		};
 		saySwitchNodes[["LoseCharacterCard"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "neutral"
 		};
 		saySwitchNodes[["CrystallizedFriendEvent"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "fiddling"
 		};
 		saySwitchNodes[["ShopKeepBattleInsult"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "fiddling"
 		};
 		saySwitchNodes[["DraculaTime"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "squint"
 		};
 		saySwitchNodes[["Soggins_Infinite"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "flashing"
 		};
 		saySwitchNodes[["Soggins_Missile_Shout_1"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "neutral"
 		};
 		saySwitchNodes[["SogginsEscapeIntent_1"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "neutral"
 		};
 		saySwitchNodes[["SogginsEscape_1"]] = new()
 		{
-			who = johnsonType,
+			who = cleoType,
 			loopTag = "fiddling"
 		};
 	}

@@ -38,13 +38,7 @@ internal sealed class SlipShotCard : Card, IRegisterable
 			Upgrade.B => [
 				new AAddCard
 				{
-					card = new BulletPointCard(),
-					destination = CardDestination.Discard,
-				},
-				new AAddCard
-				{
-					card = new SlideTransitionCard(),
-					destination = CardDestination.Discard,
+				
 				},
 				new ADummyAction { dialogueSelector = $".Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize" },
 			],
@@ -53,15 +47,13 @@ internal sealed class SlipShotCard : Card, IRegisterable
 				{
 					Destination = CardDestination.Deck,
 					Cards = [
-						new BulletPointCard(),
-						new SlideTransitionCard(),
+						
 					]
 				},
 				new ATooltipAction
 				{
 					Tooltips = [
-						new TTCard { card = new BulletPointCard() },
-						new TTCard { card = new SlideTransitionCard() },
+						
 					],
 					dialogueSelector = $".Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize"
 				},

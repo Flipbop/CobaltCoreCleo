@@ -7,8 +7,8 @@ internal sealed class CardDialogue : BaseDialogue
 {
 	public CardDialogue() : base(locale => ModEntry.Instance.Package.PackageRoot.GetRelativeFile($"i18n/dialogue-card-{locale}.json").OpenRead())
 	{
-		var johnsonDeck = ModEntry.Instance.JohnsonDeck.Deck;
-		var johnsonType = ModEntry.Instance.JohnsonCharacter.CharacterType;
+		var cleoDeck = ModEntry.Instance.CleoDeck.Deck;
+		var cleoType = ModEntry.Instance.CleoCharacter.CharacterType;
 		var newNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 
 		ModEntry.Instance.Helper.Events.OnModLoadPhaseFinished += (_, phase) =>
@@ -21,25 +21,25 @@ internal sealed class CardDialogue : BaseDialogue
 
 		newNodes[["Played", "Quarter1"]] = new()
 		{
-			lookup = [$"Played::{new Quarter1Card().Key()}"],
+			lookup = [$"Played::{new SmallRepairsCard().Key()}"],
 			priority = true,
 			oncePerRun = true,
-			allPresent = [johnsonType],
+			allPresent = [cleoType],
 			lines = [
-				new Say { who = johnsonType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "fiddling" },
 			],
 		};
 
 		for (var i = 0; i < 3; i++)
 			newNodes[["Played", "Deadline", i.ToString()]] = new()
 			{
-				lookup = [$"Played::{new DeadlineCard().Key()}"],
+				lookup = [$"Played::{new ApologizeNextLoopCard().Key()}"],
 				priority = true,
 				oncePerRun = true,
-				oncePerCombatTags = [$"Played::{new DeadlineCard().Key()}"],
-				allPresent = [johnsonType],
+				oncePerCombatTags = [$"Played::{new ApologizeNextLoopCard().Key()}"],
+				allPresent = [cleoType],
 				lines = [
-					new Say { who = johnsonType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "fiddling" },
 				],
 			};
 
@@ -50,22 +50,22 @@ internal sealed class CardDialogue : BaseDialogue
 				priority = true,
 				oncePerRun = true,
 				oncePerCombatTags = [$"Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize"],
-				allPresent = [johnsonType],
+				allPresent = [cleoType],
 				lines = [
-					new Say { who = johnsonType, loopTag = "neutral" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
 		for (var i = 0; i < 2; i++)
 			newNodes[["Played", "Downsize", i.ToString()]] = new()
 			{
-				lookup = [$"Played::{new DownsizeCard().Key()}"],
+				lookup = [$"Played::{new SeekerBarrageCard().Key()}"],
 				priority = true,
 				oncePerRun = true,
-				oncePerCombatTags = [$"Played::{new DownsizeCard().Key()}"],
-				allPresent = [johnsonType],
+				oncePerCombatTags = [$"Played::{new SeekerBarrageCard().Key()}"],
+				allPresent = [cleoType],
 				lines = [
-					new Say { who = johnsonType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "fiddling" },
 				],
 			};
 	}

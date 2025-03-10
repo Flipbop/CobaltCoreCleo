@@ -1,27 +1,25 @@
 {
-    "GrandmaShop": "Just a coffee for me, thanks.",
+    "GrandmaShop": "Do you have any Red Velvet cake?",
     "LoseCharacterCard": "Oh. Well would you look at that.",
-    "LoseCharacterCard_{{CharacterType}}": [ "A necessary expense." ],
-    "CrystallizedFriendEvent": "Perhaps a quick break wouldn't hurt.",
+    "LoseCharacterCard_{{CharacterType}}": [ "Could have been worse!" ],
+    "CrystallizedFriendEvent": "Just drop me off at the next scrapyard",
     "CrystallizedFriendEvent_{{CharacterType}}": [ "Back to business." ],
-    "ShopKeepBattleInsult": "Ah, a true clash of titans. I cannot wait to see what you have in store for us.",
+    "ShopKeepBattleInsult": "Oh, so this is how it feels.",
     "ChoiceCardRewardOfYourColorChoice_{{CharacterType}}": [
-        /*Johnson*/ "Huh. You learn something new every day.",
+        /*Cleo*/ "You guys just live with this?",
         /*CAT*/ "Energy readings are back to normal."
     ],
-    "DraculaTime": "Oh. Of course. Dracula.",
+    "DraculaTime": "Hello Dracula. Long time no see.",
     "Shop": [
         [
-            /*Johnson*/ "Are you perhaps looking into investors...?",
-            /*Cleo*/ "No."
+            /*Cleo*/ "Back to work."
         ],
         [
-            /*Johnson*/ "You know, I've been looking at your numbers and I believe there are a few improvements that could be made.",
-            /*Cleo*/ "Don't tell me how to do my job."
+            /*Cleo*/ "Home sweet home."
         ]
     ],
-    "Soggins_Infinite": "Do I smell a desperate consumer in dire need of paid labor?",
-    "Soggins_Missile_Shout_1": "Whoever your missile guy is really scammed you on this one. I would never do that, though.",
-    "SogginsEscapeIntent_1": "Just a moment longer.",
-    "SogginsEscape_1": "We don't work for free."
+    "Soggins_Infinite": "Who gave you that USB?",
+    "Soggins_Missile_Shout_1": "I told you not to plug that USB in!",
+    "SogginsEscapeIntent_1": "Stay right there.",
+    "SogginsEscape_1": "That's not an option."
 }

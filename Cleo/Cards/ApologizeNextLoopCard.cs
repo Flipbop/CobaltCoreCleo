@@ -1,4 +1,6 @@
-Apolusing Nanoray.PluginManager;
+using System.Linq;
+using Nanoray.PluginManager;
+
 using Nickel;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,14 +67,14 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 				if (Discount)
 					leftmostCard.discount--;
 				if (Strengthen)
-					leftmostCard.AddStrengthen(1);
+					leftmostCard.AddImprovedA(1);
 			}
 			if (Rightmost && c.hand.LastOrDefault() is { } rightmostCard)
 			{
 				if (Discount)
 					rightmostCard.discount--;
 				if (Strengthen)
-					rightmostCard.AddStrengthen(1);
+					rightmostCard.AddImprovedA(1);
 			}
 		}
 
@@ -82,7 +84,7 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 			if (Discount)
 				tooltips.Add(new TTGlossary("cardtrait.discount", 1));
 			if (Strengthen)
-				tooltips.Add(ModEntry.Instance.Api.GetStrengthenTooltip(1));
+				tooltips.Add(ModEntry.Instance.Api.GetImprovedATooltip(1));
 			return tooltips;
 		}
 	}

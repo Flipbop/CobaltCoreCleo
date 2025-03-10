@@ -1,37 +1,37 @@
 {
     "TookDamage": {
         "Basic": [
-            [ "So, what's our insurance plan like?" ],
-            [ "That's definitely going to put a dent in our bottom line." ],
-            [ "Can we get the IT guys up here to take a look at that?" ]
+            [ "Nothing that can't be repaired." ],
+            [ "Not too bad." ],
+            [ "Easy fix." ]
         ],
         "Dizzy": [
-            /*Johnson*/ "Alright. Enough is enough. I'm contacting security.",
-            /*Dizzy*/ "I'm security!"
+            /*Cleo*/ "Where are our shields?",
+            /*Dizzy*/ "I'm on it!"
         ],
         "Riggs": [
-            /*Johnson*/ "Alright. Enough is enough. I'm contacting security.",
-            /*Riggs*/ "That was an option?"
+            /*CLeo*/ "Where are our shields?",
+            /*Riggs*/ "Why do we need shields when we could just move out of the way?"
         ],
         "Isaac": [
-            /*Isaac*/ "Ouch...",
-            /*Johnson*/ "I think I'll have to agree on that one."
+            /*Isaac*/ "Not good!",
+            /*Cleo*/ "Calm down, we're fine!"
         ],
         "Drake": [
-            /*Drake*/ "Damn.",
-            /*Johnson*/ "Language."
+            /*Drake*/ "Rude.",
+            /*Cleo*/ "Agreed."
         ],
         "Max": [
             /*Max*/ "I really hope that didn't hit anything vital.",
-            /*Johnson*/ "Nothing money can't solve."
+            /*Cleo*/ "Ditto."
         ],
         "Books": [
-            /*Johnson*/ "The workplace is no place for a child. Especially one as hostile as this.",
-            /*Books*/ "It's okay! I'm okay!"
+            /*Cleo*/ "You okay, Books?",
+            /*Books*/ "Yep! All good!"
         ],
         "CAT": [
-            /*Johnson*/ "That sounded expensive.",
-            /*CAT*/ "I really hope you're wrong."
+            /*Cleo*/ "I think I can repair that",
+            /*CAT*/ "I really hope so."
         ]
     },
     "TookNonHullDamage": {
@@ -41,116 +41,116 @@
     },
     "DealtDamage": {
         "Basic": [
-            [ "On the money." ],
-            [ "Satisfactory." ],
+            [ "This is easy." ],
+            [ "Nice!" ],
             [ "Very good." ],
-            [ "Mhmm." ]
+            [ "Works for me." ]
         ],
         "Dizzy": [
-            /*Dizzy*/ "Hey, good stuff!",
-            /*Johnson*/ "Thanks. Could you tell that to my boss?"
+            /*Dizzy*/ "Nice shot!",
+            /*Cleo*/ "It's nothing."
         ],
         "Riggs": [
-            /*Johnson*/ "Bingo.",
-            /*Riggs*/ "Bongo!"
+            /*Cleo*/ "Right on the mark!",
+            /*Riggs*/ "Yes!"
         ],
         "Peri": [
-            /*Peri*/ "Nice shot.",
-            /*Johnson*/ "Just doing my job."
+            /*Peri*/ "Well done.",
+            /*Cleo*/ "Thank you."
         ],
         "Isaac": [
-            /*Isaac*/ "Nice!",
-            /*Johnson*/ "Thanks."
+            /*Isaac*/ "Sweet!",
+            /*Cleo*/ "Easy peasy."
         ],
         "Drake": [
-            /*Johnson*/ "Good. Really pushing the envelope.",
-            /*Drake*/ "Oh my god stop talking like that."
+            /*Cleo*/ "Feels good.",
+            /*Drake*/ "Oh yeah? Watch this!"
         ],
         "Max": [
-            /*Johnson*/ "Lookin' good for business.",
-            /*Max*/ "I mean... sure?"
+            /*Cleo*/ "That's gotta hurt!",
+            /*Max*/ "Gottem!"
         ],
         "Books": [
-            /*Johnson*/ "Hmmm... not bad.",
-            /*Books*/ "Yay! Satisfactory!"
+            /*Cleo*/ "Great job!",
+            /*Books*/ "Yay!"
         ],
         "CAT": [
             /*CAT*/ "And there's more where that came from!",
-            /*Johnson*/ "If it's within budget."
+            /*Cleo*/ "I'll be glad to dish it out'."
         ]
     },
     "DealtBigDamage": {
         "Basic": [
-            [ "This is what's going to get me that promotion." ],
-            [ "Nothing personal. It's only business." ],
-            [ "Moving the needle." ]
+            [ "Hooah..." ],
+            [ "Nothing personal." ],
+            [ "You're in our way." ]
         ]
     },
     "ShieldedDamage": {
         "Basic": [
-            [ "Shields were a good investment." ]
+            [ "These shields really make up for the lack of hull." ]
         ]
     },
     "Missed": {
         "Basic": [
             [ "..." ],
-            [ "It couldn't be helped, I suppose." ],
-            [ "You miss 100% of the shots you don't take." ]
+            [ "Try again?" ],
+            [ "Seriously?" ]
         ]
     },
     "AboutToDie": {
         "Basic": [
-            [ "Hmmm..." ],
-            [ "About time to clock out." ],
+            [ "Come on..." ],
+            [ "Not now..." ],
             [ "Hang in there." ]
         ],
         "Dizzy": [
-            /*Dizzy*/ "Yeah, we livin'.",
-            /*Johnson*/ "Somewhat."
+            /*Dizzy*/ "We are too close.",
+            /*Cleo*/ "Shields up!"
         ],
         "Riggs": [
-            /*Riggs*/ "That it do the way that it be...",
-            /*Johnson*/ "What?"
+            /*Riggs*/ "It was fun while it lasted...",
+            /*Cleo*/ "We're not done yet!"
         ],
         "Peri": [
             /*Peri*/ "Not dead yet!",
-            /*Johnson*/ "Close, but no cigar."
+            /*Cleo*/ "Getting there!"
         ],
         "Isaac": [
-            /*Johnson*/ "Mayhaps we should just call it here, hm? Get a jump start on the next loop?",
-            /*Isaac*/ "Maybe..."
+            /*Cleo*/ "I don't want to be a downer, but this is bad.",
+            /*Isaac*/ "No kidding."
         ],
         "Drake": [
-            /*Johnson*/ "Things are looking dire.",
-            /*Drake*/ "You don't say."
+            /*Cleo*/ "Not the greatest situation.",
+            /*Drake*/ "Obviously."
         ],
         "Books": [
-            /*Johnson*/ "This is why we shouldn't have a child in here.",
-            /*Books*/ "But I'm doing my best!"
+            /*Cleo*/ "I'm sorry, Books.",
+            /*Books*/ "It's not your fault."
         ],
         "CAT": [
-            /*Johnson*/ "...Bleeding money and resources.",
-            /*CAT*/ "I'm working on it!"
+            /*Cleo*/ "This is gonna take a while to fix.",
+            /*CAT*/ "Get started!"
         ]
     },
     "HitArmor": {
         "Basic": [
-            [ "Inefficient." ]
+            [ "Armor never gets old." ]
         ]
     },
     "ExcessEnergy": {
         "Basic": [
-            [ "An energy surplus. That won't be good for next year's budget." ]
+            [ "What do we do with the extra juice?" ]
         ]
     },
     "EmptyHand": {
         "Basic": [
-            [ "Out of stock." ]
+            [ "Need more." ]
         ]
     },
     "TrashHand": {
         "Basic": [
-            [ "Can we get a janitor in here?" ]
+            [ "This is gross." ]
         ]
     },
     "PlayedRecycle": {
@@ -158,7 +158,7 @@
             [ "Let's circle back to this later." ]
         ]
     },
-    "NewNonJohnsonNonTrashTempCard": {
+    "NewNonCleoNonTrashTempCard": {
         "Basic": [
             [ "Time to spearhead something new." ],
             [ "Think outside the box." ]
@@ -166,25 +166,25 @@
     },
     "StartedBattle": {
         "Basic": [
-            [ "Let's get out there and make those investors proud!" ]
+            [ "Not my old ship, but I can work with this." ]
         ]
     },
     "NoOverlap": {
         "Basic": [
-            [ "I'd rather just leave. Far more important things to be doing, after all." ],
-            [ "Goodbye." ]
+            [ "So this is how it feels to just leave?" ],
+            [ "Good riddance." ]
         ]
     },
     "NoOverlapButSeeker": {
         "Basic": [
-            [ "We've got an R.S.V.P. with that I.C.B.M." ],
-            [ "That seeker's creating a hostile work environment." ]
+            [ "That seeker is going to become an issue." ],
+            [ "And how do we plan on dealing with the seeker?" ]
         ]
     },
     "LongFight": {
         "Basic": [
-            [ "Can we hurry things along? I have to be out of here by 8." ],
-            [ "I assume we'll be working overtime, then?" ]
+            [ "Wow this is slow." ],
+            [ "Max was right, these things DO have solitaire!" ]
         ]
     },
     "GoingMissing": {
@@ -194,35 +194,35 @@
     },
     "ReturningFromMissing": {
         "Basic": [
-            [ "Good to be back. I hated being unproductive." ]
+            [ "Back in action." ]
         ]
     },
     "GoingToOverheat": {
         "Basic": [
-            [ "Maybe we could get a water cooler in here." ],
-            [ "You all read the safety brochure on heat related illness, yes?" ]
+            [ "I'm not a fan of this temperature." ],
+            [ "Where is the air conditioner when you need one?" ]
         ],
         "Drake": [
-            /*Johnson*/ "...",
-            /*Duncan*/ "What? What's that look mean? C'mon, speak up."
+            /*Cleo*/ "Eunice, you know not to cross me.",
+            /*Drake*/ "Nothing personal, Cleo."
         ]
     },
     "Recalibrator": {
         "Basic": [
-            [ "As expected." ]
+            [ "No problem." ]
         ]
     },
     "StartedBattleAgainstDuncan": [
-        /*Johnson*/ "All this senseless violence. Perhaps there is another way we could smooth things over?",
-        /*Duncan*/ "I'm not in it for the money, I'm in it for the rocks!"
+        /*Cleo*/ "Just how many rocks do you have?",
+        /*Duncan*/ "I'm not sure, I just know it's not enough!"
     ],
     "StartedBattleAgainstDahlia": [
         /*Dahlia*/ "Here's a fresh batch of missiles, on the house!",
-        /*Johnson*/ "Wow! What a deal!"
+        /*Cleo*/ "That's nothing compared to my old ship."
     ],
     "StartedBattleAgainstBigCrystal": [
-        "Meh. I have always found crystals to be tacky."
+        "Ah. Big crystal."
     ],
-    "CrabFacts1_Multi_0": "Interesting... Very interesting...",
-    "CrabFacts2_Multi_0": "Hold on. I need to speak to some people about this."
+    "CrabFacts1_Multi_0": "That only kind of makes sense?",
+    "CrabFacts2_Multi_0": "Are you sure you know what you're talking about?"
 }

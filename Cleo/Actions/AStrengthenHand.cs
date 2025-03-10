@@ -12,21 +12,21 @@ public sealed class AStrengthenHand : DynamicWidthCardAction
 	{
 		base.Begin(g, s, c);
 		foreach (var card in c.hand)
-			card.AddStrengthen(Amount);
+			card.AddImprovedA(Amount);
 		Audio.Play(Event.Status_PowerUp);
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.StrengthenHandIcon.Sprite, Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImprovedIcon.Sprite, Amount, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::StrengthenHand")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
 			{
-				Icon = ModEntry.Instance.StrengthenHandIcon.Sprite,
+				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "StrengthenHand", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "StrengthenHand", "description"], new { Damage = Amount })
+				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"], new { Damage = Amount })
 			}
 		];
 }

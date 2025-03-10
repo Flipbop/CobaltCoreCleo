@@ -9,6 +9,6 @@ public sealed class StrengthenBrowseAction : CardAction
 		base.Begin(g, s, c);
 		if (selectedCard is null)
 			return;
-		selectedCard.AddStrengthen(Amount);
+		selectedCard.AddImprovedA(Amount);
 	}
 }

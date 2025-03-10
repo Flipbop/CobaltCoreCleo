@@ -48,8 +48,7 @@ internal sealed class DialogueExtensions
 			postfix: new HarmonyMethod(AccessTools.DeclaredMethod(GetType(), nameof(Ship_NormalDamage_Postfix)), priority: Priority.Last)
 		);
 		ModEntry.Instance.Harmony.Patch(
-			original: AccessTools.DeclaredMethod(typeof(Combat), nameof(Combat.Update)),
-			postfix: new HarmonyMethod(GetType(), nameof(Combat_Update_Postfix))
+			original: AccessTools.DeclaredMethod(typeof(Combat), nameof(Combat.Update))
 		);
 
 		ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (Card card, State state, Combat combat) =>
@@ -84,7 +83,7 @@ internal sealed class DialogueExtensions
 		if (!__instance.targetPlayer)
 			return;
 
-		if (__instance.status == ModEntry.Instance.JohnsonCharacter.MissingStatus.Status && __state > 0 && s.ship.Get(ModEntry.Instance.JohnsonCharacter.MissingStatus.Status) <= 0)
+		if (__instance.status == ModEntry.Instance.CleoCharacter.MissingStatus.Status && __state > 0 && s.ship.Get(ModEntry.Instance.CleoCharacter.MissingStatus.Status) <= 0)
 			c.QueueImmediate(new ADummyAction { dialogueSelector = $".{ModEntry.Instance.Package.Manifest.UniqueName}::ReturningFromMissing" });
 	}
 
@@ -98,25 +97,5 @@ internal sealed class DialogueExtensions
 			return;
 
 		s.storyVars.SetShieldLostThisTurn(s.storyVars.GetShieldLostThisTurn() + (__state - newShields));
-	}
-
-	private static void Combat_Update_Postfix(Combat __instance, G g)
-	{
-		var currentCardsInDeck = g.state.GetAllCards().Select(card => card.uuid).ToHashSet();
-		var lastCardsInDeck = __instance.GetLastCardIdsInDeck();
-
-		foreach (var cardId in currentCardsInDeck)
-		{
-			if (lastCardsInDeck.Contains(cardId))
-				continue;
-			if (g.state.FindCard(cardId) is not { } card)
-				continue;
-
-			var meta = card.GetMeta();
-			if (meta.deck != ModEntry.Instance.JohnsonDeck.Deck && NewRunOptions.allChars.Contains(meta.deck) && card.GetDataWithOverrides(g.state).temporary)
-				__instance.QueueImmediate(new ADummyAction { dialogueSelector = $".{ModEntry.Instance.Package.Manifest.UniqueName}::NewNonJohnsonNonTrashTempCard" });
-		}
-
-		ModEntry.Instance.Helper.ModData.SetModData(__instance, "LastCardIdsInDeck", currentCardsInDeck);
 	}
 }

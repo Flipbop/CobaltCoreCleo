@@ -7,6 +7,7 @@ using Shockah.Kokoro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Flipbop.Cleo;
 
 namespace Flipbop.Cleo;
 
@@ -18,7 +19,6 @@ public sealed class ModEntry : SimpleMod
 	internal IHarmony Harmony { get; }
 	internal IKokoroApi.IV2 KokoroApi { get; }
 	internal IDuoArtifactsApi? DuoArtifactsApi { get; }
-	internal ITyAndSashaApi? TyAndSashaApi { get; private set; }
 	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
@@ -26,9 +26,10 @@ public sealed class ModEntry : SimpleMod
 	internal IPlayableCharacterEntryV2 CleoCharacter { get; }
 	internal IStatusEntry CrunchTimeStatus { get; }
 
-	internal ISpriteEntry StrengthenIcon { get; }
-	internal ISpriteEntry StrengthenHandIcon { get; }
-	internal ISpriteEntry DiscountHandIcon { get; }
+	internal ISpriteEntry ImproveAIcon { get; }
+	internal ISpriteEntry ImproveBIcon { get; }
+	internal ISpriteEntry ImpairedIcon { get; }
+	internal ISpriteEntry ImprovedIcon { get; }
 
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
 		typeof(QuickBoostCard),
@@ -62,43 +63,34 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [
 		typeof(SmallRepairsCard),
-		typeof(BulletPointCard),
-		typeof(BurnOutCard),
-		typeof(DeadlineCard),
-		typeof(LeverageCard),
-		typeof(Quarter2Card),
-		typeof(Quarter3Card),
-		typeof(SellHighCard),
-		typeof(SlideTransitionCard),
 	];
 
 	internal static IEnumerable<Type> AllCardTypes { get; }
-		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, typeof(JohnsonExeCard), ..SpecialCardTypes];
+		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, typeof(CleoExeCard), ..SpecialCardTypes];
 
 	internal static IReadOnlyList<Type> CommonArtifacts { get; } = [
-		typeof(BriefcaseArtifact),
-		typeof(CandyArtifact),
-		typeof(CouponArtifact),
-		typeof(EspressoShotArtifact),
-		typeof(JumpTheCurveArtifact),
+		typeof(EnhancedToolsArtifact),
+		typeof(ReusableMaterialsArtifact),
+		typeof(KickstartArtifact),
+		typeof(MagnifiedLasersArtifact),
+		typeof(UpgradedTerminalArtifact),
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
-		typeof(FrugalityArtifact),
-		typeof(RAndDArtifact),
+		typeof(RetainerArtifact),
+		typeof(ExpensiveEquipmentArtifact),
+		typeof(PowerEchoArtifact),
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
-		typeof(JohnsonBooksArtifact),
-		typeof(JohnsonBucketArtifact),
-		typeof(JohnsonCatArtifact),
-		typeof(JohnsonDizzyArtifact),
-		typeof(JohnsonDrakeArtifact),
-		typeof(JohnsonIsaacArtifact),
-		typeof(JohnsonMaxArtifact),
-		typeof(JohnsonPeriArtifact),
-		typeof(JohnsonRiggsArtifact),
-		typeof(JohnsonTyArtifact),
+		typeof(CleoBooksArtifact),
+		typeof(CleoCatArtifact),
+		typeof(CleoDizzyArtifact),
+		typeof(CleoDrakeArtifact),
+		typeof(CleoIsaacArtifact),
+		typeof(CleoMaxArtifact),
+		typeof(CleoPeriArtifact),
+		typeof(CleoRiggsArtifact),
 	];
 
 	internal static IEnumerable<Type> AllArtifactTypes
@@ -122,8 +114,6 @@ public sealed class ModEntry : SimpleMod
 			if (phase != ModLoadPhase.AfterDbInit)
 				return;
 
-			TyAndSashaApi = helper.ModRegistry.GetApi<ITyAndSashaApi>("TheJazMaster.TyAndSasha");
-
 			foreach (var registerableType in LateRegisterableTypes)
 				AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 		};
@@ -137,7 +127,8 @@ public sealed class ModEntry : SimpleMod
 		);
 
 		_ = new CrunchTimeManager();
-		_ = new StrengthenManager();
+		_ = new ImprovedAManager();
+		_ = new ImprovedBManager();
 		CardSelectFilters.Register(package, helper);
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
@@ -154,7 +145,7 @@ public sealed class ModEntry : SimpleMod
 			Description = this.AnyLocalizations.Bind(["status", "CrunchTime", "description"]).Localize
 		});
 
-		JohnsonDeck = helper.Content.Decks.RegisterDeck("Johnson", new()
+		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()
 		{
 			Definition = new() { color = new("2D3F61"), titleColor = Colors.white },
 			DefaultCardArt = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Default.png")).Sprite,
@@ -165,14 +156,14 @@ public sealed class ModEntry : SimpleMod
 		foreach (var registerableType in RegisterableTypes)
 			AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 
-		JohnsonCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Johnson", new()
+		CleoCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cleo", new()
 		{
-			Deck = JohnsonDeck.Deck,
+			Deck = CleoDeck.Deck,
 			Description = this.AnyLocalizations.Bind(["character", "description"]).Localize,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/CharacterFrame.png")).Sprite,
 			NeutralAnimation = new()
 			{
-				CharacterType = JohnsonDeck.UniqueName,
+				CharacterType = CleoDeck.UniqueName,
 				LoopTag = "neutral",
 				Frames = Enumerable.Range(0, 4)
 					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Neutral/{i}.png")).Sprite)
@@ -180,7 +171,7 @@ public sealed class ModEntry : SimpleMod
 			},
 			MiniAnimation = new()
 			{
-				CharacterType = JohnsonDeck.UniqueName,
+				CharacterType = CleoDeck.UniqueName,
 				LoopTag = "mini",
 				Frames = [
 					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Character/Mini.png")).Sprite
@@ -189,16 +180,16 @@ public sealed class ModEntry : SimpleMod
 			Starters = new()
 			{
 				cards = [
-					new RevampCard(),
-					new LayoutCard()
+					new QuickBoostCard(),
+					new TurtleShotCard()
 				]
 			},
-			ExeCardType = typeof(JohnsonExeCard)
+			ExeCardType = typeof(CleoExeCard)
 		});
 
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
-			CharacterType = JohnsonDeck.UniqueName,
+			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "gameover",
 			Frames = Enumerable.Range(0, 1)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/GameOver/{i}.png")).Sprite)
@@ -206,15 +197,15 @@ public sealed class ModEntry : SimpleMod
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
-			CharacterType = JohnsonDeck.UniqueName,
+			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "squint",
-			Frames = Enumerable.Range(0, 5)
+			Frames = Enumerable.Range(0, 2)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Squint/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
-			CharacterType = JohnsonDeck.UniqueName,
+			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "fiddling",
 			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Fiddling/{i}.png")).Sprite)
@@ -222,7 +213,7 @@ public sealed class ModEntry : SimpleMod
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
-			CharacterType = JohnsonDeck.UniqueName,
+			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "flashing",
 			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Flashing/{i}.png")).Sprite)
@@ -230,27 +221,28 @@ public sealed class ModEntry : SimpleMod
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
-			CharacterType = JohnsonDeck.UniqueName,
+			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "happy",
 			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Happy/{i}.png")).Sprite)
 				.ToList()
 		});
 
-		StrengthenIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Strengthen.png"));
-		StrengthenHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/StrengthenHand.png"));
-		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/DiscountHand.png"));
+		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveA.png"));
+		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));
+		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
+		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png"));
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
 			new SemanticVersion(1, 3, 0),
 			api => api.RegisterAltStarters(
-				deck: JohnsonDeck.Deck,
+				deck: CleoDeck.Deck,
 				starterDeck: new StarterDeck
 				{
 					cards = [
-						new BuyLowCard(),
-						new ProfitMarginCard()
+						new ShuffleUpgradeCard(),
+						new SlipShotCard()
 					]
 				}
 			)

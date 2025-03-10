@@ -35,14 +35,6 @@ internal sealed class SeekerBarrageCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new AAddCard { destination = CardDestination.Deck, card = new Quarter2Card() },
-				new AAddCard { destination = CardDestination.Discard, card = new Quarter2Card(), omitFromTooltips = true },
-				new ADummyAction() { dialogueSelector = $".Played::{Key()}" },
-			],
-			_ => [
-				new AAddCard { destination = CardDestination.Deck, insertRandomly = upgrade != Upgrade.A, card = new Quarter2Card() },
-				new ADummyAction() { dialogueSelector = $".Played::{Key()}" },
-			]
+			
 		};
 }

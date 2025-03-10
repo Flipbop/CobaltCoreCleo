@@ -19,7 +19,7 @@ internal abstract class BaseDialogue(Func<string, Stream> localeStreamFunction)
 
 	protected void InjectStory(Dictionary<IReadOnlyList<string>, StoryNode> newNodes, Dictionary<IReadOnlyList<string>, StoryNode> newHardcodedNodes, Dictionary<IReadOnlyList<string>, Say> saySwitchNodes, NodeType newNodeType)
 	{
-		var johnsonType = ModEntry.Instance.JohnsonCharacter.CharacterType;
+		var cleoType = ModEntry.Instance.CleoCharacter.CharacterType;
 
 		foreach (var (key, node) in newNodes)
 		{
@@ -35,7 +35,7 @@ internal abstract class BaseDialogue(Func<string, Stream> localeStreamFunction)
 
 		foreach (var (key, node) in newHardcodedNodes)
 		{
-			var realKey = string.Join(".", key.Select(s => s.Replace("{{CharacterType}}", johnsonType)));
+			var realKey = string.Join(".", key.Select(s => s.Replace("{{CharacterType}}", cleoType)));
 
 			node.type = newNodeType;
 			DB.story.all[realKey] = node;
@@ -54,14 +54,14 @@ internal abstract class BaseDialogue(Func<string, Stream> localeStreamFunction)
 				continue;
 
 			if (string.IsNullOrEmpty(line.hash))
-				line.hash = $"{johnsonType}::{realKey}";
+				line.hash = $"{cleoType}::{realKey}";
 			saySwitch.lines.Add(line);
 		}
 	}
 
 	protected void InjectLocalizations(Dictionary<IReadOnlyList<string>, StoryNode> newNodes, Dictionary<IReadOnlyList<string>, StoryNode> newHardcodedNodes, Dictionary<IReadOnlyList<string>, Say> saySwitchNodes, LoadStringsForLocaleEventArgs e)
 	{
-		var johnsonType = ModEntry.Instance.JohnsonCharacter.CharacterType;
+		var cleoType = ModEntry.Instance.CleoCharacter.CharacterType;
 
 		foreach (var (key, node) in newNodes)
 		{
@@ -88,7 +88,7 @@ internal abstract class BaseDialogue(Func<string, Stream> localeStreamFunction)
 
 		foreach (var (key, node) in newHardcodedNodes)
 		{
-			var realKey = string.Join(".", key.Select(s => s.Replace("{{CharacterType}}", johnsonType)));
+			var realKey = string.Join(".", key.Select(s => s.Replace("{{CharacterType}}", cleoType)));
 
 			var index = 0;
 			foreach (var line in node.lines)
@@ -113,7 +113,7 @@ internal abstract class BaseDialogue(Func<string, Stream> localeStreamFunction)
 		{
 			var realKey = string.Join(".", key);
 			if (string.IsNullOrEmpty(line.hash))
-				line.hash = $"{johnsonType}::{realKey}";
+				line.hash = $"{cleoType}::{realKey}";
 
 			e.Localizations[$"{realKey}:{line.hash}"] = Localizations.Localize(e.Locale, key);
 		}

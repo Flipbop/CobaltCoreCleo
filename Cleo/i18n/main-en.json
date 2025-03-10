@@ -36,7 +36,7 @@
             "name": "Improved B",
             "description": "The next time this card is played it acts as an <c=boldPink>{{Upgraded}}</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
         },
-        "Impair": {
+        "Impaired": {
             "name": "Impaired",
             "description": "The next time this card is played it acts as a <c=boldPink>{{Non-upgraded}}</c> version of itself. Lost on play and the end of the fight."
         }
@@ -60,24 +60,24 @@
 
 
     "artifact": {
-        "Briefcase": {
-            "name": "BRIEFCASE",
+        "EnhancedTools": {
+            "name": "ENHANCED TOOLS",
             "description": "On your first turn, put a <c=card>Bullet Point</c>, <c=card>Slide Transition</c>, <c=card>Leverage</c>, or <c=card>Brainstorm</c> into your <c=keyword>hand</c>."
         },
-        "Candy": {
-            "name": "CANDY",
+        "ReusableMaterials": {
+            "name": "REUSABLE MATERIALS",
             "description": "Choose 2 unupgraded cards in your deck. Upgrade the first one to type A, and the second to type B."
         },
-        "Coupon": {
-            "name": "COUPON",
+        "Kickstart": {
+            "name": "KICKSTART",
             "description": "On your first turn, choose a card in your deck. <c=cardtrait>Discount</c> it."
         },
-        "EspressoShot": {
-            "name": "ESPRESSO SHOT",
+        "MagnifiedLasers": {
+            "name": "MAGNIFIED LASERS",
             "description": "On your first turn, put a <c=card>Burn Out</c> into your <c=keyword>hand</c>."
         },
-        "Frugality": {
-            "name": "FRUGALITY",
+        "UpgradedTerminal": {
+            "name": "UPGRADED TERMINAL",
             "description": "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>You can no longer visit repair yards.</c>",
             "dialogue": [
                 "A penny saved is a penny earned.",
@@ -85,56 +85,52 @@
                 "I'd rather not."
             ]
         },
-        "JumpTheCurve": {
-            "name": "JUMP THE CURVE",
+        "Retainer": {
+            "name": "RETAINER",
             "description": "When a card is added to your deck outside of combat, <c=cardtrait>discount</c> and <c=cardtrait>temporarily upgrade</c> it."
         },
-        "RAndD": {
-            "name": "R&D",
+        "ExpensiveEquipment": {
+            "name": "EXPENSIVE EQUIPMENT",
+            "description": "Each turn, add 1 of 2 <c=cardtrait>temp</c> cards from any of the current crewmates to your <c=keyword>hand</c>."
+        },
+        "PowerEcho": {
+            "name": "POWER ECHO",
             "description": "Each turn, add 1 of 2 <c=cardtrait>temp</c> cards from any of the current crewmates to your <c=keyword>hand</c>."
         },
         "Duo": {
-            "JohnsonBooks": {
+            "CleoBooks": {
                 "name": "SUMMONING STAFF",
                 "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
             },
-            "JohnsonBucket": {
-                "name": "TRIMMING FAT",
-                "description": "<c=cardtrait>Discount</c> the first <c=trash>trash</c> card drawn each turn."
-            },
-            "JohnsonCat": {
+            "CleoCat": {
                 "name": "NEVERMIND",
                 "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
             },
-            "JohnsonDizzy": {
+            "CleoDizzy": {
                 "name": "FORTIFY",
                 "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
             },
-            "JohnsonDrake": {
+            "CleoDrake": {
                 "name": "ICED COFFEE",
                 "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
             },
-            "JohnsonIsaac": {
+            "CleoIsaac": {
                 "name": "CARE PACKAGE",
                 "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
             },
-            "JohnsonMax": {
+            "CleoMax": {
                 "name": "TREND CHASER",
                 "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
                 "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
                 "hasNoEffect": "Currently has no effect."
             },
-            "JohnsonPeri": {
+            "CleoPeri": {
                 "name": "MILITARY SPENDING",
                 "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
             },
-            "JohnsonRiggs": {
+            "CleoRiggs": {
                 "name": "PLAN B",
                 "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
-            },
-            "JohnsonTy": {
-                "name": "GUERILLA MARKETING",
-                "description": "The first time a <c=cardtrait>Wild</c> card is played each turn, <c=cardtrait>temp upgrade</c> it."
             }
         }
     },
@@ -280,13 +276,13 @@
         },
 
         "Duo": {
-            "JohnsonCatNoneOfTheAbove": {
+            "CleoCatNoneOfTheAbove": {
                 "name": "None of the Above"
             },
-            "JohnsonIsaacSupply": {
+            "CleoIsaacSupply": {
                 "name": "Supply"
             },
-            "JohnsonIsaacDemand": {
+            "CleoIsaacDemand": {
                 "name": "Demand"
             }
         }

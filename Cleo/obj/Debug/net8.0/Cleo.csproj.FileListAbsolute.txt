@@ -1,0 +1,5 @@
+/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.csproj.AssemblyReference.cache
+/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.AssemblyInfoInputs.cache
+/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.AssemblyInfo.cs
+/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.csproj.CoreCompileInputs.cache

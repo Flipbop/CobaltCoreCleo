@@ -11,7 +11,7 @@ public sealed class TemporarilyUpgradeBrowseAction : CardAction
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
 			.. Discount == 0 ? Array.Empty<Tooltip>() : [new TTGlossary("cardtrait.discount", Discount)],
-			.. Strengthen == 0 ? Array.Empty<Tooltip>() : [ModEntry.Instance.Api.GetStrengthenTooltip(Strengthen)],
+			.. Strengthen == 0 ? Array.Empty<Tooltip>() : [ModEntry.Instance.Api.GetImprovedATooltip(Strengthen)],
 			.. ModEntry.Instance.KokoroApi.TemporaryUpgrades.CardTrait.Configuration.Tooltips?.Invoke(s, null) ?? []
 		];
 
@@ -25,7 +25,7 @@ public sealed class TemporarilyUpgradeBrowseAction : CardAction
 		}
 		
 		selectedCard.discount += Discount;
-		selectedCard.AddStrengthen(Strengthen);
+		selectedCard.AddImprovedA(Strengthen);
 		
 		var action = ModEntry.Instance.KokoroApi.TemporaryUpgrades.MakeChooseTemporaryUpgradeAction(selectedCard.uuid).AsCardAction;
 		action.timer = 0;

@@ -1,4 +1,6 @@
-Cleanusing Nanoray.PluginManager;
+using Nanoray.PluginManager;
+
+
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
@@ -35,36 +37,6 @@ internal sealed class CleanSlateCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new AAddCard
-				{
-					card = new LeverageCard(),
-					destination = CardDestination.Discard,
-				},
-				new AAddCard
-				{
-					card = new BrainstormCard(),
-					destination = CardDestination.Discard,
-				},
-				new ADummyAction { dialogueSelector = $".Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize" },
-			],
-			_ => [
-				new ASpecificCardOffering
-				{
-					Destination = CardDestination.Deck,
-					Cards = [
-						new LeverageCard(),
-						new BrainstormCard(),
-					]
-				},
-				new ATooltipAction
-				{
-					Tooltips = [
-						new TTCard { card = new LeverageCard() },
-						new TTCard { card = new BrainstormCard() },
-					],
-					dialogueSelector = $".Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize"
-				},
-			]
+			
 		};
 }

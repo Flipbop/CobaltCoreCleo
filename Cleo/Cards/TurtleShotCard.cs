@@ -37,7 +37,7 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 			new AAddCard
 			{
 				destination = CardDestination.Hand,
-				card = new BurnOutCard(),
+				
 				amount = upgrade switch
 				{
 					Upgrade.A => 3,

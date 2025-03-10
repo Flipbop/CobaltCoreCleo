@@ -17,16 +17,16 @@ public sealed class ADiscountHand : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.DiscountHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImprovedIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::DiscountHand")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
 			{
-				Icon = ModEntry.Instance.DiscountHandIcon.Sprite,
+				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "DiscountHand", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "DiscountHand", "description"], new { Discount = -Amount })
+				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"], new { Discount = -Amount })
 			}
 		];
 }

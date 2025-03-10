@@ -2,38 +2,58 @@
 
 namespace Flipbop.Cleo;
 
-public sealed class ApiImplementation : IJohnsonApi
+public sealed class ApiImplementation : ICleoApi
 {
-	public IDeckEntry JohnsonDeck
-		=> ModEntry.Instance.JohnsonDeck;
+	public IDeckEntry CleoDeck
+		=> ModEntry.Instance.CleoDeck;
 
 	public IStatusEntry CrunchTimeStatus
 		=> ModEntry.Instance.CrunchTimeStatus;
 
-	public ICardTraitEntry StrengthenCardTrait
-		=> StrengthenManager.Trait;
+	public ICardTraitEntry ImprovedACardTrait
+		=> ImprovedAManager.Trait;
+	public ICardTraitEntry ImprovedBCardTrait
+		=> ImprovedBManager.Trait;
 
-	public Tooltip GetStrengthenTooltip(int amount)
-		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::Strengthen")
+	public Tooltip GetImprovedATooltip(int amount)
+		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedA")
 		{
-			Icon = ModEntry.Instance.StrengthenIcon.Sprite,
+			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
-			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Strengthen", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Strengthen", "description"], new { Damage = amount })
+			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"], new { Damage = amount })
 		};
+	
+	public Tooltip GetImprovedBTooltip(int amount)
+		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedB")
+		{
+			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+			TitleColor = Colors.cardtrait,
+			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"], new { Damage = amount })
+		};
+	
+	public int GetImprovedA(Card card)
+		=> card.GetImprovedA();
 
-	public int GetStrengthen(Card card)
-		=> card.GetStrengthen();
+	public void SetImprovedA(Card card, int value)
+		=> card.SetImprovedA(value);
 
-	public void SetStrengthen(Card card, int value)
-		=> card.SetStrengthen(value);
+	public void AddImprovedA(Card card, int value)
+		=> card.AddImprovedA(value);
+	
+	public int GetImprovedB(Card card)
+		=> card.GetImprovedB();
 
-	public void AddStrengthen(Card card, int value)
-		=> card.AddStrengthen(value);
+	public void SetImprovedB(Card card, int value)
+		=> card.SetImprovedB(value);
 
-	public CardAction MakeStrengthenAction(int cardId, int amount)
+	public void AddImprovedB(Card card, int value)
+		=> card.AddImprovedB(value);
+
+	public CardAction MakeImprovedAAction(int cardId, int amount)
 		=> new AStrengthen { CardId = cardId, Amount = amount };
 
-	public CardAction MakeStrengthenHandAction(int amount)
+	public CardAction MakeImprovedBAction(int amount)
 		=> new AStrengthenHand { Amount = amount };
 }

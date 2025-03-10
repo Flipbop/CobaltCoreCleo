@@ -19,14 +19,14 @@ internal sealed class CrunchTimeManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 			if (stacks <= 0)
 				return;
 
-			var countInHand = combat.hand.Count(card => card is BurnOutCard);
+			var countInHand = combat.hand.Count(card => card is SmallRepairsCard);
 			if (countInHand >= 3)
 				return;
 
 			combat.Queue(new AAddCard
 			{
 				destination = CardDestination.Hand,
-				card = new BurnOutCard(),
+				card = new SmallRepairsCard(),
 				amount = stacks,
 				statusPulse = ModEntry.Instance.CrunchTimeStatus.Status
 			});
@@ -38,7 +38,7 @@ internal sealed class CrunchTimeManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 		if (args.Status != ModEntry.Instance.CrunchTimeStatus.Status)
 			return args.Tooltips;
 		return args.Tooltips
-			.Append(new TTCard { card = new BurnOutCard() })
+			.Append(new TTCard { card = new SmallRepairsCard() })
 			.ToList();
 	}
 }

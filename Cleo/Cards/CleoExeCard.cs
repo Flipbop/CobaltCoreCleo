@@ -9,7 +9,7 @@ internal sealed class CleoExeCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Cards.RegisterCard("JohnsonExe", new()
+		helper.Content.Cards.RegisterCard("CleoExe", new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -18,7 +18,7 @@ internal sealed class CleoExeCard : Card, IRegisterable
 				rarity = Rarity.common,
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/JohnsonExe.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/CleoExe.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CleoExe", "name"]).Localize
 		});
 	}
