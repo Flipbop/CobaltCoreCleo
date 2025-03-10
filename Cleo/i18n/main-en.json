@@ -10,15 +10,15 @@
     "action": {
         "ImproveA": {
             "name": "Improve A",
-            "description": "<c=boldPink>{{Upgrade}}</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveB": {
             "name": "Improve B",
-            "description": "<c=boldPink>{{Upgrade}}</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "Impair": {
             "name": "Impair",
-            "description": "<c=boldPink>{{Downgrade}}</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            "description": "<c=boldPink>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         }
     },
     "browseSource": {
@@ -173,7 +173,7 @@
         "PowerSurge": {
             "name": "Power Surge"
         },
-        "Improved Cannon": {
+        "ImprovedCannon": {
             "name": "Improved Cannon"
         },
         "DoItYourself": {

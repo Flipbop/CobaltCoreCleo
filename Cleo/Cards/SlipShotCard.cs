@@ -27,36 +27,21 @@ internal sealed class SlipShotCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 0 : 1,
-			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "SlipShot", "description", upgrade.ToString()])
+			cost = upgrade == Upgrade.B ? 0 : 1,
+			exhaust = upgrade == Upgrade.B ? true : false,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AAddCard
-				{
-				
-				},
-				new ADummyAction { dialogueSelector = $".Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize" },
+				new AAttack { damage = GetDmg(s, 3), moveEnemy = 2},
+			],
+			Upgrade.A => [
+				new AAttack { damage = GetDmg(s, 3), moveEnemy = -2},
 			],
 			_ => [
-				new ASpecificCardOffering
-				{
-					Destination = CardDestination.Deck,
-					Cards = [
-						
-					]
-				},
-				new ATooltipAction
-				{
-					Tooltips = [
-						
-					],
-					dialogueSelector = $".Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize"
-				},
+				new AAttack { damage = GetDmg(s, 2), moveEnemy = -1},
 			]
 		};
 }

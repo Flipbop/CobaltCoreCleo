@@ -2,6 +2,7 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 
 namespace Flipbop.Cleo;
 
@@ -28,55 +29,34 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 2,
-			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "ImprovedCannon", "description", upgrade.ToString()], new { Damage = GetDmg(state, 2) })
+			
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AAttack
-			{
-				damage = GetDmg(s, 2),
-				onKillActions = [
-					new ADelayToRewards
-					{
-						Action = upgrade switch
-						{
-							Upgrade.A => new ACardSelect
-							{
-								browseSource = CardBrowse.Source.Deck,
-								browseAction = new UpgradeNonPermanentlyUpgradedCardBrowseAction(),
-								allowCancel = true
-							}.SetFilterPermanentlyUpgraded(false),
-							Upgrade.B => new ACardSelect
-							{
-								browseSource = CardBrowse.Source.Deck,
-								browseAction = new ChooseACardToMakePermanent(),
-								filterTemporary = true,
-								allowCloseOverride = true,
-								allowCancel = true
-							},
-							_ => new ACardSelect
-							{
-								browseSource = CardBrowse.Source.Deck,
-								browseAction = new MakeUpgradePermanentBrowseAction(),
-								allowCancel = true
-							}.SetFilterTemporarilyUpgraded(true),
-						}
-					}
-				]
-			},
-			new ATooltipAction
-			{
-				Tooltips = upgrade switch
-				{
-					Upgrade.A => new UpgradeNonPermanentlyUpgradedCardBrowseAction().GetTooltips(s),
-					Upgrade.B => [new TTGlossary("cardtrait.temporary")],
-					_ => new MakeUpgradePermanentBrowseAction().GetTooltips(s),
-				}
-			}
-		];
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None))},
+			],
+			Upgrade.B => [
+				new AAttack { damage = GetDmg(s, 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None)))},
+			],
+			_ => [
+				new AAttack { damage = GetDmg(s, c.hand.Count(card => card.upgrade != Upgrade.None))},
+			]
+			
+		};
+		
 
+	
+	
+	
+	
+	
+	
+	
+	
 	public sealed class UpgradeNonPermanentlyUpgradedCardBrowseAction : CardAction
 	{
 		public override List<Tooltip> GetTooltips(State s)

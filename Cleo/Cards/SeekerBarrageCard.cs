@@ -3,6 +3,8 @@ using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 
+
+
 namespace Flipbop.Cleo;
 
 internal sealed class SeekerBarrageCard : Card, IRegisterable
@@ -18,7 +20,8 @@ internal sealed class SeekerBarrageCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Quarters/1.png")).Sprite,
+			Art = helper.Content.Sprites
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Quarters/1.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SeekerBarrage", "name"]).Localize
 		});
 	}
@@ -27,14 +30,21 @@ internal sealed class SeekerBarrageCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
+			cost = 3,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "SeekerBarrage", "description", upgrade.ToString()])
+			description =
+				ModEntry.Instance.Localizations.Localize(["card", "SeekerBarrage", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			
+			Upgrade.A => [
+			],
+			Upgrade.B => [
+			],
+			_ => [
+			]
 		};
 }
+

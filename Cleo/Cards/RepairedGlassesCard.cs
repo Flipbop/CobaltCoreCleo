@@ -2,7 +2,7 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace Flipbop.Cleo;
 
@@ -23,35 +23,32 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 		});
 	}
 
-	private int CardCount
-	{
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		get => upgrade switch
-		{
-			Upgrade.A => 6,
-			Upgrade.B => 3,
-			_ => 4
-		};
-	}
+	
 
 	public override CardData GetData(State state)
 		=> new()
 		{
 			artTint = "FFFFFF",
 			art = StableSpr.cards_SecondOpinions,
-			cost = 0,
-			exhaust = upgrade != Upgrade.B,
+			cost = 2,
+			exhaust = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new ACardOffering
-			{
-				amount = CardCount,
-				makeAllCardsTemporary = true,
-				overrideUpgradeChances = false,
-				canSkip = false,
-				inCombat = true
-			}
-		];
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None)},
+				new AStatus { targetPlayer = true, status = Status.drawNextTurn, statusAmount = 2}
+			],
+			Upgrade.B => [
+				new ADiscard {count = 2},
+				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.discard.Count(card => card.upgrade != Upgrade.None)},
+			],
+			_ => [
+				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None)},
+			]
+			
+		};
 }

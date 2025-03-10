@@ -2,6 +2,7 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using HarmonyLib;
 
 namespace Flipbop.Cleo;
 
@@ -27,15 +28,26 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = 2,
 			exhaust = upgrade != Upgrade.B,
-			retain = true,
+			singleUse = upgrade == Upgrade.B,
 			description = ModEntry.Instance.Localizations.Localize(["card", "DoItYourself", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AAttack { damage = GetDmg(s, upgrade == Upgrade.A ? 2 : 1), piercing = true },
-			new AStatus { targetPlayer = true, status = Status.temporaryCheap, statusAmount = upgrade == Upgrade.A ? 2 : 1 }
-		];
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new SmallRepairsCard { upgrade = Upgrade.A } },
+				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
+			],
+			_ =>
+			[
+				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new SmallRepairsCard() },
+				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
+			]
+		};
+	
+		
 }

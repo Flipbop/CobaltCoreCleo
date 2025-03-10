@@ -137,12 +137,12 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/CrunchTime.png")).Sprite,
+				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png")).Sprite,
 				color = new("F7883E"),
 				isGood = true
 			},
-			Name = this.AnyLocalizations.Bind(["status", "CrunchTime", "name"]).Localize,
-			Description = this.AnyLocalizations.Bind(["status", "CrunchTime", "description"]).Localize
+			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
+			Description = this.AnyLocalizations.Bind(["status", "Impaired", "description"]).Localize
 		});
 
 		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()
@@ -199,7 +199,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "squint",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 3)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Squint/{i}.png")).Sprite)
 				.ToList()
 		});
@@ -207,7 +207,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "explaining",
-			Frames = Enumerable.Range(0, 4)
+			Frames = Enumerable.Range(0, 5)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Explain/{i}.png")).Sprite)
 				.ToList()
 		});
@@ -215,7 +215,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "nervous",
-			Frames = Enumerable.Range(0, 4)
+			Frames = Enumerable.Range(0, 5)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});

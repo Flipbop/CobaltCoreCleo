@@ -19,7 +19,8 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Special/Brainstorm.png")).Sprite,
+			Art = helper.Content.Sprites
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Special/Brainstorm.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SmallRepairs", "name"]).Localize
 		});
 	}
@@ -28,26 +29,14 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
-			temporary = true
+			cost = upgrade == Upgrade.B ? 0 : 1,
+			temporary = true,
+			exhaust = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new ADrawCard
-			{
-				count = upgrade switch
-				{
-					Upgrade.A => 2,
-					Upgrade.B => 3,
-					_ => 1
-				}
-			},
-			new AStatus
-			{
-				targetPlayer = true,
-				status = Status.drawNextTurn,
-				statusAmount = upgrade == Upgrade.A ? 4 : 3,
-			}
+		=>
+		[
+			new AHeal { canRunAfterKill = true, targetPlayer = true, healAmount = upgrade == Upgrade.A ? 3 : 2 },
 		];
-}
+};
