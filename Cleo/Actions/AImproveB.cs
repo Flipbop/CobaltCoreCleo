@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Flipbop.Cleo;
 
-public sealed class AImproveB : DynamicWidthCardAction
+public sealed class AImproveA : DynamicWidthCardAction
 {
 	public required int Amount;
 
@@ -21,7 +21,7 @@ public sealed class AImproveB : DynamicWidthCardAction
 			}
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				c.hand[index].upgrade = Upgrade.B;
+				c.hand[index].upgrade = Upgrade.A;
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}
@@ -34,12 +34,12 @@ public sealed class AImproveB : DynamicWidthCardAction
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve B")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
 			{
 				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "description"])
+				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
 			}
 		];
 }
