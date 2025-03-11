@@ -27,14 +27,24 @@ internal sealed class HardResetCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
-			exhaust = upgrade != Upgrade.B,
+			cost = 2,
+			
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new AImpair {Amount = 3},
+				new ADiscountHand {Amount = 1}
+			],
+			Upgrade.B => [
+				new AImpair {Amount = c.hand.Count},
+				new AImproveB {Amount = 3}
+			],
 			_ => [
+				new AImpair {Amount = c.hand.Count},
+				new ADiscountHand {Amount = 1}
 			]
 		};
 }

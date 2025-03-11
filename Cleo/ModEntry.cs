@@ -30,6 +30,7 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry ImproveBIcon { get; }
 	internal ISpriteEntry ImpairedIcon { get; }
 	internal ISpriteEntry ImprovedIcon { get; }
+	internal ISpriteEntry DiscountHandIcon { get; }
 
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
 		typeof(QuickBoostCard),
@@ -232,6 +233,7 @@ public sealed class ModEntry : SimpleMod
 		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));
 		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
 		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png"));
+		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/DiscountHand.png"));
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",

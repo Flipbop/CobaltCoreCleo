@@ -5,32 +5,29 @@ using System.Collections.Generic;
 
 namespace Flipbop.Cleo;
 
-public sealed class AImpair : DynamicWidthCardAction
+public sealed class AImpairSelf : DynamicWidthCardAction
 {
-	public required int Amount;
 
 	public override void Begin(G g, State s, Combat c)
 	{
 		base.Begin(g, s, c);
 		int index = c.hand.Count -1;
-		while (Amount > 0)
-		{
-			if (index < 0)
-			{
-				break;
-			}
-			if (c.hand[index].upgrade != Upgrade.None)
-			{
-				c.hand[index].upgrade = Upgrade.None;
-				Amount--;
-				Audio.Play(Event.CardHandling);
-			}
-			index--;
+		
+		if (index < 0)
+		{ 
+			;
 		}
+		if (c.hand[index].upgrade != Upgrade.None)
+		{
+			c.hand[index].upgrade = Upgrade.None;
+			Audio.Play(Event.CardHandling);
+		}
+		index--;
+		
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImpairedIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImprovedIcon.Sprite, 1, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [

@@ -26,29 +26,20 @@ internal sealed class ReroutePowerCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			art = flipped ? StableSpr.cards_Adaptability_Bottom : StableSpr.cards_Adaptability_Top,
-			cost = upgrade == Upgrade.B ? 0 : 1,
-			floppable = true
+			art = StableSpr.cards_Adaptability_Bottom,
+			cost = upgrade == Upgrade.A ? 0 : 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AAttack
-			{
-				damage = GetDmg(s, upgrade switch
-				{
-					Upgrade.A => 2,
-					Upgrade.B => 0,
-					_ => 1
-				}),
-				disabled = flipped
-			},
-			new ADummyAction(),
-			new AStrengthen
-			{
-				CardId = uuid,
-				Amount = 2,
-				disabled = !flipped
-			}
-		];
+		=> upgrade switch
+		{
+			Upgrade.B => [
+				new AImpair {Amount = 2},
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 6 },
+			],
+			_ => [
+				new AImpair {Amount = 1},
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3 },
+			]
+		};
 }

@@ -27,65 +27,28 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1
+			cost = 3,
+			exhaust = true
 		};
-
-	private int GetX(State state)
-	{
-		var x = state.ship.Get(Status.shield);
-		if (ModEntry.Instance.Api is { } api)
-			x += 1;
-		return x;
-	}
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AVariableHint
-				{
-					status = Status.shield,
-				},
-				new AStrengthen
-				{
-					CardId = uuid,
-					Amount = GetX(s),
-					xHint = 1
-				},
-				new AAttack
-				{
-					damage = GetDmg(s, 1 + GetX(s))
-				},
-				new AStatus
-				{
-					targetPlayer = true,
-					mode = AStatusMode.Set,
-					status = Status.shield,
-					statusAmount = 0
-				}
+				new ADrawCard {count = 2},
+				new AImproveA { Amount = c.hand.Count},
+				new ADiscard {count = 3}
+			],
+			Upgrade.B => [
+				new ADrawCard {count = 1},
+				new AImproveB { Amount = c.hand.Count},
+				new ADiscountHand { Amount = 1},
+				new ADiscard {count = c.hand.Count}
 			],
 			_ => [
-				new AAttack
-				{
-					damage = GetDmg(s, 1)
-				},
-				new AVariableHint
-				{
-					status = Status.shield,
-				},
-				new AStrengthen
-				{
-					CardId = uuid,
-					Amount = GetX(s),
-					xHint = 1
-				},
-				new AStatus
-				{
-					targetPlayer = true,
-					mode = AStatusMode.Set,
-					status = Status.shield,
-					statusAmount = upgrade == Upgrade.B ? 1 : 0
-				}
+				new ADrawCard {count = 2},
+				new AImproveA { Amount = c.hand.Count},
+				new ADiscard {count = c.hand.Count}
 			]
 		};
 }

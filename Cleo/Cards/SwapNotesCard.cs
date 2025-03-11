@@ -27,24 +27,27 @@ internal sealed class SwapNotesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 1 : 2
+			cost = 0,
+			infinite = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 1 },
-				new AStatus { targetPlayer = true, status = Status.temporaryCheap, statusAmount = 1 }
+				new AImpair { Amount = 1 },
+				new AShuffleHand(),
+				new AImproveA { Amount = 3 },
 			],
 			Upgrade.B => [
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
-				new AStatus { targetPlayer = true, status = Status.temporaryCheap, statusAmount = 1 }
+				new AImpair { Amount = 1 },
+				new AShuffleHand(),
+				new AImproveB { Amount = 1 },
 			],
 			_ => [
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
-				new AStatus { targetPlayer = true, status = Status.temporaryCheap, statusAmount = 1 }
+				new AImpair { Amount = 1 },
+				new AShuffleHand(),
+				new AImproveA { Amount = 2 },
 			]
 		};
 }

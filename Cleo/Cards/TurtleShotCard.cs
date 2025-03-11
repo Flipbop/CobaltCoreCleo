@@ -48,6 +48,5 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 				new AAttack { damage = GetDmg(s, 2) },
 				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
 			]
-			
 		};
 }

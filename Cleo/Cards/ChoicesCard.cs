@@ -27,12 +27,21 @@ internal sealed class ChoicesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
-			retain = upgrade == Upgrade.A
+			cost = upgrade == Upgrade.A? 0 : 1,
+			floppable = upgrade != Upgrade.B, 
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AStrengthenHand { Amount = upgrade == Upgrade.B ? 2 : 1 }
-		];
+		=> upgrade switch
+		{
+			Upgrade.B => [
+				new AImproveA { Amount = 1 },
+				new AImproveB { Amount = 1 },
+			],
+			_ => [
+				new AImproveA { Amount = 1, disabled = flipped},
+				new ADummyAction(),
+				new AImproveB { Amount = 1, disabled = !flipped }
+			]
+		};
 }

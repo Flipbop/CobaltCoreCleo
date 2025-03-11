@@ -27,19 +27,24 @@ internal sealed class QuickBoostCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
+			cost = upgrade == Upgrade.A? 0 : 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AAddCard
-			{
-				destination = upgrade == Upgrade.B ? CardDestination.Deck : CardDestination.Hand,
-				card = new SmallRepairsCard
-				{
-					discount = upgrade == Upgrade.B ? -1 : 0
-				},
-				amount = upgrade == Upgrade.A ? 3 : 2
-			}
-		];
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AImproveA { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
+			],
+			Upgrade.B => [
+				new AImproveB { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
+			],
+			_ => [
+				new AImproveA { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
+			]
+		};
 }

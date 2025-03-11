@@ -27,17 +27,21 @@ internal sealed class ShuffleUpgradeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 0 : 1,
+			cost = upgrade == Upgrade.A ? 1 : 2,
 			exhaust = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AStatus
-			{
-				targetPlayer = true,
-				status = ModEntry.Instance.CrunchTimeStatus.Status,
-				statusAmount = upgrade == Upgrade.B ? 2 : 1
-			}
-		];
+		=> upgrade switch
+		{
+			Upgrade.B => [
+				new AImproveB { Amount = 1 },
+				new AShuffleHand(),
+				new AImproveB { Amount = 1 },
+			],
+			_ => [
+				new AShuffleHand(),
+				new AImproveA { Amount = 2 },
+			]
+		};
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Flipbop.Cleo;
 
-public sealed class AImproveA : DynamicWidthCardAction
+public sealed class AImproveB : DynamicWidthCardAction
 {
 	public required int Amount;
 
@@ -21,7 +21,7 @@ public sealed class AImproveA : DynamicWidthCardAction
 			}
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				c.hand[index].upgrade = Upgrade.A;
+				c.hand[index].upgrade = Upgrade.B;
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}
@@ -30,16 +30,16 @@ public sealed class AImproveA : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImprovedIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImproveAIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::ImproveB")
 			{
 				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
+				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "description"])
 			}
 		];
 }

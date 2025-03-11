@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Flipbop.Cleo;
 
-public sealed class AImproveA : DynamicWidthCardAction
+public sealed class AImproveASelf : DynamicWidthCardAction
 {
 	public required int Amount;
 
@@ -30,7 +30,7 @@ public sealed class AImproveA : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImproveBIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImprovedIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
