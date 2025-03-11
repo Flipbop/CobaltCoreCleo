@@ -36,10 +36,10 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		{
 			Upgrade.B => [
 				new ADrawCard { count = 2 },
-				new ADiscountHand { Amount = -1 }
+				new AImproveA { Amount = 1 }
 			],
 			_ => [
-				new ADiscountHand { Amount = -1 }
+				new AImproveA { Amount = 1 }
 			],
 		};
 }

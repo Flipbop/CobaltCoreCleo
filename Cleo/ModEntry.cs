@@ -133,16 +133,16 @@ public sealed class ModEntry : SimpleMod
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 
-		CrunchTimeStatus = helper.Content.Statuses.RegisterStatus("CrunchTime", new()
+		CrunchTimeStatus = helper.Content.Statuses.RegisterStatus("Clean Up", new()
 		{
 			Definition = new()
 			{
-				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png")).Sprite,
+				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/CleanUp.png")).Sprite,
 				color = new("F7883E"),
 				isGood = true
 			},
-			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
-			Description = this.AnyLocalizations.Bind(["status", "Impaired", "description"]).Localize
+			Name = this.AnyLocalizations.Bind(["status", "CleanUp", "name"]).Localize,
+			Description = this.AnyLocalizations.Bind(["status", "CleanUp", "description"]).Localize
 		});
 
 		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()

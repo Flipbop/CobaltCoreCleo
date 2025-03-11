@@ -37,13 +37,16 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None))},
+				new AVariableHint {xHint = c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None)},
+				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
 			],
 			Upgrade.B => [
-				new AAttack { damage = GetDmg(s, 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None)))},
+				new AVariableHint {xHint = 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None))},
+				new AAttack { damage = GetDmg(s, 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None))), xHint = 2},
 			],
 			_ => [
-				new AAttack { damage = GetDmg(s, c.hand.Count(card => card.upgrade != Upgrade.None))},
+				new AVariableHint {xHint = c.hand.Count(card => card.upgrade != Upgrade.None)},
+				new AAttack { damage = GetDmg(s, c.hand.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
 			]
 			
 		};

@@ -24,12 +24,12 @@ public sealed class AStrengthen : CardAction
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Strengthen")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A (FALSE)")
 			{
 				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "Strengthen", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "Strengthen", "description"], new { Damage = Amount })
+				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"], new { Damage = Amount })
 			}
 		];
 }

@@ -21,7 +21,7 @@ public sealed class AStrengthenHand : DynamicWidthCardAction
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A (FALSE)")
 			{
 				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
