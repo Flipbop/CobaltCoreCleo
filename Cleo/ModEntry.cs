@@ -36,11 +36,11 @@ public sealed class ModEntry : SimpleMod
 		typeof(QuickBoostCard),
 		typeof(TurtleShotCard),
 		typeof(ChoicesCard),
-		typeof(MemoryRecoveryCard),
+//		typeof(MemoryRecoveryCard),
 		typeof(ShuffleUpgradeCard),
-		typeof(ResourceSwapCard),
+//		typeof(ResourceSwapCard),
 		typeof(ReroutePowerCard),
-		typeof(NanomachinesCard),
+//		typeof(NanomachinesCard),
 		typeof(SlipShotCard),
 	];
 
@@ -49,16 +49,16 @@ public sealed class ModEntry : SimpleMod
 		typeof(ImprovedCannonCard),
 		typeof(DoItYourselfCard),
 		typeof(RepairedGlassesCard),
-		typeof(ScalpedPartsCard),
-		typeof(SwapNotesCard),
-		typeof(PowerSwitchCard),
+//		typeof(ScalpedPartsCard),
+		typeof(SwapNotesCard), 
+//		typeof(PowerSwitchCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
-		typeof(SeekerBarrageCard),
-		typeof(HarnessEnergyCard),
-		typeof(CleanSlateCard),
-		typeof(ApologizeNextLoopCard),
+//		typeof(SeekerBarrageCard),
+//		typeof(HarnessEnergyCard),
+//		typeof(CleanSlateCard),
+//		typeof(ApologizeNextLoopCard),
 		typeof(HardResetCard),
 	];
 
@@ -70,28 +70,28 @@ public sealed class ModEntry : SimpleMod
 		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, typeof(CleoExeCard), ..SpecialCardTypes];
 
 	internal static IReadOnlyList<Type> CommonArtifacts { get; } = [
-		typeof(EnhancedToolsArtifact),
+/*		typeof(EnhancedToolsArtifact),
 		typeof(ReusableMaterialsArtifact),
 		typeof(KickstartArtifact),
 		typeof(MagnifiedLasersArtifact),
-		typeof(UpgradedTerminalArtifact),
+		typeof(UpgradedTerminalArtifact), */
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
-		typeof(RetainerArtifact),
+/*		typeof(RetainerArtifact),
 		typeof(ExpensiveEquipmentArtifact),
-		typeof(PowerEchoArtifact),
+		typeof(PowerEchoArtifact), */
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
-		typeof(CleoBooksArtifact),
+/*		typeof(CleoBooksArtifact),
 		typeof(CleoCatArtifact),
 		typeof(CleoDizzyArtifact),
 		typeof(CleoDrakeArtifact),
 		typeof(CleoIsaacArtifact),
 		typeof(CleoMaxArtifact),
 		typeof(CleoPeriArtifact),
-		typeof(CleoRiggsArtifact),
+		typeof(CleoRiggsArtifact), */
 	];
 
 	internal static IEnumerable<Type> AllArtifactTypes
@@ -148,7 +148,7 @@ public sealed class ModEntry : SimpleMod
 
 		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()
 		{
-			Definition = new() { color = new("2D3F61"), titleColor = Colors.white },
+			Definition = new() { color = new("8A3388"), titleColor = Colors.white },
 			DefaultCardArt = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Default.png")).Sprite,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["character", "name"]).Localize

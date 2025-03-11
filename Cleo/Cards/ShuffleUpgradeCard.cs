@@ -28,7 +28,6 @@ internal sealed class ShuffleUpgradeCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 1 : 2,
-			exhaust = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
