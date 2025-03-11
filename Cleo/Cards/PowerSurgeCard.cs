@@ -42,7 +42,7 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 			Upgrade.B => [
 				new ADrawCard {count = 1},
 				new AImproveB { Amount = c.hand.Count},
-				new ADiscountHand { Amount = 1},
+				new ADiscountHand { Amount = -1},
 				new ADiscard {count = c.hand.Count}
 			],
 			_ => [

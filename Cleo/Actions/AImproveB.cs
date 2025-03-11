@@ -30,7 +30,7 @@ public sealed class AImproveB : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImproveAIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImproveBIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [

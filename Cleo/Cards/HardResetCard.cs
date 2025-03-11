@@ -36,7 +36,7 @@ internal sealed class HardResetCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new AImpair {Amount = 3},
-				new ADiscountHand {Amount = 1}
+				new ADiscountHand {Amount = -1}
 			],
 			Upgrade.B => [
 				new AImpair {Amount = c.hand.Count},
@@ -44,7 +44,7 @@ internal sealed class HardResetCard : Card, IRegisterable
 			],
 			_ => [
 				new AImpair {Amount = c.hand.Count},
-				new ADiscountHand {Amount = 1}
+				new ADiscountHand {Amount = -1}
 			]
 		};
 }

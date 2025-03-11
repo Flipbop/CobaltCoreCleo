@@ -19,6 +19,10 @@
         "Impair": {
             "name": "Impair",
             "description": "<c=boldPink>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+        },
+        "DiscountHand": {
+            "name": "Discount Hand",
+            "description": "<c=cardtrait>Discount</c> every card in your hand."
         }
     },
     "browseSource": {
@@ -30,15 +34,15 @@
     "cardTrait": {
         "ImprovedA": {
             "name": "Improved A",
-            "description": "The next time this card is played it acts as an <c=boldPink>{{Upgraded}}</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
+            "description": "The next time this card is played it acts as an <c=boldPink>Upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
         },
         "ImprovedB": {
             "name": "Improved B",
-            "description": "The next time this card is played it acts as an <c=boldPink>{{Upgraded}}</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
+            "description": "The next time this card is played it acts as an <c=boldPink>Upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>{{Exhaust}}</c>) and the end of the fight."
         },
         "Impaired": {
             "name": "Impaired",
-            "description": "The next time this card is played it acts as a <c=boldPink>{{Non-upgraded}}</c> version of itself. Lost on play and the end of the fight."
+            "description": "The next time this card is played it acts as a <c=boldPink>Non-upgraded</c> version of itself. Lost on play and the end of the fight."
         }
     },
     "status": {
