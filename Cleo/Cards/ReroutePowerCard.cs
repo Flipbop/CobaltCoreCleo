@@ -27,7 +27,6 @@ internal sealed class ReroutePowerCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			art = StableSpr.cards_Adaptability_Bottom,
 			cost = upgrade == Upgrade.A ? 0 : 1,
 		};
 

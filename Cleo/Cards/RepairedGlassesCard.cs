@@ -30,7 +30,6 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			art = StableSpr.cards_SecondOpinions,
 			cost = 2,
 			exhaust = true,
 		};
