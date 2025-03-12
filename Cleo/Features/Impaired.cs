@@ -26,8 +26,8 @@ internal sealed class ImpairedManager
 	{
 		Trait = ModEntry.Instance.Helper.Content.Cards.RegisterTrait("Impaired", new()
 		{
-			Icon = (_, _) => ModEntry.Instance.ImprovedIcon.Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedA", "name"]).Localize,
+			Icon = (_, _) => ModEntry.Instance.ImpairedIcon.Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "Impaired", "name"]).Localize,
 			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImpairedTooltip(card?.GetImprovedA() ?? true)]
 		});
 

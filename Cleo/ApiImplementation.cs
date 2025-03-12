@@ -20,8 +20,8 @@ public sealed class ApiImplementation : ICleoApi
 		{
 			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
-			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"])
+			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedA", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedA", "description"])
 		};
 	
 	public Tooltip GetImprovedBTooltip(bool amount)
@@ -29,8 +29,8 @@ public sealed class ApiImplementation : ICleoApi
 		{
 			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
-			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"])
+			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedB", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedB", "description"])
 		};
 	public Tooltip GetImpairedTooltip(bool amount)
 		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::Impaired")

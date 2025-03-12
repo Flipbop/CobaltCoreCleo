@@ -27,7 +27,7 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImprovedIcon.Sprite, 1, Colors.textMain);
+		=> new(ModEntry.Instance.ImpairedIcon.Sprite, 1, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
