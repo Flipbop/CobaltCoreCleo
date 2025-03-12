@@ -21,7 +21,7 @@ internal sealed class HarnessEnergyCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Revamp.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "HarnessEnergy", "name"]).Localize
 		});
 	}

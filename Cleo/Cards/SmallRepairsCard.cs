@@ -20,7 +20,7 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 				dontOffer = true,
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Special/Brainstorm.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SmallRepairs", "name"]).Localize
 		});
 	}

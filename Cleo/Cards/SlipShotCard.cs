@@ -18,7 +18,7 @@ internal sealed class SlipShotCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Layout.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlipShot", "name"]).Localize
 		});
 	}
