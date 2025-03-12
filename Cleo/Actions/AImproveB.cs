@@ -36,7 +36,7 @@ public sealed class AImproveB : DynamicWidthCardAction
 		=> [
 			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::ImproveB")
 			{
-				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+				Icon = ModEntry.Instance.ImproveBIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "description"])

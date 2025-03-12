@@ -32,7 +32,7 @@ public sealed class AImpairHand : DynamicWidthCardAction
 		=> [
 			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Impair Hand")
 			{
-				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+				Icon = ModEntry.Instance.ImpairHandIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["action", "ImpairHand", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["action", "ImpairHand", "description"])
