@@ -66,14 +66,14 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 				if (Discount)
 					leftmostCard.discount--;
 				if (Strengthen)
-					leftmostCard.AddImprovedA(1);
+					leftmostCard.AddImprovedA(true);
 			}
 			if (Rightmost && c.hand.LastOrDefault() is { } rightmostCard)
 			{
 				if (Discount)
 					rightmostCard.discount--;
 				if (Strengthen)
-					rightmostCard.AddImprovedA(1);
+					rightmostCard.AddImprovedA(true);
 			}
 		}
 
@@ -83,7 +83,7 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 			if (Discount)
 				tooltips.Add(new TTGlossary("cardtrait.discount", 1));
 			if (Strengthen)
-				tooltips.Add(ModEntry.Instance.Api.GetImprovedATooltip(1));
+				tooltips.Add(ModEntry.Instance.Api.GetImprovedATooltip(true));
 			return tooltips;
 		}
 	}

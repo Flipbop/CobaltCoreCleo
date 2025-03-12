@@ -5,16 +5,16 @@ namespace Flipbop.Cleo;
 
 internal static class ImprovedAExt
 {
-	public static int GetImprovedA(this Card self)
-		=> ModEntry.Instance.Helper.ModData.GetModDataOrDefault<int>(self, "ImprovedA");
+	public static bool GetImprovedA(this Card self)
+		=> ModEntry.Instance.Helper.ModData.GetModDataOrDefault<bool>(self, "ImprovedA");
 
-	public static void SetImprovedA(this Card self, int value)
+	public static void SetImprovedA(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "ImprovedA", value);
 
-	public static void AddImprovedA(this Card self, int value)
+	public static void AddImprovedA(this Card self, bool value)
 	{
-		if (value != 0)
-			self.SetImprovedA(self.GetImprovedA() + value);
+		if (!value)
+			self.SetImprovedA(value);
 	}
 }
 
@@ -28,33 +28,28 @@ internal sealed class ImprovedAManager
 		{
 			Icon = (_, _) => ModEntry.Instance.ImprovedIcon.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedA", "name"]).Localize,
-			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedATooltip(card?.GetImprovedA() ?? 1)]
+			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedATooltip(card?.GetImprovedA() ?? true)]
 		});
 
 		ModEntry.Instance.Helper.Content.Cards.OnGetDynamicInnateCardTraitOverrides += (_, e) =>
 		{
-			if (e.Card.GetImprovedA() != 0)
+			if (!e.Card.GetImprovedA() && !e.Card.GetImprovedB())
+			{
 				e.SetOverride(Trait, true);
+				e.Card.upgrade = Upgrade.A;
+			}
+				
 		};
-
-		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.ModifyBaseDamage), (Card? card, State state) =>
-		{
-			if (card is null)
-				return 0;
-
-			var strengthen = card.GetImprovedA();
-			if (strengthen > 0 && state.EnumerateAllArtifacts().Any(a => a is CleoPeriArtifact))
-				strengthen++;
-			return strengthen;
-		});
+		
 
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{
 			foreach (var card in state.deck)
 			{
-				if (card.GetImprovedA() == 0)
+				if (card.GetImprovedA())
 					continue;
-				card.SetImprovedA(0);
+				card.SetImprovedA(false);
+				card.upgrade = Upgrade.None;
 			}
 		});
 	}

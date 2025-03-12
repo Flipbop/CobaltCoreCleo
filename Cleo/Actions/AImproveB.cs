@@ -21,7 +21,7 @@ public sealed class AImproveB : DynamicWidthCardAction
 			}
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				c.hand[index].upgrade = Upgrade.B;
+				c.hand[index].SetImprovedB(true);
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}

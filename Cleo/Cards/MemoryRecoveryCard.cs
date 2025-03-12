@@ -34,14 +34,6 @@ internal sealed class MemoryRecoveryCard : Card, IRegisterable
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> [
-			new AAttack
-			{
-				damage = GetDmg(s, upgrade == Upgrade.A ? 3 : 2)
-			},
-			new AStrengthen
-			{
-				CardId = uuid,
-				Amount = upgrade == Upgrade.B ? 2 : 1
-			}
+			
 		];
 }

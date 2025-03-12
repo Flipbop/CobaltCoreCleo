@@ -15,45 +15,56 @@ public sealed class ApiImplementation : ICleoApi
 	public ICardTraitEntry ImprovedBCardTrait
 		=> ImprovedBManager.Trait;
 
-	public Tooltip GetImprovedATooltip(int amount)
+	public Tooltip GetImprovedATooltip(bool amount)
 		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedA")
 		{
 			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
 			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"], new { Damage = amount })
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"])
 		};
 	
-	public Tooltip GetImprovedBTooltip(int amount)
+	public Tooltip GetImprovedBTooltip(bool amount)
 		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedB")
 		{
 			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
 			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"], new { Damage = amount })
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Improved", "description"])
+		};
+	public Tooltip GetImpairedTooltip(bool amount)
+		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::Impaired")
+		{
+			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+			TitleColor = Colors.cardtrait,
+			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Impaired", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Impaired", "description"])
 		};
 	
-	public int GetImprovedA(Card card)
+	public bool GetImprovedA(Card card)
 		=> card.GetImprovedA();
 
-	public void SetImprovedA(Card card, int value)
+	public void SetImprovedA(Card card, bool value)
 		=> card.SetImprovedA(value);
 
-	public void AddImprovedA(Card card, int value)
+	public void AddImprovedA(Card card, bool value)
 		=> card.AddImprovedA(value);
 	
-	public int GetImprovedB(Card card)
+	public bool GetImprovedB(Card card)
 		=> card.GetImprovedB();
 
-	public void SetImprovedB(Card card, int value)
+	public void SetImprovedB(Card card, bool value)
 		=> card.SetImprovedB(value);
 
-	public void AddImprovedB(Card card, int value)
+	public void AddImprovedB(Card card, bool value)
+		=> card.AddImprovedB(value);
+	public bool GetImpaired(Card card)
+		=> card.GetImprovedB();
+
+	public void SetImpaired(Card card, bool value)
+		=> card.SetImprovedB(value);
+
+	public void AddImpaired(Card card, bool value)
 		=> card.AddImprovedB(value);
 
-	public CardAction MakeImprovedAAction(int cardId, int amount)
-		=> new AStrengthen { CardId = cardId, Amount = amount };
-
-	public CardAction MakeImprovedBAction(int amount)
-		=> new AStrengthenHand { Amount = amount };
 }

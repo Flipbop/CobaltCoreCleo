@@ -34,23 +34,6 @@ internal sealed class NanomachinesCard : Card, IRegisterable
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> [
-			new ACardSelect
-			{
-				browseSource = CardBrowse.Source.Deck,
-				browseAction = new TemporarilyUpgradeBrowseAction
-				{
-					Discount = this.upgrade == Upgrade.A ? -1 : 0,
-					Strengthen = this.upgrade == Upgrade.B ? 1 : 0
-				},
-				filterUpgrade = Upgrade.None,
-			},
-			new ATooltipAction
-			{
-				Tooltips = new TemporarilyUpgradeBrowseAction
-				{
-					Discount = this.upgrade == Upgrade.A ? -1 : 0,
-					Strengthen = this.upgrade == Upgrade.B ? 1 : 0
-				}.GetTooltips(s)
-			}
+			
 		];
 }

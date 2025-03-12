@@ -9,14 +9,16 @@ public interface ICleoApi
 
 	ICardTraitEntry ImprovedACardTrait { get; }
 	ICardTraitEntry ImprovedBCardTrait { get; }
-	Tooltip GetImprovedATooltip(int amount);
-	Tooltip GetImprovedBTooltip(int amount);
-	int GetImprovedA(Card card);
-	void SetImprovedA(Card card, int value);
-	void AddImprovedA(Card card, int value);
-	int GetImprovedB(Card card);
-	void SetImprovedB(Card card, int value);
-	void AddImprovedB(Card card, int value);
-	CardAction MakeImprovedAAction(int cardId, int amount);
-	CardAction MakeImprovedBAction(int amount);
+	Tooltip GetImprovedATooltip(bool onOrOff);
+	Tooltip GetImprovedBTooltip(bool onOrOff);
+	Tooltip GetImpairedTooltip(bool onOrOff);
+	bool GetImprovedA(Card card);
+	void SetImprovedA(Card card, bool value);
+	void AddImprovedA(Card card, bool value);
+	bool GetImprovedB(Card card);
+	void SetImprovedB(Card card, bool value);
+	void AddImprovedB(Card card, bool value);
+	bool GetImpaired(Card card);
+	void SetImpaired(Card card, bool value);
+	void AddImpaired(Card card, bool value);
 }

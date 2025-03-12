@@ -37,7 +37,7 @@ internal sealed class CleoDizzyArtifact : Artifact, IRegisterable
 
 	public override List<Tooltip>? GetExtraTooltips()
 		=> [
-			ModEntry.Instance.Api.GetImprovedATooltip(1),
+			ModEntry.Instance.Api.GetImprovedATooltip(true),
 			..StatusMeta.GetTooltips(Status.shield, 1)
 		];
 
@@ -51,7 +51,6 @@ internal sealed class CleoDizzyArtifact : Artifact, IRegisterable
 			new ADelay(),
 			new ACardSelect
 			{
-				browseAction = new StrengthenBrowseAction { Amount = 1 },
 				browseSource = CardBrowse.Source.Deck,
 			}
 		]);
@@ -59,24 +58,5 @@ internal sealed class CleoDizzyArtifact : Artifact, IRegisterable
 
 	private static void Card_GetActionsOverridden_Postfix(Card __instance, State s, ref List<CardAction> __result)
 	{
-		var strenghten = __instance.GetImprovedA();
-		if (strenghten == 0)
-			return;
-
-		if (s.EnumerateAllArtifacts().FirstOrDefault(a => a is CleoDizzyArtifact) is not { } artifact)
-			return;
-
-		foreach (var baseAction in __result)
-		{
-			foreach (var wrappedAction in ModEntry.Instance.KokoroApi.WrappedActions.GetWrappedCardActionsRecursively(baseAction))
-			{
-				if (wrappedAction is AStatus { mode: AStatusMode.Add, status: Status.shield } statusAction)
-				{
-					statusAction.statusAmount += strenghten;
-					if (string.IsNullOrEmpty(statusAction.artifactPulse))
-						statusAction.artifactPulse = artifact.Key();
-				}
-			}
-		}
 	}
 }

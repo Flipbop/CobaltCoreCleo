@@ -29,5 +29,5 @@ internal sealed class CleoPeriArtifact : Artifact, IRegisterable
 	}
 
 	public override List<Tooltip>? GetExtraTooltips()
-		=> [ModEntry.Instance.Api.GetImprovedATooltip(1)];
+		=> [ModEntry.Instance.Api.GetImprovedATooltip(true)];
 }

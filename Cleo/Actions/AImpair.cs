@@ -21,7 +21,7 @@ public sealed class AImpair : DynamicWidthCardAction
 			}
 			if (c.hand[index].upgrade != Upgrade.None)
 			{
-				c.hand[index].upgrade = Upgrade.None;
+				c.hand[index].SetImpaired(true);
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}

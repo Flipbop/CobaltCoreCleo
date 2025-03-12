@@ -33,25 +33,6 @@ internal sealed class PowerSwitchCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new ADrawCard { count = 2 },
-				new ADelay(),
-				new ACardSelect
-				{
-					browseSource = CardBrowse.Source.Hand,
-					browseAction = new TemporarilyUpgradeBrowseAction(),
-					filterUpgrade = Upgrade.None,
-				},
-				new ATooltipAction { Tooltips = new TemporarilyUpgradeBrowseAction().GetTooltips(s) },
-			],
-			_ => [
-				new ACardSelect
-				{
-					browseSource = CardBrowse.Source.Hand,
-					browseAction = new TemporarilyUpgradeBrowseAction(),
-					filterUpgrade = Upgrade.None,
-				},
-				new ATooltipAction { Tooltips = new TemporarilyUpgradeBrowseAction().GetTooltips(s) },
-			]
+			
 		};
 }
