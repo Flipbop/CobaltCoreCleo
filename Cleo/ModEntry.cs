@@ -29,6 +29,9 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry ImproveAIcon { get; }
 	internal ISpriteEntry ImproveBIcon { get; }
 	internal ISpriteEntry ImpairedIcon { get; }
+	internal ISpriteEntry ImproveAHandIcon { get; }
+	internal ISpriteEntry ImproveBHandIcon { get; }
+	internal ISpriteEntry ImpairHandIcon { get; }
 	internal ISpriteEntry ImprovedIcon { get; }
 	internal ISpriteEntry DiscountHandIcon { get; }
 
@@ -232,6 +235,9 @@ public sealed class ModEntry : SimpleMod
 		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveA.png"));
 		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));
 		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
+		ImproveAHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveAHand.png"));
+		ImproveBHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveBHand.png"));
+		ImpairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairHand.png"));
 		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png"));
 		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/DiscountHand.png"));
 
