@@ -15,7 +15,7 @@ internal static class ImprovedBExt
 	{
 		if (!self.GetImprovedA() && !self.GetImprovedB())
 		{
-			self.upgrade = Upgrade.B;
+			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.B);
 		}
 	}
 }
@@ -39,7 +39,6 @@ internal sealed class ImprovedBManager
 				if (card.GetImprovedB())
 				{
 					card.SetImprovedB(false);
-					card.upgrade = Upgrade.None;
 				}
 			}
 		});

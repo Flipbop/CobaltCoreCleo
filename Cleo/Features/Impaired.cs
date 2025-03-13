@@ -18,7 +18,7 @@ internal static class ImpairedExt
 		{
 			upgradeContainer = self.upgrade;
 			ImpairedManager.UpgradeStorage(upgradeContainer);
-			self.upgrade = Upgrade.None;
+			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.None);
 		}
 	}
 }
@@ -47,7 +47,6 @@ internal sealed class ImpairedManager
 				if (card.GetImpaired())
 				{
 					card.SetImpaired(false);
-					card.upgrade = upgrade;
 				}
 			}
 		});

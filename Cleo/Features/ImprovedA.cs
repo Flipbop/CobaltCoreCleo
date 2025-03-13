@@ -1,5 +1,5 @@
 ﻿using Nickel;
-using System.Linq;
+using Shockah.Kokoro;
 
 namespace Flipbop.Cleo;
 
@@ -15,7 +15,7 @@ internal static class ImprovedAExt
 	{
 		if (!self.GetImprovedA() && !self.GetImprovedB())
 		{
-			self.upgrade = Upgrade.A;
+			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.A);
 		}
 	}
 }
@@ -39,7 +39,6 @@ internal sealed class ImprovedAManager
 				if (card.GetImprovedA())
 				{
 					card.SetImprovedA(false);
-					card.upgrade = Upgrade.None;
 				}
 			}
 		});

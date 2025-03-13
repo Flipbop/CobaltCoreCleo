@@ -137,8 +137,7 @@ public sealed class ModEntry : SimpleMod
 		this.Localizations = new MissingPlaceholderLocalizationProvider<IReadOnlyList<string>>(
 			new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
 		);
-
-		_ = new CrunchTimeManager();
+		
 		_ = new ImprovedAManager();
 		_ = new ImprovedBManager();
 		_ = new ImpairedManager();
@@ -158,7 +157,6 @@ public sealed class ModEntry : SimpleMod
 			Icon = (state, card) => impairedSpr,
 		});
 		
-		CardSelectFilters.Register(package, helper);
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 

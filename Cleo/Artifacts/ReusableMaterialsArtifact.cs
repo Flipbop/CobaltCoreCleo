@@ -27,18 +27,7 @@ internal sealed class ReusableMaterialsArtifact : Artifact, IRegisterable
 		base.OnReceiveArtifact(state);
 
 		state.GetCurrentQueue().InsertRange(0, [
-			new ACardSelect
-			{
-				browseAction = new SpecificUpgradeBrowseAction { Upgrade = Upgrade.A },
-				browseSource = CardBrowse.Source.Deck,
-				filterTemporary = false
-			}.SetFilterPermanentlyUpgraded(false),
-			new ACardSelect
-			{
-				browseAction = new SpecificUpgradeBrowseAction { Upgrade = Upgrade.B },
-				browseSource = CardBrowse.Source.Deck,
-				filterTemporary = false
-			}.SetFilterPermanentlyUpgraded(false),
+			
 		]);
 	}
 }
