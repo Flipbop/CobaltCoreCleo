@@ -33,6 +33,7 @@ internal sealed class PowerSwitchCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			
+			_=> [
+			]
 		};
 }

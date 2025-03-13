@@ -37,9 +37,10 @@ internal sealed class ImprovedAManager
 			foreach (var card in state.deck)
 			{
 				if (card.GetImprovedA())
-					continue;
-				card.SetImprovedA(false);
-				card.upgrade = Upgrade.None;
+				{
+					card.SetImprovedA(false);
+					card.upgrade = Upgrade.None;
+				}
 			}
 		});
 	}

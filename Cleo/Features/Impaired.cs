@@ -45,9 +45,10 @@ internal sealed class ImpairedManager
 			foreach (var card in state.deck)
 			{
 				if (card.GetImpaired())
-					continue;
-				card.SetImpaired(false);
-				card.upgrade = upgrade;
+				{
+					card.SetImpaired(false);
+					card.upgrade = upgrade;
+				}
 			}
 		});
 	}
