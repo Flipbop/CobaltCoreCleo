@@ -17,7 +17,7 @@ public sealed class AImproveAHand : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				c.hand[index].SetImprovedA(true);
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}

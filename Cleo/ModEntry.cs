@@ -7,7 +7,6 @@ using Shockah.Kokoro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Flipbop.Cleo;
 
 namespace Flipbop.Cleo;
 
@@ -34,7 +33,12 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry ImpairHandIcon { get; }
 	internal ISpriteEntry ImprovedIcon { get; }
 	internal ISpriteEntry DiscountHandIcon { get; }
-
+	internal ICardTraitEntry ImprovedATrait { get; }
+	internal ICardTraitEntry ImprovedBTrait { get; }
+	internal ICardTraitEntry ImpairedTrait { get; }
+	public IModHelper helper { get; }
+	
+	
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
 		typeof(QuickBoostCard),
 		typeof(TurtleShotCard),
@@ -108,6 +112,10 @@ public sealed class ModEntry : SimpleMod
 
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
+		Spr improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png")).Sprite; 
+		Spr impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png")).Sprite;
+		this.helper = helper;
+
 		Instance = this;
 		Harmony = helper.Utilities.Harmony;
 		KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!.V2;
@@ -133,6 +141,23 @@ public sealed class ModEntry : SimpleMod
 		_ = new CrunchTimeManager();
 		_ = new ImprovedAManager();
 		_ = new ImprovedBManager();
+		_ = new ImpairedManager();
+		ImprovedATrait = helper.Content.Cards.RegisterTrait("Improved A", new()
+		{
+			Name = this.AnyLocalizations.Bind(["status", "ImproveA", "name"]).Localize,
+			Icon = (state, card) => improvedSpr,
+		});
+		ImprovedBTrait = helper.Content.Cards.RegisterTrait("Improved B", new()
+		{
+			Name = this.AnyLocalizations.Bind(["status", "ImproveB", "name"]).Localize,
+			Icon = (state, card) => improvedSpr,
+		});
+		ImpairedTrait = helper.Content.Cards.RegisterTrait("Impaired", new()
+		{
+			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
+			Icon = (state, card) => impairedSpr,
+		});
+		
 		CardSelectFilters.Register(package, helper);
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);

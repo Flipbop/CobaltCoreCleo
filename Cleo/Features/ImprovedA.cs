@@ -30,7 +30,6 @@ internal sealed class ImprovedAManager
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedA", "name"]).Localize,
 			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedATooltip(card?.GetImprovedA() ?? true)]
 		});
-
 		ModEntry.Instance.Helper.Content.Cards.OnGetDynamicInnateCardTraitOverrides += (_, e) =>
 		{
 			if (!e.Card.GetImprovedA() && !e.Card.GetImprovedB())
@@ -40,8 +39,6 @@ internal sealed class ImprovedAManager
 			}
 				
 		};
-		
-
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{
 			foreach (var card in state.deck)

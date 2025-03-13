@@ -33,7 +33,7 @@ internal sealed class ImprovedBManager
 
 		ModEntry.Instance.Helper.Content.Cards.OnGetDynamicInnateCardTraitOverrides += (_, e) =>
 		{
-			if (!e.Card.GetImprovedB() && !e.Card.GetImprovedA())
+			if (e.Card.upgrade == Upgrade.None)
 			{
 				e.SetOverride(Trait, true);
 				e.Card.upgrade = Upgrade.B;
