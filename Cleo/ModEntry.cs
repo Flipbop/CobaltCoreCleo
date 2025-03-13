@@ -152,7 +152,7 @@ public sealed class ModEntry : SimpleMod
 			Name = this.AnyLocalizations.Bind(["status", "ImproveB", "name"]).Localize,
 			Icon = (state, card) => improvedSpr,
 		});
-		ImpairedTrait = helper.Content.Cards.RegisterTrait("Impaired", new()
+		ImpairedTrait = helper.Content.Cards.RegisterTrait("ImpairedTrait", new()
 		{
 			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
 			Icon = (state, card) => impairedSpr,
