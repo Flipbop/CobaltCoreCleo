@@ -13,10 +13,17 @@ internal static class ImprovedAExt
 
 	public static void AddImprovedA(this Card self)
 	{
-		if (!self.GetImprovedA() && !self.GetImprovedB())
+		if (self.GetImpaired())
+		{
+			self.RemoveImpaired();
+		}else if (!self.GetImprovedA() && !self.GetImprovedB())
 		{
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.A);
 		}
+	}
+	public static void RemoveImprovedA(this Card self)
+	{
+		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
 	}
 }
 
@@ -31,6 +38,14 @@ internal sealed class ImprovedAManager
 			Icon = (_, _) => ModEntry.Instance.ImprovedIcon.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedA", "name"]).Localize,
 			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedATooltip(card?.GetImprovedA() ?? true)]
+		});
+		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
+		{
+			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
+			{
+				ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
+			}
+			
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{

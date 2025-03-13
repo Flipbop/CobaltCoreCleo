@@ -18,6 +18,10 @@ internal static class ImprovedBExt
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.B);
 		}
 	}
+	public static void RemoveImprovedB(this Card self)
+	{
+		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
+	}
 }
 
 internal sealed class ImprovedBManager
@@ -31,6 +35,14 @@ internal sealed class ImprovedBManager
 			Icon = (_, _) => ModEntry.Instance.ImprovedIcon.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedB", "name"]).Localize,
 			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedBTooltip(card?.GetImprovedB() ?? true)]
+		});
+		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
+		{
+			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
+			{
+				ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
+			}
+			
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{
