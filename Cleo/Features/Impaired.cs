@@ -5,23 +5,33 @@ namespace Flipbop.Cleo;
 
 internal static class ImpairedExt
 {
+	private static Upgrade upgradeContainer = Upgrade.None;
 	public static bool GetImpaired(this Card self)
 		=> ModEntry.Instance.Helper.ModData.GetModDataOrDefault<bool>(self, "Impaired");
 
 	public static void SetImpaired(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "Impaired", value);
 
-	public static void AddImpaired(this Card self, bool value)
+	public static void AddImpaired(this Card self)
 	{
-		if (!value)
-			self.SetImpaired(value);
+		if (!self.GetImpaired())
+		{
+			upgradeContainer = self.upgrade;
+			ImpairedManager.UpgradeStorage(upgradeContainer);
+			self.upgrade = Upgrade.None;
+		}
 	}
 }
 
 internal sealed class ImpairedManager
 {
+	private static Upgrade upgrade = Upgrade.None;
 	internal static ICardTraitEntry Trait = null!;
 
+	public static void UpgradeStorage(Upgrade upgradeContainer)
+	{
+		upgrade = upgradeContainer;
+	}
 	public ImpairedManager()
 	{
 		Trait = ModEntry.Instance.Helper.Content.Cards.RegisterTrait("Impaired", new()
@@ -30,21 +40,6 @@ internal sealed class ImpairedManager
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "Impaired", "name"]).Localize,
 			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImpairedTooltip(card?.GetImprovedA() ?? true)]
 		});
-
-		Upgrade upgrade = Upgrade.None;
-		
-		ModEntry.Instance.Helper.Content.Cards.OnGetDynamicInnateCardTraitOverrides += (_, e) =>
-		{
-			if (!e.Card.GetImpaired())
-			{
-				e.SetOverride(Trait, true);
-				upgrade = e.Card.upgrade;
-				e.Card.upgrade = Upgrade.None;
-			}
-				
-		};
-		
-
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{
 			foreach (var card in state.deck)

@@ -66,14 +66,14 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 				if (Discount)
 					leftmostCard.discount--;
 				if (Strengthen)
-					leftmostCard.AddImprovedA(true);
+					leftmostCard.AddImprovedA();
 			}
 			if (Rightmost && c.hand.LastOrDefault() is { } rightmostCard)
 			{
 				if (Discount)
 					rightmostCard.discount--;
 				if (Strengthen)
-					rightmostCard.AddImprovedA(true);
+					rightmostCard.AddImprovedA();
 			}
 		}
 

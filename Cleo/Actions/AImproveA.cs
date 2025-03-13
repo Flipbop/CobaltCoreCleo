@@ -13,11 +13,12 @@ public sealed class AImproveA : DynamicWidthCardAction
 	{
 		base.Begin(g, s, c);
 		int index = c.hand.Count -1;
-		while (index >= 0)
+		while (index >= 0 && Amount > 0)
 		{
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
 				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
+				ImprovedAExt.AddImprovedA(c.hand[index]);
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}

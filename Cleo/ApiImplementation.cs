@@ -47,8 +47,8 @@ public sealed class ApiImplementation : ICleoApi
 	public void SetImprovedA(Card card, bool value)
 		=> card.SetImprovedA(value);
 
-	public void AddImprovedA(Card card, bool value)
-		=> card.AddImprovedA(value);
+	public void AddImprovedA(Card card)
+		=> card.AddImprovedA();
 	
 	public bool GetImprovedB(Card card)
 		=> card.GetImprovedB();
@@ -56,15 +56,15 @@ public sealed class ApiImplementation : ICleoApi
 	public void SetImprovedB(Card card, bool value)
 		=> card.SetImprovedB(value);
 
-	public void AddImprovedB(Card card, bool value)
-		=> card.AddImprovedB(value);
+	public void AddImprovedB(Card card)
+		=> card.AddImprovedB();
 	public bool GetImpaired(Card card)
 		=> card.GetImprovedB();
 
 	public void SetImpaired(Card card, bool value)
 		=> card.SetImprovedB(value);
 
-	public void AddImpaired(Card card, bool value)
-		=> card.AddImprovedB(value);
+	public void AddImpaired(Card card)
+		=> card.AddImprovedB();
 
 }

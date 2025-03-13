@@ -11,10 +11,12 @@ internal static class ImprovedAExt
 	public static void SetImprovedA(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "ImprovedA", value);
 
-	public static void AddImprovedA(this Card self, bool value)
+	public static void AddImprovedA(this Card self)
 	{
-		if (!value)
-			self.SetImprovedA(value);
+		if (!self.GetImprovedA() && !self.GetImprovedB())
+		{
+			self.upgrade = Upgrade.A;
+		}
 	}
 }
 
@@ -30,15 +32,6 @@ internal sealed class ImprovedAManager
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedA", "name"]).Localize,
 			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedATooltip(card?.GetImprovedA() ?? true)]
 		});
-		ModEntry.Instance.Helper.Content.Cards.OnGetDynamicInnateCardTraitOverrides += (_, e) =>
-		{
-			if (!e.Card.GetImprovedA() && !e.Card.GetImprovedB())
-			{
-				e.SetOverride(Trait, true);
-				e.Card.upgrade = Upgrade.A;
-			}
-				
-		};
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{
 			foreach (var card in state.deck)
