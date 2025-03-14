@@ -14,6 +14,9 @@ public sealed class ApiImplementation : ICleoApi
 		=> ImprovedAManager.Trait;
 	public ICardTraitEntry ImprovedBCardTrait
 		=> ImprovedBManager.Trait;
+	
+	public ICardTraitEntry ImpairedTrait
+		=> ImpairedManager.Trait;
 
 	public Tooltip GetImprovedATooltip(bool amount)
 		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedA")
