@@ -17,7 +17,7 @@ public sealed class ASeekerBarrage : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade != Upgrade.None)
 			{
-				c.Queue(new AMove{dir= 1});
+				c.Queue(new AMove{dir= 1, targetPlayer = true});
 				c.Queue(new ASpawn{fromPlayer = true, thing = new Missile{missileType = MissileType.seeker}});
 			}
 			index--;

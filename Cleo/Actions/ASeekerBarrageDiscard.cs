@@ -9,6 +9,7 @@ public sealed class ASeekerBarrageDiscard : DynamicWidthCardAction
 {
 	public required int Amount;
 
+	
 	public override void Begin(G g, State s, Combat c)
 	{
 		base.Begin(g, s, c);
@@ -17,7 +18,7 @@ public sealed class ASeekerBarrageDiscard : DynamicWidthCardAction
 		{
 			if (c.discard[index].upgrade != Upgrade.None)
 			{
-				c.Queue(new AMove{dir= 1});
+				c.Queue(new AMove{dir= 1, targetPlayer = true});
 				c.Queue(new ASpawn{fromPlayer = true, thing = new Missile{missileType = MissileType.seeker}});
 			}
 			index--;
@@ -26,5 +27,6 @@ public sealed class ASeekerBarrageDiscard : DynamicWidthCardAction
 
 	public override Icon? GetIcon(State s)
 		=> new(ModEntry.Instance.ImpairHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+	
 	
 }
