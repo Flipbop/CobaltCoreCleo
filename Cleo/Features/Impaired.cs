@@ -28,12 +28,14 @@ internal static class ImpairedExt
 		}
 	}
 
-	public static void RemoveImpaired(this Card self, State s)
+	public static void RemoveImpaired(this Card self, State s, bool useStorage)
 	{
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
-		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetPermanentUpgrade(self, upgradeContainer);
+		if (useStorage)
+		{
+			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetPermanentUpgrade(self, upgradeContainer);
+		}
 		ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, ModEntry.Instance.ImpairedTrait, false, false);
-
 	}
 }
 
@@ -47,7 +49,7 @@ internal sealed class ImpairedManager
 		{
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
 			{
-				card.RemoveImpaired(state);
+				card.RemoveImpaired(state, true);
 			}
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
@@ -56,7 +58,7 @@ internal sealed class ImpairedManager
 			{
 				if (card.GetImpaired())
 				{
-					card.RemoveImpaired(state);
+					card.RemoveImpaired(state, true);
 				}
 			}
 		});

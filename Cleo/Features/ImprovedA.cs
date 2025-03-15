@@ -16,7 +16,7 @@ internal static class ImprovedAExt
 	{
 		if (self.GetImpaired())
 		{
-			self.RemoveImpaired(s);
+			self.RemoveImpaired(s, false);
 		} else if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B)
 		{
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.A);
