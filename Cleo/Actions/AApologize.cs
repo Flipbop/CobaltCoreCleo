@@ -27,15 +27,5 @@ public sealed class AApologize : DynamicWidthCardAction
 
 	public override Icon? GetIcon(State s)
 		=> new(ModEntry.Instance.ImpairHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
-
-	public override List<Tooltip> GetTooltips(State s)
-		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Impair Hand")
-			{
-				Icon = ModEntry.Instance.ImpairHandIcon.Sprite,
-				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "ImpairHand", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "ImpairHand", "description"])
-			}
-		];
+	
 }
