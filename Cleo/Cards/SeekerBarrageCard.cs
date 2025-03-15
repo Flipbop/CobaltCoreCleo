@@ -40,10 +40,13 @@ internal sealed class SeekerBarrageCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
+				new ASeekerBarrageDiscard{Amount = 1},
 			],
 			Upgrade.B => [
+				new ASeekerBarrageExhaust{Amount = 1},
 			],
 			_ => [
+				new ASeekerBarrage{Amount = 1},
 			]
 		};
 }

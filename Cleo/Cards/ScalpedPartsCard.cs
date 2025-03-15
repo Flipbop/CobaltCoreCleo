@@ -27,19 +27,24 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 2 : 3,
-			exhaust = true
+			cost = 2,
+			description = ModEntry.Instance.Localizations.Localize([
+				"card", "ScalpedParts", "description", upgrade.ToString()
+			])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new ADrawCard { count = 2 },
-				new AImproveA { Amount = 1 }
+				new ADrawCard { count = 3},
+				new AImpairHandTemp{ Amount = 1 }
+			],
+			Upgrade.A => [
+				new AImpairHandTempStrong{ Amount = 1 }
 			],
 			_ => [
-				new AImproveA { Amount = 1 }
+				new AImpairHandTemp{ Amount = 1 }
 			],
 		};
 }

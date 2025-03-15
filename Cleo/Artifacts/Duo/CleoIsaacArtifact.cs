@@ -45,15 +45,6 @@ internal sealed class CleoIsaacArtifact : Artifact, IRegisterable
 
 		combat.Queue([
 			new ADelay(),
-			new ASpecificCardOffering
-			{
-				Destination = CardDestination.Deck,
-				Cards = [
-					new SupplyCard(),
-					new DemandCard(),
-				],
-				artifactPulse = Key()
-			}
 		]);
 	}
 

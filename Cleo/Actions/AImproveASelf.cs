@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Flipbop.Cleo;
 
-public sealed class AImproveBSelf : DynamicWidthCardAction
+public sealed class AImproveASelf : DynamicWidthCardAction
 {
 	public required int Amount;
 

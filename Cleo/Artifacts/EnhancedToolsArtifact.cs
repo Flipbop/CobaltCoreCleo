@@ -38,15 +38,6 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 			return;
 
 		combat.Queue([
-			new ADelay(),
-			new ASpecificCardOffering
-			{
-				Destination = CardDestination.Hand,
-				Cards = [
-					new SmallRepairsCard()
-				],
-				artifactPulse = Key()
-			}
 		]);
 	}
 }

@@ -36,9 +36,7 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 			new ADelay(),
 			new ACardSelect
 			{
-				browseAction = new DiscountBrowseAction { Amount = -1 },
-				browseSource = CardBrowse.Source.Deck,
-				artifactPulse = Key()
+				
 			}
 		]);
 	}

@@ -56,16 +56,16 @@ public sealed class ModEntry : SimpleMod
 		typeof(ImprovedCannonCard),
 		typeof(DoItYourselfCard),
 		typeof(RepairedGlassesCard),
-//		typeof(ScalpedPartsCard),
+		typeof(ScalpedPartsCard),
 		typeof(SwapNotesCard), 
 //		typeof(PowerSwitchCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
-//		typeof(SeekerBarrageCard),
+		typeof(SeekerBarrageCard),
 //		typeof(HarnessEnergyCard),
 //		typeof(CleanSlateCard),
-//		typeof(ApologizeNextLoopCard),
+		typeof(ApologizeNextLoopCard),
 		typeof(HardResetCard),
 	];
 

@@ -15,7 +15,7 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 		
 		if (index < 0)
 		{ 
-			;
+			
 		}
 		if (c.hand[index].upgrade != Upgrade.None)
 		{

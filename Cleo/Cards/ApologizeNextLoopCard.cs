@@ -38,10 +38,19 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-	=> new()
-	{
-		
-	};
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AApologizeStrong {Amount = 1},
+			],
+			Upgrade.B => [
+				new AApologizePierce {Amount = 1},
+			],
+			_ => [
+				new AApologize {Amount = 1},
+			]
+		};
 }
 	
 
