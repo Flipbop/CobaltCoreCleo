@@ -30,11 +30,12 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = 3,
 			description =
 				ModEntry.Instance.Localizations.Localize([
 					"card", "ApologizeNextLoop", "description", upgrade.ToString()
-				])
+				]),
+			exhaust = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
