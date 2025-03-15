@@ -6,3 +6,4 @@
 /Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/bin/Debug/net8.0/Cleo.deps.json
 /Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/bin/Debug/net8.0/Cleo.dll
 /Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.dll
+/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/obj/Debug/net8.0/Cleo.sourcelink.json
