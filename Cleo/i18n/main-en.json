@@ -220,9 +220,9 @@
         "SeekerBarrage": {
             "name": "Seeker Barrage",
             "description": {
-                "None": "Move right 1 and fire a Seeker for every <c=cardtrait>Upgraded</c> card you have in your <c=keyword>hand</c>.",
-                "A": "Move right 1 and fire a Seeker for every <c=cardtrait>Upgraded</c> card you have in your <c=keyword>Discard pile</c>.",
-                "B": "Move right 1 and fire a Seeker for every <c=cardtrait>Upgraded</c> card you have in your <c=keyword>Exhaust pile</c>."
+                "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
+                "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
+                "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
             }
         },
         "HarnessEnergy": {
@@ -238,10 +238,10 @@
         },
         "ApologizeNextLoop": {
             "name": "Apologize Next Loop",
-            "description": {
-                "None": "Attack once for every <c=cardtrait>Upgraded</c> card in your hand. Deal 1 damage, increasing by 1 for every attack you make.",
-                "A": "Attack once for every <c=cardtrait>Upgraded</c> card in your hand. Deal 1 damage, increasing by 2 for every attack you make.",
-                "B": "Attack once for every <c=cardtrait>Upgraded</c> card in your hand. Deal 1 piercing damage, increasing by 1 for every attack you make."
+            "description": {                                                                       
+                "None": "Attack for 1 damage once for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack.",
+                "A": "Attack for 1 damage once for each <c=cardtrait>Upgraded</c> card in hand. Add 2 damage after every attack.",
+                "B": "Pierce attack for 1 damage once for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack."
             }
         },
 
