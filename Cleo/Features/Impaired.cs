@@ -5,7 +5,7 @@ namespace Flipbop.Cleo;
 
 internal static class ImpairedExt
 {
-	private static Upgrade upgradeContainer = Upgrade.None;
+	private static Upgrade _upgradeContainer = Upgrade.None;
 	public static bool GetImpaired(this Card self)
 		=> ModEntry.Instance.Helper.ModData.GetModDataOrDefault<bool>(self, "Impaired");
 
@@ -22,9 +22,8 @@ internal static class ImpairedExt
 			self.RemoveImprovedB(s);
 		} else if (!self.GetImpaired() && self.upgrade != Upgrade.None)
 		{
-			upgradeContainer = self.upgrade;
+			_upgradeContainer = self.upgrade;
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.None);
-			
 		}
 	}
 
@@ -33,7 +32,7 @@ internal static class ImpairedExt
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
 		if (useStorage)
 		{
-			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetPermanentUpgrade(self, upgradeContainer);
+			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetPermanentUpgrade(self, _upgradeContainer);
 		}
 		ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, ModEntry.Instance.ImpairedTrait, false, false);
 	}
