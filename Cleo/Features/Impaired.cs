@@ -39,11 +39,10 @@ internal static class ImpairedExt
 
 internal sealed class ImpairedManager
 {
-	internal static ICardTraitEntry Trait = null!;
+	internal static readonly ICardTraitEntry Trait = ModEntry.Instance.ImpairedTrait;
 	
 	public ImpairedManager()
 	{
-		Trait = ModEntry.Instance.ImpairedTrait;
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
 		{
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))

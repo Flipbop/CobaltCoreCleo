@@ -31,11 +31,10 @@ internal static class ImprovedAExt
 
 internal sealed class ImprovedAManager
 {
-	internal static ICardTraitEntry Trait = null!;
+	internal static readonly ICardTraitEntry Trait = ModEntry.Instance.ImprovedATrait;
 
 	public ImprovedAManager()
 	{
-		Trait = ModEntry.Instance.ImprovedATrait;
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
 		{
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))

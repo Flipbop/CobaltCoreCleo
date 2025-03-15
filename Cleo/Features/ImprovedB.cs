@@ -30,11 +30,10 @@ internal static class ImprovedBExt
 
 internal sealed class ImprovedBManager
 {
-	internal static ICardTraitEntry Trait = null!;
+	internal static readonly ICardTraitEntry Trait = ModEntry.Instance.ImprovedBTrait;
 
 	public ImprovedBManager()
 	{
-		Trait = ModEntry.Instance.ImprovedBTrait;
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
 		{
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
