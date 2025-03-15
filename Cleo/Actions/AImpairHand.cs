@@ -18,7 +18,7 @@ public sealed class AImpairHand : DynamicWidthCardAction
 			if (c.hand[index].upgrade != Upgrade.None)
 			{
 				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImpairedTrait, true, false);
-				ImpairedExt.AddImpaired(c.hand[index]);
+				ImpairedExt.AddImpaired(c.hand[index], s);
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}

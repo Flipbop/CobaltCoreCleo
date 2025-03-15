@@ -20,7 +20,8 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+			Art = helper.Content.Sprites
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ApologizeNextLoop", "name"]).Localize
 		});
 	}
@@ -30,61 +31,17 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			description = ModEntry.Instance.Localizations.Localize(["card", "ApologizeNextLoop", "description", upgrade.ToString()])
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"card", "ApologizeNextLoop", "description", upgrade.ToString()
+				])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new AStatus
-			{
-				targetPlayer = true,
-				status = Status.shield,
-				statusAmount = 1,
-			},
-			new PositionalAction
-			{
-				Leftmost = upgrade == Upgrade.A,
-				Rightmost = true,
-				Discount = true,
-				Strengthen = upgrade == Upgrade.B,
-			}
-		];
-
-	private sealed class PositionalAction : CardAction
+	=> new()
 	{
-		public bool Leftmost;
-		public bool Rightmost;
-		public bool Discount = true;
-		public bool Strengthen = false;
-
-		public override void Begin(G g, State s, Combat c)
-		{
-			base.Begin(g, s, c);
-
-			if (Leftmost && c.hand.FirstOrDefault() is { } leftmostCard)
-			{
-				if (Discount)
-					leftmostCard.discount--;
-				if (Strengthen)
-					leftmostCard.AddImprovedA();
-			}
-			if (Rightmost && c.hand.LastOrDefault() is { } rightmostCard)
-			{
-				if (Discount)
-					rightmostCard.discount--;
-				if (Strengthen)
-					rightmostCard.AddImprovedA();
-			}
-		}
-
-		public override List<Tooltip> GetTooltips(State s)
-		{
-			var tooltips = new List<Tooltip>();
-			if (Discount)
-				tooltips.Add(new TTGlossary("cardtrait.discount", 1));
-			if (Strengthen)
-				tooltips.Add(ModEntry.Instance.Api.GetImprovedATooltip(true));
-			return tooltips;
-		}
-	}
+		
+	};
 }
+	
+

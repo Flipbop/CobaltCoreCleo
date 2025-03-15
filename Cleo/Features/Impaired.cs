@@ -12,37 +12,35 @@ internal static class ImpairedExt
 	public static void SetImpaired(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "Impaired", value);
 
-	public static void AddImpaired(this Card self)
+	public static void AddImpaired(this Card self, State s)
 	{
 		if (self.GetImprovedA())
 		{
-			self.RemoveImprovedA();
+			self.RemoveImprovedA(s);
 		} else if (self.GetImprovedB())
 		{
-			self.RemoveImprovedB();
-		} else if (!self.GetImpaired())
+			self.RemoveImprovedB(s);
+		} else if (!self.GetImpaired() && self.upgrade != Upgrade.None)
 		{
 			upgradeContainer = self.upgrade;
-			ImpairedManager.UpgradeStorage(upgradeContainer);
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.None);
+			
 		}
 	}
 
-	public static void RemoveImpaired(this Card self)
+	public static void RemoveImpaired(this Card self, State s)
 	{
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
+		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetPermanentUpgrade(self, upgradeContainer);
+		ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, ModEntry.Instance.ImpairedTrait, false, false);
+
 	}
 }
 
 internal sealed class ImpairedManager
 {
-	private static Upgrade upgrade = Upgrade.None;
 	internal static ICardTraitEntry Trait = null!;
-
-	public static void UpgradeStorage(Upgrade upgradeContainer)
-	{
-		upgrade = upgradeContainer;
-	}
+	
 	public ImpairedManager()
 	{
 		Trait = ModEntry.Instance.ImpairedTrait;
@@ -50,8 +48,7 @@ internal sealed class ImpairedManager
 		{
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
 			{
-				ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
-				card.RemoveImpaired();
+				card.RemoveImpaired(state);
 			}
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
@@ -60,7 +57,7 @@ internal sealed class ImpairedManager
 			{
 				if (card.GetImpaired())
 				{
-					card.SetImpaired(false);
+					card.RemoveImpaired(state);
 				}
 			}
 		});

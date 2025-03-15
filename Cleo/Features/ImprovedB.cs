@@ -11,16 +11,20 @@ internal static class ImprovedBExt
 	public static void SetImprovedB(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "ImprovedB", value);
 
-	public static void AddImprovedB(this Card self)
+	public static void AddImprovedB(this Card self, State s)
 	{
-		if (!self.GetImprovedA() && !self.GetImprovedB())
+		if (self.GetImpaired())
+		{
+			self.RemoveImpaired(s);
+		} else if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B)
 		{
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.B);
 		}
 	}
-	public static void RemoveImprovedB(this Card self)
+	public static void RemoveImprovedB(this Card self, State s)
 	{
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
+		ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, ModEntry.Instance.ImprovedATrait, false, false);
 	}
 }
 
@@ -35,8 +39,7 @@ internal sealed class ImprovedBManager
 		{
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
 			{
-				ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
-				card.RemoveImprovedB();
+				card.RemoveImprovedB(state);
 			}
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
@@ -45,7 +48,7 @@ internal sealed class ImprovedBManager
 			{
 				if (card.GetImprovedB())
 				{
-					card.SetImprovedB(false);
+					card.RemoveImprovedB(state);
 				}
 			}
 		});
