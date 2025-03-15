@@ -30,16 +30,13 @@ internal sealed class ImprovedBManager
 
 	public ImprovedBManager()
 	{
-		Trait = ModEntry.Instance.Helper.Content.Cards.RegisterTrait("ImprovedB", new()
-		{
-			Icon = (_, _) => ModEntry.Instance.ImprovedIcon.Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "ImprovedB", "name"]).Localize,
-			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImprovedBTooltip(card?.GetImprovedB() ?? true)]
-		});
+		Trait = ModEntry.Instance.ImprovedBTrait;
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
 		{
-			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
-			card.SetImprovedB(false);
+			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
+			{
+				ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
+			}
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{

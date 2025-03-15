@@ -45,16 +45,10 @@ internal sealed class ImpairedManager
 	}
 	public ImpairedManager()
 	{
-		Trait = ModEntry.Instance.Helper.Content.Cards.RegisterTrait("Impaired", new()
-		{
-			Icon = (_, _) => ModEntry.Instance.ImpairedIcon.Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["cardTrait", "Impaired", "name"]).Localize,
-			Tooltips = (_, card) => [ModEntry.Instance.Api.GetImpairedTooltip(card?.GetImprovedA() ?? true)]
-		});
+		Trait = ModEntry.Instance.ImpairedTrait;
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnPlayerPlayCard), (State state, Card card) =>
 		{
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
-			card.SetImpaired(false);
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
 		{
