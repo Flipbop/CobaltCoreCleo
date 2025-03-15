@@ -36,6 +36,7 @@ internal sealed class ImprovedBManager
 			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait))
 			{
 				ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade( card, null);
+				card.RemoveImprovedB();
 			}
 		});
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
