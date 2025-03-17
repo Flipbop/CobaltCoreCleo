@@ -27,7 +27,7 @@ internal sealed class ShuffleUpgradeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 1 : 2,
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -37,10 +37,17 @@ internal sealed class ShuffleUpgradeCard : Card, IRegisterable
 				new AImproveB { Amount = 1 },
 				new AShuffleHand(),
 				new AImproveB { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
+			],
+			Upgrade.A => [
+				new AShuffleHand(),
+				new AImproveA { Amount = 2 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
 			],
 			_ => [
 				new AShuffleHand(),
 				new AImproveA { Amount = 2 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
 			]
 		};
 }

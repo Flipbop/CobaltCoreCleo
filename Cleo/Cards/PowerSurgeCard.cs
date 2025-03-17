@@ -36,18 +36,18 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new ADrawCard {count = 2},
-				new AImproveAHand { Amount = 1},
+				new AImproveAHand(),
 				new ADiscard {count = 3}
 			],
 			Upgrade.B => [
 				new ADrawCard {count = 1},
-				new AImproveBHand { Amount = 1},
+				new AImproveBHand(),
 				new ADiscountHand { Amount = -1},
 				new ADiscard {count = 1}
 			],
 			_ => [
 				new ADrawCard {count = 2},
-				new AImproveAHand { Amount = 1},
+				new AImproveAHand(),
 				new ADiscard {count = c.hand.Count}
 			]
 		};

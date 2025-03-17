@@ -39,11 +39,11 @@ internal sealed class HardResetCard : Card, IRegisterable
 				new ADiscountHand {Amount = -1}
 			],
 			Upgrade.B => [
-				new AImpairHand {Amount = 1},
+				new AImpairHand(),
 				new AImproveB {Amount = 3}
 			],
 			_ => [
-				new AImpairHand {Amount = 1},
+				new AImpairHand(),
 				new ADiscountHand {Amount = -1}
 			]
 		};

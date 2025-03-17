@@ -7,7 +7,7 @@ namespace Flipbop.Cleo;
 
 public sealed class AImpairHand : DynamicWidthCardAction
 {
-	public required int Amount;
+	public int Amount;
 
 	public override void Begin(G g, State s, Combat c)
 	{

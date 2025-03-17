@@ -207,8 +207,8 @@
             "name": "Scalped Parts",
             "description": {
                 "None": "<c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each.",
-                "A": "Draw 3. <c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each.",
-                "B": "<c=cardtrait>Impair</c> all upgraded cards in your hand. <c=cardtrait>Improve A</c> all other cards in your hand."
+                "A": "<c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 3 Temp Shield for each.",
+                "B": "Draw 3. <c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each"
             }
         },
         "SwapNotes": {
@@ -250,6 +250,23 @@
         },
         "SmallRepairs": {
             "name": "Small Repairs"
+        },
+        
+        "UpgradesInHand": {
+            "name": "Upgraded Cards in Hand",
+            "description": "Equal to the number of Upgraded cards in your hand."
+        },
+        "UpgradesInDiscard": {
+            "name": "Upgraded Cards in Discard",
+            "description": "Equal to the number of Upgraded cards in your Discard pile."
+        },
+        "UpgradesInExhaust": {
+            "name": "Upgraded Cards in Exhaust",
+            "description": "Equal to the number of Upgraded cards in your Exhaust pile."
+        },
+        "UpgradesInDraw": {
+            "name": "Upgraded Cards in Draw",
+            "description": "Equal to the number of Upgraded cards in your Draw pile."
         },
 
 

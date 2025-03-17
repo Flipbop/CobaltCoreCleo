@@ -37,47 +37,35 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AVariableHint {xHint = c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None)},
+				new AUpgradeHint(),
 				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
 			],
 			Upgrade.B => [
-				new AVariableHint {xHint = 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None))},
+				new AUpgradeHint(),
 				new AAttack { damage = GetDmg(s, 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None))), xHint = 2},
 			],
 			_ => [
-				new AVariableHint {xHint = c.hand.Count(card => card.upgrade != Upgrade.None)},
+				new AUpgradeHint(),
 				new AAttack { damage = GetDmg(s, c.hand.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
 			]
 			
 		};
-		
-
 	
-	
-	
-	
-	
-	
-	
-	
-	public sealed class UpgradeNonPermanentlyUpgradedCardBrowseAction : CardAction
+	public sealed class AUpgradeHint : AVariableHint
 	{
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new TTGlossary("action.upgradeCard")];
-
-		public override Route? BeginWithRoute(G g, State s, Combat c)
+		public override Icon? GetIcon(State s)
 		{
-			timer = 0;
-			var baseResult = base.BeginWithRoute(g, s, c);
-			if (selectedCard is null)
-				return baseResult;
-
-			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(selectedCard, null);
-			return new CardUpgrade
-			{
-				cardCopy = Mutil.DeepCopy(selectedCard)
-			};
+			return base.GetIcon(s);
 		}
+
+		public override List<Tooltip> GetTooltips(State s)
+			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInHand")
+			{
+				Icon = ModEntry.Instance.DiscountHandIcon.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "description"])
+			}];
 	}
 
 	public sealed class MakeUpgradePermanentBrowseAction : CardAction

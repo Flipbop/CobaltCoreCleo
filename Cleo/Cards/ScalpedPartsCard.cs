@@ -38,13 +38,13 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		{
 			Upgrade.B => [
 				new ADrawCard { count = 3},
-				new AImpairHandTemp{ Amount = 1 }
+				new AImpairHandTemp(),
 			],
 			Upgrade.A => [
-				new AImpairHandTempStrong{ Amount = 1 }
+				new AImpairHandTempStrong(),
 			],
 			_ => [
-				new AImpairHandTemp{ Amount = 1 }
+				new AImpairHandTemp(),
 			],
 		};
 }
