@@ -30,61 +30,20 @@ internal sealed class HarnessEnergyCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 0 : 1,
+			cost = 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [new Action { Choose = true }],
-			_ => [new Action { Choose = false }],
+			Upgrade.B => [
+				
+			],
+			Upgrade.A => [
+				
+			],
+			_ => [
+				
+			],
 		};
-
-	private sealed class Action : CardAction
-	{
-		public bool Choose;
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [ModEntry.Instance.KokoroApi.TemporaryUpgrades.UpgradeTooltip];
-
-		public override void Begin(G g, State s, Combat c)
-		{
-			base.Begin(g, s, c);
-			if (c.hand.Count == 0)
-			{
-				timer = 0;
-				return;
-			}
-
-			var didAnything = false;
-			TryUpgrade(c.hand[0], Upgrade.A);
-			TryUpgrade(c.hand[^1], Upgrade.B);
-
-			if (!didAnything)
-			{
-				timer = 0;
-				return;
-			}
-
-			Audio.Play(Event.CardHandling);
-
-			void TryUpgrade(Card card, Upgrade upgrade)
-			{
-				if (card.upgrade != Upgrade.None)
-					return;
-				if (!card.GetMeta().upgradesTo.Contains(upgrade))
-					return;
-
-				if (Choose)
-				{
-					c.QueueImmediate(ModEntry.Instance.KokoroApi.TemporaryUpgrades.MakeChooseTemporaryUpgradeAction(card.uuid).AsCardAction);
-				}
-				else
-				{
-					didAnything = true;
-					ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(card, upgrade);
-				}
-			}
-		}
-	}
 }

@@ -29,9 +29,9 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 0 : 1,
+			cost = 1,
 			temporary = true,
-			exhaust = true,
+			exhaust = upgrade != Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
