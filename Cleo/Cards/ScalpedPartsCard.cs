@@ -1,6 +1,7 @@
 using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Flipbop.Cleo;
@@ -28,9 +29,6 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 2,
-			description = ModEntry.Instance.Localizations.Localize([
-				"card", "ScalpedParts", "description", upgrade.ToString()
-			])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -38,13 +36,19 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		{
 			Upgrade.B => [
 				new ADrawCard { count = 3},
-				new AImpairHandTemp(),
+				new ImprovedCannonCard.AUpgradeHint(),
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 2},
+				new AImpairHand()
 			],
 			Upgrade.A => [
-				new AImpairHandTempStrong(),
+				new ImprovedCannonCard.AUpgradeHint(),
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 3},
+				new AImpairHand()
 			],
 			_ => [
-				new AImpairHandTemp(),
+				new ImprovedCannonCard.AUpgradeHint(),
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 2},
+				new AImpairHand()
 			],
 		};
 }

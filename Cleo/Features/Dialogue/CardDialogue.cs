@@ -26,7 +26,7 @@ internal sealed class CardDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 
@@ -39,7 +39,7 @@ internal sealed class CardDialogue : BaseDialogue
 				oncePerCombatTags = [$"Played::{new ApologizeNextLoopCard().Key()}"],
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
@@ -65,7 +65,7 @@ internal sealed class CardDialogue : BaseDialogue
 				oncePerCombatTags = [$"Played::{new SeekerBarrageCard().Key()}"],
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 	}

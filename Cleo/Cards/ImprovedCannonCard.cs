@@ -37,11 +37,11 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AUpgradeHint(),
-				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None) + s.deck.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
+				new AUpgradeDiscardHint(),
+				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
 			],
 			Upgrade.B => [
-				new AUpgradeHint(),
+				new AUpgradeExhaustHint(),
 				new AAttack { damage = GetDmg(s, 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None))), xHint = 2},
 			],
 			_ => [
@@ -54,38 +54,47 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 	public sealed class AUpgradeHint : AVariableHint
 	{
 		public override Icon? GetIcon(State s)
-		{
-			return base.GetIcon(s);
-		}
+			=> new(ModEntry.Instance.UpgradesInHandIcon.Sprite, null, Colors.textMain);
+
 
 		public override List<Tooltip> GetTooltips(State s)
 			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInHand")
 			{
-				Icon = ModEntry.Instance.DiscountHandIcon.Sprite,
+				Icon = ModEntry.Instance.UpgradesInHandIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "description"])
 			}];
 	}
-
-	public sealed class MakeUpgradePermanentBrowseAction : CardAction
+	
+	public sealed class AUpgradeDiscardHint : AVariableHint
 	{
-		public override List<Tooltip> GetTooltips(State s)
-			=> [
-				new TTGlossary("action.upgradeCard"),
-				ModEntry.Instance.KokoroApi.TemporaryUpgrades.UpgradeTooltip,
-			];
+		public override Icon? GetIcon(State s)
+			=> new(ModEntry.Instance.UpgradesInDiscardIcon.Sprite, null, Colors.textMain);
 
-		public override void Begin(G g, State s, Combat c)
-		{
-			base.Begin(g, s, c);
-			timer = 0;
-			if (selectedCard is null)
-				return;
-			if (ModEntry.Instance.KokoroApi.TemporaryUpgrades.GetTemporaryUpgrade(selectedCard) is not { } temporaryUpgrade)
-				return;
-			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(selectedCard, null);
-			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetPermanentUpgrade(selectedCard, temporaryUpgrade);
-		}
+
+		public override List<Tooltip> GetTooltips(State s)
+			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInDiscard")
+			{
+				Icon = ModEntry.Instance.UpgradesInDiscardIcon.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInDiscard", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInDiscard", "description"])
+			}];
+	}
+	public sealed class AUpgradeExhaustHint : AVariableHint
+	{
+		public override Icon? GetIcon(State s)
+			=> new(ModEntry.Instance.UpgradesInExhaustIcon.Sprite, null, Colors.textMain);
+
+
+		public override List<Tooltip> GetTooltips(State s)
+			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInExhaust")
+			{
+				Icon = ModEntry.Instance.UpgradesInDiscardIcon.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInExhaust", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInExhaust", "description"])
+			}];
 	}
 }

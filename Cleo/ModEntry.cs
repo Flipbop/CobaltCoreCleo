@@ -33,6 +33,13 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry ImpairHandIcon { get; }
 	internal ISpriteEntry ImprovedIcon { get; }
 	internal ISpriteEntry DiscountHandIcon { get; }
+	internal ISpriteEntry UpgradesInHandIcon { get; }
+	internal ISpriteEntry UpgradesInDrawIcon { get; }
+
+	internal ISpriteEntry UpgradesInDiscardIcon { get; }
+	internal ISpriteEntry UpgradesInExhaustIcon { get; }
+
+
 	internal ICardTraitEntry ImprovedATrait { get; }
 	internal ICardTraitEntry ImprovedBTrait { get; }
 	internal ICardTraitEntry ImpairedTrait { get; }
@@ -263,6 +270,10 @@ public sealed class ModEntry : SimpleMod
 		ImpairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairHand.png"));
 		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png"));
 		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/DiscountHand.png"));
+		UpgradesInHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInHand.png"));
+		UpgradesInDrawIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDraw.png"));
+		UpgradesInDiscardIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDiscard.png"));
+		UpgradesInExhaustIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInExhaust.png"));
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",

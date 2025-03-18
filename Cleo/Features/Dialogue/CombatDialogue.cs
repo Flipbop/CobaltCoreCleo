@@ -219,7 +219,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				whoDidThat = cleoDeck,
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "flashing" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
@@ -255,7 +255,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			playerShotJustMissed = true,
 			allPresent = [cleoType],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "squint" },
 			],
 		};
 
@@ -432,7 +432,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerCombatTags = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::NewNonCleoNonTrashTempCard"],
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
@@ -445,7 +445,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerRun = true,
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "flashing" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
@@ -487,7 +487,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				turnStart = true,
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
@@ -510,7 +510,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				lookup = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::ReturningFromMissing"],
 				oncePerRun = true,
 				lines = [
-					new Say { who = cleoType, loopTag = "fiddling" },
+					new Say { who = cleoType, loopTag = "neutral" },
 				],
 			};
 
@@ -557,7 +557,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerCombat = true,
 			allPresent = [cleoType, "skunk"],
 			lines = [
-				new Say { who = cleoType, loopTag = "flashing" },
+				new Say { who = cleoType, loopTag = "neutral" },
 				new Say { who = "skunk", loopTag = "neutral" },
 			],
 		};
@@ -584,19 +584,19 @@ internal sealed class CombatDialogue : BaseDialogue
 			excludedScenes = ["Crystal_2"],
 			allPresent = [cleoType, "crystal"],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 
 		saySwitchNodes[["CrabFacts1_Multi_0"]] = new()
 		{
 			who = cleoType,
-			loopTag = "neutral"
+			loopTag = "squint"
 		};
 		saySwitchNodes[["CrabFacts2_Multi_0"]] = new()
 		{
 			who = cleoType,
-			loopTag = "phone"
+			loopTag = "squint"
 		};
 	}
 }

@@ -27,7 +27,7 @@ internal sealed class EventDialogue : BaseDialogue
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType],
 			lines = [
-				new Say { who = cleoType, loopTag = "flashing" },
+				new Say { who = cleoType, loopTag = "neutral" },
 				new Jump() { key = "NewShop" }
 			],
 		};
@@ -58,7 +58,7 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Wait() { secs = 1.5 },
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 		newHardcodedNodes[["ChoiceCardRewardOfYourColorChoice_{{CharacterType}}"]] = new()
@@ -85,12 +85,12 @@ internal sealed class EventDialogue : BaseDialogue
 		saySwitchNodes[["CrystallizedFriendEvent"]] = new()
 		{
 			who = cleoType,
-			loopTag = "fiddling"
+			loopTag = "neutral"
 		};
 		saySwitchNodes[["ShopKeepBattleInsult"]] = new()
 		{
 			who = cleoType,
-			loopTag = "fiddling"
+			loopTag = "neutral"
 		};
 		saySwitchNodes[["DraculaTime"]] = new()
 		{
@@ -100,7 +100,7 @@ internal sealed class EventDialogue : BaseDialogue
 		saySwitchNodes[["Soggins_Infinite"]] = new()
 		{
 			who = cleoType,
-			loopTag = "flashing"
+			loopTag = "neutral"
 		};
 		saySwitchNodes[["Soggins_Missile_Shout_1"]] = new()
 		{
@@ -115,7 +115,7 @@ internal sealed class EventDialogue : BaseDialogue
 		saySwitchNodes[["SogginsEscape_1"]] = new()
 		{
 			who = cleoType,
-			loopTag = "fiddling"
+			loopTag = "neutral"
 		};
 	}
 }

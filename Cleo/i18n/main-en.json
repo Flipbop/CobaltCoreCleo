@@ -204,12 +204,7 @@
             "name": "Repaired Glasses"
         },
         "ScalpedParts": {
-            "name": "Scalped Parts",
-            "description": {
-                "None": "<c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each.",
-                "A": "<c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 3 Temp Shield for each.",
-                "B": "Draw 3. <c=cardtrait>Impair</c> all upgraded cards in your hand. Gain 2 Temp Shield for each"
-            }
+            "name": "Scalped Parts"
         },
         "SwapNotes": {
             "name": "Swap Notes"
