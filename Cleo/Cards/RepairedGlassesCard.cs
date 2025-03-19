@@ -39,17 +39,17 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new ImprovedCannonCard.AUpgradeHint(),
+				new ImprovedCannonCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 				new AStatus { targetPlayer = true, status = Status.drawNextTurn, statusAmount = 2}
 			],
 			Upgrade.B => [
 				new ADiscard {count = 2},
-				new ImprovedCannonCard.AUpgradeDiscardHint(),
+				new ImprovedCannonCard.AUpgradeDiscardHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.discard.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 			],
 			_ => [
-				new ImprovedCannonCard.AUpgradeHint(),
+				new ImprovedCannonCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 			]
 			

@@ -70,7 +70,7 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
 		typeof(SeekerBarrageCard),
-//		typeof(HarnessEnergyCard),
+//		typeof(PermaFixCard),
 //		typeof(CleanSlateCard),
 		typeof(ApologizeNextLoopCard),
 		typeof(HardResetCard),

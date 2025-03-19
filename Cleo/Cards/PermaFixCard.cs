@@ -8,7 +8,7 @@ using FSPRO;
 
 namespace Flipbop.Cleo;
 
-internal sealed class HarnessEnergyCard : Card, IRegisterable
+internal sealed class PermaFixCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -22,7 +22,7 @@ internal sealed class HarnessEnergyCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "HarnessEnergy", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PermaFix", "name"]).Localize
 		});
 	}
 
@@ -30,7 +30,9 @@ internal sealed class HarnessEnergyCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = upgrade == Upgrade.B? 3 : 2,
+			singleUse = true,
+			retain = upgrade == Upgrade.A,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

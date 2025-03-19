@@ -8,6 +8,22 @@
         ]
     },
     "action": {
+        "UpgradesInHand": {
+            "name": "Upgraded Cards in Hand",
+            "description": "Equal to the number of Upgraded cards in your hand."
+        },
+        "UpgradesInDiscard": {
+            "name": "Upgraded Cards in Discard",
+            "description": "Equal to the number of Upgraded cards in your Discard pile."
+        },
+        "UpgradesInExhaust": {
+            "name": "Upgraded Cards in Exhaust",
+            "description": "Equal to the number of Upgraded cards in your Exhaust pile."
+        },
+        "UpgradesInDraw": {
+            "name": "Upgraded Cards in Draw",
+            "description": "Equal to the number of Upgraded cards in your Draw pile."
+        },
         "ImproveA": {
             "name": "Improve A",
             "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
@@ -220,23 +236,23 @@
                 "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
             }
         },
-        "HarnessEnergy": {
-            "name": "Harness Energy"
+        "PermaFix": {
+            "name": "Perma-Fix",
+            "description": {
+                "None": "<c=keyword>Upgrade</c> the rightmost card in your hand to its <c=keyword>A upgrade</c>.",
+                "A": "<c=keyword>Upgrade</c> the rightmost card in your hand to its <c=keyword>A upgrade</c>.",
+                "B": "<c=keyword>Upgrade</c> the rightmost card in your hand to its <c=keyword>B upgrade</c>, and the leftmost to its <c=keyword>A upgrade</c>."
+            }
         },
         "CleanSlate": {
-            "name": "Clean Slate",
-            "description": {
-                "None": "",
-                "A": "",
-                "B": ""
-            }
+            "name": "Clean Slate"
         },
         "ApologizeNextLoop": {
             "name": "Apologize Next Loop",
             "description": {                                                                       
-                "None": "Attack for 1 damage once for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack.",
-                "A": "Attack for 1 damage once for each <c=cardtrait>Upgraded</c> card in hand. Add 2 damage after every attack.",
-                "B": "Pierce attack for 1 damage once for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack."
+                "None": "Attack for 1 damage for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack.",
+                "A": "Attack for 1 damage for each <c=cardtrait>Upgraded</c> card in hand. Add 2 damage after every attack.",
+                "B": "Pierce attack for 1 damage for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack."
             }
         },
 
@@ -246,26 +262,8 @@
         "SmallRepairs": {
             "name": "Small Repairs"
         },
+
         
-        "UpgradesInHand": {
-            "name": "Upgraded Cards in Hand",
-            "description": "Equal to the number of Upgraded cards in your hand."
-        },
-        "UpgradesInDiscard": {
-            "name": "Upgraded Cards in Discard",
-            "description": "Equal to the number of Upgraded cards in your Discard pile."
-        },
-        "UpgradesInExhaust": {
-            "name": "Upgraded Cards in Exhaust",
-            "description": "Equal to the number of Upgraded cards in your Exhaust pile."
-        },
-        "UpgradesInDraw": {
-            "name": "Upgraded Cards in Draw",
-            "description": "Equal to the number of Upgraded cards in your Draw pile."
-        },
-
-
-
         "CleoExe": {
             "name": "Cleo.EXE",
             "description": {
