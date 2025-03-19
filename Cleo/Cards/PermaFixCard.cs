@@ -30,22 +30,28 @@ internal sealed class PermaFixCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B? 3 : 2,
+			cost = upgrade switch
+			{
+				Upgrade.B => 3,
+				Upgrade.A => 1,
+				_ => 2
+			},
 			singleUse = true,
 			retain = upgrade == Upgrade.A,
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"card", "PermaFix", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				
-			],
-			Upgrade.A => [
-				
+				new APermaFixB {Amount = 1},
 			],
 			_ => [
-				
+				new APermaFix {Amount = 1},
 			],
 		};
 }

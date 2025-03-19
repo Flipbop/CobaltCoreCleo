@@ -239,9 +239,9 @@
         "PermaFix": {
             "name": "Perma-Fix",
             "description": {
-                "None": "<c=keyword>Upgrade</c> the rightmost card in your hand to its <c=keyword>A upgrade</c>.",
-                "A": "<c=keyword>Upgrade</c> the rightmost card in your hand to its <c=keyword>A upgrade</c>.",
-                "B": "<c=keyword>Upgrade</c> the rightmost card in your hand to its <c=keyword>B upgrade</c>, and the leftmost to its <c=keyword>A upgrade</c>."
+                "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                "B": "<c=keyword>Upgrade</c> the rightmost and leftmost eligible cards in your hand to its <c=keyword>B and A upgrade</c> respectively."
             }
         },
         "CleanSlate": {
