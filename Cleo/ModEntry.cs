@@ -50,7 +50,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(QuickBoostCard),
 		typeof(TurtleShotCard),
 		typeof(ChoicesCard),
-//		typeof(MemoryRecoveryCard),
+		typeof(MemoryRecoveryCard),
 		typeof(ShuffleUpgradeCard),
 //		typeof(ResourceSwapCard),
 		typeof(ReroutePowerCard),
@@ -70,7 +70,7 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
 		typeof(SeekerBarrageCard),
-//		typeof(PermaFixCard),
+		typeof(PermaFixCard),
 //		typeof(CleanSlateCard),
 		typeof(ApologizeNextLoopCard),
 		typeof(HardResetCard),

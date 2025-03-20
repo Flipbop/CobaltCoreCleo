@@ -27,13 +27,18 @@ internal sealed class MemoryRecoveryCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
-			recycle = upgrade != Upgrade.B,
+			cost = upgrade == Upgrade.A? 0 : 1,
 			description = ModEntry.Instance.Localizations.Localize(["card", "MemoryRecovery", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			
-		];
+		=> upgrade switch
+		{
+			Upgrade.B => [
+				new ADrawUpgrade {Amount = 3},
+			],
+			_ => [
+				new ADrawUpgrade {Amount = 1},
+			]
+		};
 }

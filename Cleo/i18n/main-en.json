@@ -182,9 +182,9 @@
         "MemoryRecovery": {
             "name": "Memory Recovery",
             "description": {
-                "None": "Put an Upgraded card from your <c=keyword>Discard pile</c> into your hand.",
-                "A": "Put an Upgraded card from your <c=keyword>Discard pile</c> into your hand. <c=cardtrait>Discount</c> it.",
-                "B": "Put an Upgraded card from your <c=keyword>Exhaust pile</c> into your hand."
+                "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
             }
         },
         "ShuffleUpgrade": {
