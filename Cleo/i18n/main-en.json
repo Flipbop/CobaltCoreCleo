@@ -250,9 +250,9 @@
         "ApologizeNextLoop": {
             "name": "Apologize Next Loop",
             "description": {                                                                       
-                "None": "Attack for 1 damage for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack.",
-                "A": "Attack for 1 damage for each <c=cardtrait>Upgraded</c> card in hand. Add 2 damage after every attack.",
-                "B": "Pierce attack for 1 damage for each <c=cardtrait>Upgraded</c> card in hand. Add 1 damage after every attack."
+                "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
+                "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
+                "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
             }
         },
 
