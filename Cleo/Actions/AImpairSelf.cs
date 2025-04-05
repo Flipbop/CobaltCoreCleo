@@ -29,7 +29,7 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 		=> [
 			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Self Impair")
 			{
-				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+				Icon = ModEntry.Instance.ImpairedIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["action", "SelfImpair", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["action", "SelfImpair", "description"])
