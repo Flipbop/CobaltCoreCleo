@@ -51,6 +51,18 @@
         "DiscountHand": {
             "name": "Discount Hand",
             "description": "<c=cardtrait>Discount</c> every card in your hand."
+        },
+        "SelfImproveA": {
+            "name": "Self Improve A",
+            "description": "<c=boldPink>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
+        },
+        "SelfImproveB": {
+            "name": "Self Improve B",
+            "description": "<c=boldPink>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
+        },
+        "SelfImpair": {
+            "name": "Self Impair",
+            "description": "<c=boldPink>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
         }
     },
     "browseSource": {
@@ -267,9 +279,9 @@
         "CleoExe": {
             "name": "Cleo.EXE",
             "description": {
-                "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand.",
-                "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand.",
-                "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=2D3F61>Cleo</c> cards to your hand."
+                "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cleo</c> cards to your hand.",
+                "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cleo</c> cards to your hand.",
+                "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cleo</c> cards to your hand."
             }
         },
 

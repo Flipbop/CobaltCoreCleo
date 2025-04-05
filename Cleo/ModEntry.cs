@@ -52,7 +52,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(ChoicesCard),
 		typeof(MemoryRecoveryCard),
 		typeof(ShuffleUpgradeCard),
-//		typeof(ResourceSwapCard),
+		typeof(ResourceSwapCard),
 		typeof(ReroutePowerCard),
 //		typeof(NanomachinesCard),
 		typeof(SlipShotCard),

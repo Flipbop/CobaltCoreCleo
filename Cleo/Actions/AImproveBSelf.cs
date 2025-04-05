@@ -7,39 +7,30 @@ namespace Flipbop.Cleo;
 
 public sealed class AImproveBSelf : DynamicWidthCardAction
 {
-	public required int Amount;
+	public required int id;
 
 	public override void Begin(G g, State s, Combat c)
 	{
-		base.Begin(g, s, c);
-		int index = c.hand.Count -1;
-		while (Amount > 0)
+		if (s.FindCard(id) is Card card)
 		{
-			if (index < 0)
-			{
-				break;
-			}
-			if (c.hand[index].upgrade == Upgrade.None)
-			{
-				c.hand[index].upgrade = Upgrade.A;
-				Amount--;
-				Audio.Play(Event.CardHandling);
-			}
-			index--;
+			base.Begin(g, s, c);
+			ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedBTrait, true, false);
+			ImprovedBExt.AddImprovedB(card, s);
+			Audio.Play(Event.CardHandling);
 		}
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImprovedIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.ImprovedIcon.Sprite, null, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Self Improve B")
 			{
 				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
+				Title = ModEntry.Instance.Localizations.Localize(["action", "SelfImproveB", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "SelfImproveB", "description"])
 			}
 		];
 }

@@ -166,12 +166,12 @@
     },
     "StartedBattle": {
         "Basic": [
-            [ "Not my old ship, but I can work with this." ]
+            [ "I can work with this." ]
         ]
     },
     "NoOverlap": {
         "Basic": [
-            [ "So this is how it feels to just leave?" ],
+            [ "Buh-bye!" ],
             [ "Good riddance." ]
         ]
     },
@@ -200,11 +200,11 @@
     "GoingToOverheat": {
         "Basic": [
             [ "I'm not a fan of this temperature." ],
-            [ "Where is the air conditioner when you need one?" ]
+            [ "Where is an air conditioner when you need one?" ]
         ],
         "Drake": [
             /*Cleo*/ "Eunice, you know not to cross me.",
-            /*Drake*/ "Nothing personal, Cleo."
+            /*Drake*/ "Calm down, Cleo. It's just a little heat."
         ]
     },
     "Recalibrator": {
@@ -214,7 +214,7 @@
     },
     "StartedBattleAgainstDuncan": [
         /*Cleo*/ "Just how many rocks do you have?",
-        /*Duncan*/ "I'm not sure, I just know it's not enough!"
+        /*Duncan*/ "I'm not sure..."
     ],
     "StartedBattleAgainstDahlia": [
         /*Dahlia*/ "Here's a fresh batch of missiles, on the house!",

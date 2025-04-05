@@ -19,7 +19,8 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+			Art = helper.Content.Sprites
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ResourceSwap", "name"]).Localize
 		});
 	}
@@ -28,72 +29,28 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 0 : 2,
-			singleUse = upgrade != Upgrade.A,
-			exhaust = upgrade == Upgrade.A,
-			retain = upgrade == Upgrade.B,
+			cost = upgrade != Upgrade.None ? 0 : 1,
+			floppable = upgrade == Upgrade.None
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new ATemporarify { Cards = upgrade == Upgrade.B ? ATemporarify.CardsType.All : ATemporarify.CardsType.Right },
-			new ADummyAction { dialogueSelector = $".Played::{Key()}" },
-		];
-
-	public sealed class ATemporarify : CardAction
-	{
-		public enum CardsType
+		=> upgrade switch
 		{
-			Left, Right, All
-		}
-
-		public required CardsType Cards;
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new TTGlossary("cardtrait.temporary")];
-
-		public override void Begin(G g, State s, Combat c)
-		{
-			base.Begin(g, s, c);
-			if (c.hand.Count == 0)
-			{
-				timer = 0;
-				return;
-			}
-
-			var didAnything = false;
-
-			switch (Cards)
-			{
-				case CardsType.Left:
-					TryTemporarify(c.hand[0]);
-					break;
-				case CardsType.Right:
-					TryTemporarify(c.hand[^1]);
-					break;
-				case CardsType.All:
-					foreach (var card in c.hand)
-						TryTemporarify(card);
-					break;
-			}
-
-			if (!didAnything)
-			{
-				timer = 0;
-				return;
-			}
-
-			Audio.Play(Event.CardHandling);
-
-			void TryTemporarify(Card card)
-			{
-				var data = card.GetDataWithOverrides(s);
-				if (data.temporary || data.unremovableAtShops)
-					return;
-
-				didAnything = true;
-				ModEntry.Instance.Helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.Helper.Content.Cards.TemporaryCardTrait, true, permanent: true);
-			}
-		}
-	}
+			Upgrade.A => [
+				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
+				new AImpairSelf{id = this.uuid},
+			],
+			Upgrade.B => [
+				new AStatus { targetPlayer = true, status = Status.evade, statusAmount = 2 },
+				new AImpairSelf{id = this.uuid},
+			],
+			_ => [
+				new AAttack {disabled = flipped, damage = GetDmg(s, 2) },
+				new AImproveASelf {disabled = flipped, id = this.uuid},
+				new ADummyAction(),
+				new AAttack {disabled = !flipped, damage = GetDmg(s, 2) },
+				new AImproveBSelf {disabled = !flipped, id = this.uuid},
+			]
+		};
 }
