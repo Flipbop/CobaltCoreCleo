@@ -253,7 +253,7 @@
             "description": {
                 "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
                 "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                "B": "<c=keyword>Upgrade</c> the rightmost and leftmost eligible cards in your hand to its <c=keyword>B and A upgrade</c> respectively."
+                "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
             }
         },
         "CleanSlate": {

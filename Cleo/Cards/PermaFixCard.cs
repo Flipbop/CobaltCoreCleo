@@ -49,7 +49,7 @@ internal sealed class PermaFixCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APermaFixB {Amount = 1},
+				new APermaFixB {Amount = 2},
 			],
 			_ => [
 				new APermaFix {Amount = 1},

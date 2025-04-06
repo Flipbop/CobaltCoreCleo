@@ -17,26 +17,13 @@ public sealed class APermaFixB : DynamicWidthCardAction
 		int amountTemp = Amount;
 		while (index >= 0 && Amount > 0)
 		{
-			if (c.hand[index].upgrade == Upgrade.None)
+			if (c.hand[index].upgrade == Upgrade.None && c.hand[index].IsUpgradable())
 			{
 				c.hand[index].upgrade = Upgrade.B;
 				Amount--;
 				Audio.Play(Event.CardHandling);
 			}
 			index--;
-		}
-
-		index = 0;
-		Amount = amountTemp;
-		while (index < c.hand.Count() && Amount > 0)
-		{
-			if (c.hand[index].upgrade == Upgrade.None)
-			{
-				c.hand[index].upgrade = Upgrade.B;
-				Amount--;
-				Audio.Play(Event.CardHandling);
-			}
-			index++;
 		}
 	}
 

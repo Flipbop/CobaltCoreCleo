@@ -14,10 +14,7 @@ internal static class ImprovedAExt
 
 	public static void AddImprovedA(this Card self,  State s)
 	{
-		if (self.GetImpaired())
-		{
-			self.RemoveImpaired(s, false);
-		} else if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B)
+		if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B && self.IsUpgradable())
 		{
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.A);
 		}

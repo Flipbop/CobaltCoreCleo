@@ -17,10 +17,20 @@ public sealed class AImproveBHand : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
-				ImprovedBExt.AddImprovedB(c.hand[index], s);
-				Amount--;
-				Audio.Play(Event.CardHandling);
+				if (!c.hand[index].GetImpaired())
+				{
+					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
+					ImprovedBExt.AddImprovedB(c.hand[index], s);
+					Amount--;
+					Audio.Play(Event.CardHandling);
+				}
+				else
+				{
+					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImpairedTrait, false, false);
+					ImpairedExt.RemoveImpaired(c.hand[index], s, true);
+					Amount--;
+					Audio.Play(Event.CardHandling);
+				}
 			}
 			index--;
 		}

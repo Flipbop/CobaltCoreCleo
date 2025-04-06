@@ -13,10 +13,7 @@ internal static class ImprovedBExt
 
 	public static void AddImprovedB(this Card self, State s)
 	{
-		if (self.GetImpaired())
-		{
-			self.RemoveImpaired(s, false);
-		} else if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B)
+		if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B && self.IsUpgradable())
 		{
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.B);
 		}

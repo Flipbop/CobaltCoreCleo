@@ -14,13 +14,7 @@ internal static class ImpairedExt
 
 	public static void AddImpaired(this Card self, State s)
 	{
-		if (self.GetImprovedA())
-		{
-			self.RemoveImprovedA(s);
-		} else if (self.GetImprovedB())
-		{
-			self.RemoveImprovedB(s);
-		} else if (!self.GetImpaired() && self.upgrade != Upgrade.None)
+		if (!self.GetImpaired() && self.upgrade != Upgrade.None && self.IsUpgradable())
 		{
 			_upgradeContainer = self.upgrade;
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.None);
