@@ -15,11 +15,13 @@ internal static class ImprovedBExt
 	{
 		if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B && self.IsUpgradable())
 		{
+			SetImprovedB(self, true);
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.B);
 		}
 	}
 	public static void RemoveImprovedB(this Card self, State s)
 	{
+		SetImprovedB(self, false);
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
 		ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, ModEntry.Instance.ImprovedATrait, false, false);
 	}
