@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cleo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.3.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.3+96d8c04db18b71b4541180636bf64cbb0ca2b450")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.3+e0f97012a5f4bca38b466d238b6837ea96a6e8a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cleo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cleo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.3.0")]
