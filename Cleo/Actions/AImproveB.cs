@@ -17,7 +17,7 @@ public sealed class AImproveB : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				if (!c.hand[index].GetImpaired())
+				if (!c.hand[index].GetImpaired() && c.hand[index].IsUpgradable())
 				{
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
 					ImprovedBExt.AddImprovedB(c.hand[index], s);
