@@ -17,7 +17,7 @@ public sealed class ADiscountHand : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.DiscountHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		=> new(ModEntry.Instance.DiscountHandIcon.Sprite, null, Colors.textMain);
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [

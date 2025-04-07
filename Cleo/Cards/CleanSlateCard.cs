@@ -31,13 +31,13 @@ internal sealed class CleanSlateCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 0 : 1,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "CleanSlate", "description", upgrade.ToString()])
+			description = ModEntry.Instance.Localizations.Localize(["card", "CleanSlate", "description", upgrade.ToString()]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
-		{
-			_ => [
-			]
-		};
+		=>
+		[
+			new AImpair { Amount = upgrade == Upgrade.A ? 1 : 2},
+			new ADiscountHand {Amount = 1}
+		];
 }

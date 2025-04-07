@@ -23,10 +23,6 @@ public sealed class ModEntry : SimpleMod
 
 	internal IDeckEntry CleoDeck { get; }
 	internal IPlayableCharacterEntryV2 CleoCharacter { get; }
-	internal IStatusEntry CleanUpStatus { get; }
-	internal IStatusEntry NanomachinesStatus { get; }
-	internal IStatusEntry SwapperStatus { get; }
-
 	internal ISpriteEntry ImproveAIcon { get; }
 	internal ISpriteEntry ImproveBIcon { get; }
 	internal ISpriteEntry ImpairedIcon { get; }
@@ -56,7 +52,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(ShuffleUpgradeCard),
 		typeof(ResourceSwapCard),
 		typeof(ReroutePowerCard),
-//		typeof(NanomachinesCard),
+		typeof(CapacitorSlugCard),
 		typeof(SlipShotCard),
 	];
 
@@ -67,13 +63,13 @@ public sealed class ModEntry : SimpleMod
 		typeof(RepairedGlassesCard),
 		typeof(ScalpedPartsCard),
 		typeof(SwapNotesCard), 
-//		typeof(PowerSwitchCard),
+		typeof(NecessarySacrificeCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
 		typeof(SeekerBarrageCard),
 		typeof(PermaFixCard),
-//		typeof(CleanSlateCard),
+		typeof(CleanSlateCard),
 		typeof(ApologizeNextLoopCard),
 		typeof(HardResetCard),
 	];
@@ -86,17 +82,17 @@ public sealed class ModEntry : SimpleMod
 		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, typeof(CleoExeCard), ..SpecialCardTypes];
 
 	internal static IReadOnlyList<Type> CommonArtifacts { get; } = [
-/*		typeof(EnhancedToolsArtifact),
+		typeof(EnhancedToolsArtifact),
 		typeof(ReusableMaterialsArtifact),
 		typeof(KickstartArtifact),
 		typeof(MagnifiedLasersArtifact),
-		typeof(UpgradedTerminalArtifact), */
+		typeof(UpgradedTerminalArtifact), 
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
-/*		typeof(RetainerArtifact),
+		typeof(RetainerArtifact),
 		typeof(ExpensiveEquipmentArtifact),
-		typeof(PowerEchoArtifact), */
+		typeof(PowerEchoArtifact), 
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -168,40 +164,6 @@ public sealed class ModEntry : SimpleMod
 		
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
-
-		CleanUpStatus = helper.Content.Statuses.RegisterStatus("Clean Up", new()
-		{
-			Definition = new()
-			{
-				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/CleanUp.png")).Sprite,
-				color = new("ac5400"),
-				isGood = true
-			},
-			Name = this.AnyLocalizations.Bind(["status", "CleanUp", "name"]).Localize,
-			Description = this.AnyLocalizations.Bind(["status", "CleanUp", "description"]).Localize
-		});
-		NanomachinesStatus = helper.Content.Statuses.RegisterStatus("Nanomachines", new()
-		{
-			Definition = new()
-			{
-				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Nanomachines.png")).Sprite,
-				color = new("858585"),
-				isGood = true
-			},
-			Name = this.AnyLocalizations.Bind(["status", "Nanomachines", "name"]).Localize,
-			Description = this.AnyLocalizations.Bind(["status", "Nanomachines", "description"]).Localize
-		});
-		SwapperStatus = helper.Content.Statuses.RegisterStatus("Swapper", new()
-		{
-			Definition = new()
-			{
-				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Swapper.png")).Sprite,
-				color = new("9600ff"),
-				isGood = true
-			},
-			Name = this.AnyLocalizations.Bind(["status", "Swapper", "name"]).Localize,
-			Description = this.AnyLocalizations.Bind(["status", "Swapper", "description"]).Localize
-		});
 
 		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()
 		{

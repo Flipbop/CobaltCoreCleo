@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.Cleo;
 
-internal sealed class NanomachinesCard : Card, IRegisterable
+internal sealed class CapacitorSlugCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class NanomachinesCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Nanomachines", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CapacitorSlug", "name"]).Localize
 		});
 	}
 
@@ -27,13 +27,25 @@ internal sealed class NanomachinesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
-			buoyant = true,
-			exhaust = true,
+			cost = 1,
+			exhaust = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			
-		];
+		=> upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AStatus { targetPlayer = true, status = Status.maxShield, statusAmount = 1 },
+				new AAttack { damage = GetDmg(s, 2) },
+			],
+			Upgrade.B => [
+				new AStatus { targetPlayer = true, status = Status.maxShield, statusAmount = 3 },
+				new AAttack { damage = GetDmg(s, 1) },
+			],
+			_ => [
+				new AStatus { targetPlayer = true, status = Status.maxShield, statusAmount = 1 },
+				new AAttack { damage = GetDmg(s, 1) },
+			]
+		};
 }

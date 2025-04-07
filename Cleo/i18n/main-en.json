@@ -100,7 +100,7 @@
     "artifact": {
         "EnhancedTools": {
             "name": "ENHANCED TOOLS",
-            "description": "Repairs at Repair Yards always fully heal you."
+            "description": "The first time you play an <c=cardtrait>Improved</c> a card each fight, <c=keyword>Improve</c> another card with the same upgrade."
         },
         "ReusableMaterials": {
             "name": "REUSABLE MATERIALS",
@@ -197,8 +197,8 @@
         "ReroutePower": {
             "name": "Reroute Power"
         },
-        "Nanomachines": {
-            "name": "Nanomachines"
+        "CapacitorSlug": {
+            "name": "Capacitor Slug"
         },
         "SlipShot": {
             "name": "Slip Shot"
@@ -226,8 +226,13 @@
         "SwapNotes": {
             "name": "Swap Notes"
         },
-        "PowerSwitch": {
-            "name": "Power Switch"
+        "NecessarySacrifice": {
+            "name": "Necessary Sacrifice",
+            "description": {
+                "None": "Gain <c=status>SHIELD</c> equal to your max Shield. Impair 2.",
+                "A": "Gain <c=status>SHIELD</c> equal to your max Shield. Impair 1.",
+                "B": "Gain <c=status>SHIELD</c> equal to your max Shield. Impair 2."
+            }
         },
         "SeekerBarrage": {
             "name": "Seeker Barrage",
@@ -246,7 +251,12 @@
             }
         },
         "CleanSlate": {
-            "name": "Clean Slate"
+            "name": "Clean Slate",
+            "description": {
+                "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
+            }
         },
         "ApologizeNextLoop": {
             "name": "Apologize Next Loop",

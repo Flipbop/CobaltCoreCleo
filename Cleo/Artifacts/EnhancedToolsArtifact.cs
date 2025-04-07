@@ -23,9 +23,29 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnTurnStart(State state, Combat combat)
+	private bool firstCard = true;
+	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
-		base.OnTurnStart(state, combat);
-		Events.NewShop(state);
+		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
+		if (card.GetImprovedA() && firstCard)
+		{
+			firstCard = false;
+			combat.Queue([
+				new AImproveA { Amount = 1}
+			]);
+		}
+		if (card.GetImprovedB() && firstCard)
+		{
+			firstCard = false;
+			combat.Queue([
+				new AImproveB { Amount = 1}
+			]);
+		}
+	}
+	
+	public override void OnCombatEnd(State state)
+	{
+		base.OnCombatEnd(state);
+		firstCard = true;
 	}
 }
