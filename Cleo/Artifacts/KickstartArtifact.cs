@@ -24,20 +24,20 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 	}
 
 	public override List<Tooltip>? GetExtraTooltips()
-		=> [new TTGlossary("cardtrait.discount", 1)];
+		=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
+			{
+				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
+			}];
 
-	public override void OnTurnStart(State state, Combat combat)
+	public override void OnCombatStart(State state, Combat combat)
 	{
-		base.OnTurnStart(state, combat);
-		if (!combat.isPlayerTurn || combat.turn != 1)
-			return;
+		base.OnCombatStart(state, combat);
 
 		combat.Queue([
-			new ADelay(),
-			new ACardSelect
-			{
-				
-			}
+			new AImproveA{Amount = 2}
 		]);
 	}
 }

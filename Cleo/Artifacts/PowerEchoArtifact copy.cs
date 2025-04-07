@@ -23,26 +23,28 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override List<Tooltip>? GetExtraTooltips()
-		=> [new TTGlossary("cardtrait.temporary")];
-
-	public override void OnTurnStart(State state, Combat combat)
+	private bool firstCard = true;
+	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
-		base.OnTurnStart(state, combat);
-		if (!combat.isPlayerTurn)
-			return;
+		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
+		if (card.upgrade != Upgrade.None && firstCard)
+		{
+			card.temporaryOverride = true;
+			card.singleUseOverride = true;
+			card.AddImpaired(state);
+			firstCard = false;
+			combat.Queue([
+				new AAddCard
+				{
+					card = card, destination = CardDestination.Hand
+				}
+			]);
+		}
+	}
 
-		combat.Queue([
-			new ADelay(),
-			new ACardOffering
-			{
-				amount = 2,
-				makeAllCardsTemporary = true,
-				overrideUpgradeChances = false,
-				canSkip = false,
-				inCombat = true,
-				artifactPulse = Key()
-			}
-		]);
+	public override void OnTurnEnd(State state, Combat combat)
+	{
+		base.OnTurnEnd(state, combat);
+		firstCard = true;
 	}
 }

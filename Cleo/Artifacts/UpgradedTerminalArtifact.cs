@@ -22,38 +22,44 @@ internal sealed class UpgradedTerminalArtifact : Artifact, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "UpgradedTerminal", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "UpgradedTerminal", "description"]).Localize
 		});
+	}
 
-		DB.story.all[$"ShopkeeperInfinite_{ModEntry.Instance.CleoDeck.Deck.Key()}_UpgradedTerminal"] = new()
+	
+	private int upgradeCount = 0;
+	private int drawCount = 0;
+	public void OnDrawCard(State state, Combat combat)
+	{
+		base.OnDrawCard(state, combat, 1);
+		
+		if (combat.hand[combat.hand.Count - 1].upgrade != Upgrade.None)
 		{
-			type = NodeType.@event,
-			bg = "BGShop",
-			lines = [
-				new CustomSay()
-				{
-					who = ModEntry.Instance.CleoDeck.Deck.Key(),
-					AlternativeTexts = ModEntry.Instance.Localizations.Localize(["artifact", "UpgradedTerminal", "dialogue"]).Split("\n").ToList(),
-					loopTag = "neutral"
-				}
-			]
-		};
-
-		ModEntry.Instance.Harmony.Patch(
-			original: AccessTools.DeclaredMethod(typeof(MapShop), nameof(MapShop.MakeRoute)),
-			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(MapShop_MakeRoute_Postfix))
-		);
+			upgradeCount++;
+			if (upgradeCount >= 2 && drawCount <= 3)
+			{
+				upgradeCount = 0;
+				combat.Queue([
+					new ADrawCard()
+				]);
+				drawCount++;
+			}
+		}
 	}
-
-	public override void OnReceiveArtifact(State state)
+	public override void OnTurnEnd(State state, Combat combat)
 	{
-		base.OnReceiveArtifact(state);
-		state.ship.baseEnergy++;
-	}
-
-	private static void MapShop_MakeRoute_Postfix(State s, ref Route __result)
-	{
-		if (s.EnumerateAllArtifacts().FirstOrDefault(a => a is UpgradedTerminalArtifact) is not { } artifact)
+		base.OnTurnEnd(state, combat);
+		if (!combat.isPlayerTurn)
 			return;
-		__result = Dialogue.MakeDialogueRouteOrSkip(s, DB.story.QuickLookup(s, $"ShopkeeperInfinite_{ModEntry.Instance.CleoDeck.Deck.Key()}_UpgradedTerminal"), OnDone.map);
-		artifact.Pulse();
+		drawCount = 0;
+	}
+	public override void OnCombatEnd(State state)
+	{
+		base.OnCombatEnd(state);
+		drawCount = 0;
+		upgradeCount = 0;
+	}
+
+	public override int? GetDisplayNumber(State s)
+	{
+		return upgradeCount;
 	}
 }

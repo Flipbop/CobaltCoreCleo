@@ -23,7 +23,9 @@ public sealed class ModEntry : SimpleMod
 
 	internal IDeckEntry CleoDeck { get; }
 	internal IPlayableCharacterEntryV2 CleoCharacter { get; }
-	internal IStatusEntry CrunchTimeStatus { get; }
+	internal IStatusEntry CleanUpStatus { get; }
+	internal IStatusEntry NanomachinesStatus { get; }
+	internal IStatusEntry SwapperStatus { get; }
 
 	internal ISpriteEntry ImproveAIcon { get; }
 	internal ISpriteEntry ImproveBIcon { get; }
@@ -167,16 +169,38 @@ public sealed class ModEntry : SimpleMod
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 
-		CrunchTimeStatus = helper.Content.Statuses.RegisterStatus("Clean Up", new()
+		CleanUpStatus = helper.Content.Statuses.RegisterStatus("Clean Up", new()
 		{
 			Definition = new()
 			{
 				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/CleanUp.png")).Sprite,
-				color = new("F7883E"),
+				color = new("ac5400"),
 				isGood = true
 			},
 			Name = this.AnyLocalizations.Bind(["status", "CleanUp", "name"]).Localize,
 			Description = this.AnyLocalizations.Bind(["status", "CleanUp", "description"]).Localize
+		});
+		NanomachinesStatus = helper.Content.Statuses.RegisterStatus("Nanomachines", new()
+		{
+			Definition = new()
+			{
+				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Nanomachines.png")).Sprite,
+				color = new("858585"),
+				isGood = true
+			},
+			Name = this.AnyLocalizations.Bind(["status", "Nanomachines", "name"]).Localize,
+			Description = this.AnyLocalizations.Bind(["status", "Nanomachines", "description"]).Localize
+		});
+		SwapperStatus = helper.Content.Statuses.RegisterStatus("Swapper", new()
+		{
+			Definition = new()
+			{
+				icon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Swapper.png")).Sprite,
+				color = new("9600ff"),
+				isGood = true
+			},
+			Name = this.AnyLocalizations.Bind(["status", "Swapper", "name"]).Localize,
+			Description = this.AnyLocalizations.Bind(["status", "Swapper", "description"]).Localize
 		});
 
 		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()

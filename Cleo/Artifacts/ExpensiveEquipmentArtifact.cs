@@ -24,25 +24,26 @@ internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
 	}
 
 	public override List<Tooltip>? GetExtraTooltips()
-		=> [new TTGlossary("cardtrait.temporary")];
+		=> [new TTGlossary("cardtrait.discount")];
 
-	public override void OnTurnStart(State state, Combat combat)
+	public override void OnCombatStart(State state, Combat combat)
 	{
-		base.OnTurnStart(state, combat);
-		if (!combat.isPlayerTurn)
-			return;
-
-		combat.Queue([
-			new ADelay(),
-			new ACardOffering
+		base.OnCombatStart(state, combat);
+		
+		foreach (var card in state.deck)
+			if (card.GetCurrentCost(state) >= 3 && card.IsUpgradable())
 			{
-				amount = 2,
-				makeAllCardsTemporary = true,
-				overrideUpgradeChances = false,
-				canSkip = false,
-				inCombat = true,
-				artifactPulse = Key()
+				if (card.upgrade == Upgrade.None)
+				{
+					combat.Queue([
+						new AImproveASelf {id = card.uuid},
+					]);
+				}
+				else
+				{
+					card.discount -= -1;
+				}
 			}
-		]);
+		
 	}
 }

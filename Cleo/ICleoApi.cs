@@ -5,7 +5,9 @@ namespace Flipbop.Cleo;
 public interface ICleoApi
 {
 	IDeckEntry CleoDeck { get; }
-	IStatusEntry CrunchTimeStatus { get; }
+	IStatusEntry CleanUpStatus { get; }
+	IStatusEntry NanomachinesStatus { get; }
+	IStatusEntry SwapperStatus { get; }
 
 	ICardTraitEntry ImprovedACardTrait { get; }
 	ICardTraitEntry ImprovedBCardTrait { get; }

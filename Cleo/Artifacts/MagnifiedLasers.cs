@@ -23,23 +23,12 @@ internal sealed class MagnifiedLasersArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "MagnifiedLasers", "description"]).Localize
 		});
 	}
-
-	public override List<Tooltip>? GetExtraTooltips()
-		=> new List<Tooltip> { new TTCard { card = new SmallRepairsCard() } }
-			.Concat(new SmallRepairsCard().GetAllTooltips(MG.inst.g, DB.fakeState))
-			.ToList();
-
-	public override void OnTurnStart(State state, Combat combat)
+	public override int ModifyBaseDamage( int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
 	{
-		base.OnTurnStart(state, combat);
-		if (!combat.isPlayerTurn || combat.turn != 1)
-			return;
-
-		combat.Queue(new AAddCard
+		if (combat?.hand[combat.hand.Count - 1].upgrade != Upgrade.None && card?.Equals(combat?.hand[combat.hand.Count - 1]) == true)
 		{
-			destination = CardDestination.Hand,
-			card = new SmallRepairsCard(),
-			artifactPulse = Key()
-		});
+			return 1;
+		}
+		return 0;
 	}
 }

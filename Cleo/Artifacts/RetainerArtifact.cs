@@ -23,39 +23,19 @@ internal sealed class RetainerArtifact : Artifact, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Retainer", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Retainer", "description"]).Localize
 		});
-
-		ModEntry.Instance.Harmony.Patch(
-			original: AccessTools.DeclaredMethod(typeof(State), nameof(State.SendCardToDeck)),
-			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(State_SendCardToDeck_Postfix))
-		);
 	}
-	
 	public override List<Tooltip>? GetExtraTooltips()
-		=> [
-			new TTGlossary("cardtrait.discount", 1),
-			ModEntry.Instance.KokoroApi.TemporaryUpgrades.UpgradeTooltip,
-		];
-
-	public override void OnCombatStart(State state, Combat combat)
-	{
-		base.OnCombatStart(state, combat);
-	}
-
-	private static void State_SendCardToDeck_Postfix(State __instance, Card card)
-	{
-		if (__instance.IsOutsideRun())
-			return;
-		if (__instance.route is Combat combat && !combat.EitherShipIsDead(__instance))
-			return;
-		if (__instance.EnumerateAllArtifacts().FirstOrDefault(a => a is RetainerArtifact) is not { } artifact)
-			return;
-		if (ModEntry.Instance.Helper.ModData.GetModDataOrDefault<bool>(card, "Retainer"))
-			return;
-
-		artifact.Pulse();
-		ModEntry.Instance.Helper.ModData.SetModData(card, "Retainer", true);
-		card.discount--;
-		if (card.IsUpgradable())
-			__instance.GetCurrentQueue().QueueImmediate(ModEntry.Instance.KokoroApi.TemporaryUpgrades.MakeChooseTemporaryUpgradeAction(card.uuid).AsCardAction);
-	}
+		=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
+		{
+			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+			TitleColor = Colors.action,
+			Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
+		}, new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve B")
+		{
+			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+			TitleColor = Colors.action,
+			Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "description"])
+		}];
 }

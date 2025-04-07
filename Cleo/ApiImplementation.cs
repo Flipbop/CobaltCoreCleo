@@ -7,8 +7,13 @@ public sealed class ApiImplementation : ICleoApi
 	public IDeckEntry CleoDeck
 		=> ModEntry.Instance.CleoDeck;
 
-	public IStatusEntry CrunchTimeStatus
-		=> ModEntry.Instance.CrunchTimeStatus;
+	public IStatusEntry CleanUpStatus
+		=> ModEntry.Instance.CleanUpStatus;
+
+	public IStatusEntry NanomachinesStatus 
+		=> ModEntry.Instance.NanomachinesStatus;
+	public IStatusEntry SwapperStatus 
+		=> ModEntry.Instance.SwapperStatus;
 
 	public ICardTraitEntry ImprovedACardTrait
 		=> ImprovedAManager.Trait;

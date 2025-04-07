@@ -65,12 +65,6 @@
             "description": "<c=boldPink>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
         }
     },
-    "browseSource": {
-        "UpgradableCardsAnywhereToTypeABrowseSource": "Upgrade a Card to type A",
-        "UpgradableCardsAnywhereToTypeBBrowseSource": "Upgrade a Card to type B",
-        "DiscountCardAnywhereBrowseSource": "Discount a Card",
-        "StrengthenBrowseSource": "Strengthen a Card"
-    },
     "cardTrait": {
         "ImprovedA": {
             "name": "Improved A",
@@ -88,7 +82,7 @@
     "status": {
         "CleanUp": {
             "name": "Clean Up",
-            "description": "At the end of your turn, exhaust the leftmost <c=boldPink>{{Non-upgraded}}</c> card in your hand and gain Temp Shield equal to its cost. <c=downside>Reduced by one afterwards.</c>"
+            "description": "At the end of your turn, exhaust the leftmost <c=boldPink>Non-upgraded</c> card in your hand and gain Temp Shield equal to its cost. <c=downside>Reduced by one afterwards.</c>"
         },
         "Swapper": {
             "name": "Swapper",
@@ -106,40 +100,35 @@
     "artifact": {
         "EnhancedTools": {
             "name": "ENHANCED TOOLS",
-            "description": "On your first turn, put a <c=card>Bullet Point</c>, <c=card>Slide Transition</c>, <c=card>Leverage</c>, or <c=card>Brainstorm</c> into your <c=keyword>hand</c>."
+            "description": "Repairs at Repair Yards always fully heal you."
         },
         "ReusableMaterials": {
             "name": "REUSABLE MATERIALS",
-            "description": "Choose 2 unupgraded cards in your deck. Upgrade the first one to type A, and the second to type B."
+            "description": "After playing a card with <c=cardtrait>Improved A or B</c>, gain 1 <c=status>SHIELD</c>."                                                              
         },
         "Kickstart": {
             "name": "KICKSTART",
-            "description": "On your first turn, choose a card in your deck. <c=cardtrait>Discount</c> it."
+            "description": "At the start of each fight <c=keyword>Improve A</c> the first 2 eligible cards you draw."
         },
         "MagnifiedLasers": {
             "name": "MAGNIFIED LASERS",
-            "description": "On your first turn, put a <c=card>Burn Out</c> into your <c=keyword>hand</c>."
+            "description": "If your rightmost card is an upgraded card it has +1 to all <c=keyword>Attacks</c> on it."
         },
         "UpgradedTerminal": {
             "name": "UPGRADED TERMINAL",
-            "description": "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>You can no longer visit repair yards.</c>",
-            "dialogue": [
-                "A penny saved is a penny earned.",
-                "No time to stop, we're very busy.",
-                "I'd rather not."
-            ]
+            "description": "Draw an extra card for every 2 upgraded cards you draw, to a max of 3 per turn."
         },
         "Retainer": {
             "name": "RETAINER",
-            "description": "When a card is added to your deck outside of combat, <c=cardtrait>discount</c> and <c=cardtrait>temporarily upgrade</c> it."
+            "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
         },
         "ExpensiveEquipment": {
             "name": "EXPENSIVE EQUIPMENT",
-            "description": "Each turn, add 1 of 2 <c=cardtrait>temp</c> cards from any of the current crewmates to your <c=keyword>hand</c>."
+            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Discount</c>."
         },
         "PowerEcho": {
             "name": "POWER ECHO",
-            "description": "Each turn, add 1 of 2 <c=cardtrait>temp</c> cards from any of the current crewmates to your <c=keyword>hand</c>."
+            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>Single Use</c>, <c=cardtrait>Temporary</c> <c=keyword>copy</c> of it in your hand."
         },
         "Duo": {
             "CleoBooks": {
@@ -223,9 +212,9 @@
         "DoItYourself": {
             "name": "Do It Yourself",
             "description": {
-                "None": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 Shield.",
-                "A": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs A</c>. Gain 2 Shield.",
-                "B": "Gain 2 <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 Shield."
+                "None": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 <c=status>SHIELD</c>.",
+                "A": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs A</c>. Gain 2 <c=status>SHIELD</c>.",
+                "B": "Gain 2 <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 <c=status>SHIELD</c>."
             }
         },
         "RepairedGlasses": {

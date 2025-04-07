@@ -22,12 +22,14 @@ internal sealed class ReusableMaterialsArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnReceiveArtifact(State state)
+	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
-		base.OnReceiveArtifact(state);
-
-		state.GetCurrentQueue().InsertRange(0, [
-			
-		]);
+		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
+		if (card.GetImprovedA() || card.GetImprovedB())
+		{
+			combat.Queue([
+				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 1 }
+			]);
+		}
 	}
 }

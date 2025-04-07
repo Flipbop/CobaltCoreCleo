@@ -23,21 +23,9 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override List<Tooltip>? GetExtraTooltips()
-		=> [
-			new TTCard { card = new SmallRepairsCard() },
-			new TTCard { card = new SmallRepairsCard() },
-			new TTCard { card = new SmallRepairsCard() },
-			new TTCard { card = new SmallRepairsCard() },
-		];
-
 	public override void OnTurnStart(State state, Combat combat)
 	{
 		base.OnTurnStart(state, combat);
-		if (!combat.isPlayerTurn || combat.turn != 1)
-			return;
-
-		combat.Queue([
-		]);
+		Events.NewShop(state);
 	}
 }
