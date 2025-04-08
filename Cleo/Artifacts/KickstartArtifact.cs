@@ -35,9 +35,17 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 	public override void OnCombatStart(State state, Combat combat)
 	{
 		base.OnCombatStart(state, combat);
-
-		combat.Queue([
-			new AImproveA{Amount = 2}
-		]);
+		int Amount = 2;
+		int index = state.deck.Count -1;
+		while (index >= 0 && Amount > 0)
+		{
+			if (state.deck[index].upgrade == Upgrade.None && state.deck[index].IsUpgradable())
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, state.deck[index], ModEntry.Instance.ImprovedATrait, true, false);
+				ImprovedAExt.AddImprovedA(state.deck[index], state);
+				Amount--;
+			}
+			index--;
+		}
 	}
 }

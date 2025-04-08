@@ -23,43 +23,32 @@ internal sealed class UpgradedTerminalArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "UpgradedTerminal", "description"]).Localize
 		});
 	}
-
-	
-	private int upgradeCount = 0;
-	private int drawCount = 0;
-	public void OnDrawCard(State state, Combat combat)
+	private bool _used = false;
+	public override void OnDrawCard(State state, Combat combat, int count)
 	{
-		base.OnDrawCard(state, combat, 1);
+		int index = combat.hand.Count -1;
+		int upgradeCount = 0;
 		
-		if (combat.hand[combat.hand.Count - 1].upgrade != Upgrade.None)
+		while (index >= 0)
 		{
-			upgradeCount++;
-			if (upgradeCount >= 2 && drawCount <= 3)
+			if (combat.hand[index].upgrade != Upgrade.None)
 			{
-				upgradeCount = 0;
-				combat.Queue([
-					new ADrawCard()
-				]);
-				drawCount++;
-			}
+				upgradeCount++;
+			} 
+			index--;
+		}
+
+		if (upgradeCount >= 3 && !_used)
+		{
+			_used = true;
+			combat.Queue([
+				new ADrawCard()
+			]);
 		}
 	}
 	public override void OnTurnEnd(State state, Combat combat)
 	{
 		base.OnTurnEnd(state, combat);
-		if (!combat.isPlayerTurn)
-			return;
-		drawCount = 0;
-	}
-	public override void OnCombatEnd(State state)
-	{
-		base.OnCombatEnd(state);
-		drawCount = 0;
-		upgradeCount = 0;
-	}
-
-	public override int? GetDisplayNumber(State s)
-	{
-		return upgradeCount;
+		_used = false;
 	}
 }

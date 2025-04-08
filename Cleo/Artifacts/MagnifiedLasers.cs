@@ -25,7 +25,8 @@ internal sealed class MagnifiedLasersArtifact : Artifact, IRegisterable
 	}
 	public override int ModifyBaseDamage( int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
 	{
-		if (combat?.hand[combat.hand.Count - 1].upgrade != Upgrade.None && card?.Equals(combat?.hand[combat.hand.Count - 1]) == true)
+		if (combat?.hand?.Count == 0) return 0; 
+		if (combat?.hand != null && combat.hand[^1].upgrade != Upgrade.None && card?.Equals(combat.hand[^1]) == true)
 		{
 			return 1;
 		}

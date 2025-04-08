@@ -13,12 +13,13 @@ public sealed class ACleanSlate : DynamicWidthCardAction
 		int index = c.hand.Count -1;
 		while (index >= 0)
 		{
-			if (c.hand[index].upgrade == Upgrade.None)
+			Card temp = c.hand[index];
+			if (temp.upgrade == Upgrade.None)
 			{
-				c.hand[index].ExhaustFX();
+				temp.ExhaustFX();
 				Audio.Play(Event.CardHandling);
-				c.hand.Remove(c.hand[index]);
-				c.SendCardToExhaust(s, c.hand[index]);
+				c.hand.Remove(temp);
+				c.SendCardToExhaust(s, temp);
 			} 
 			index--;
 		}

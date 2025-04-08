@@ -23,21 +23,22 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 		});
 	}
 
-	private bool firstCard = true;
+	private bool _firstCard = true;
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.upgrade != Upgrade.None && firstCard)
+		Card newCard = card.CopyWithNewId();
+		if ((card.upgrade != Upgrade.None) && _firstCard)
 		{
-			card.temporaryOverride = true;
-			card.singleUseOverride = true;
-			card.AddImpaired(state);
-			firstCard = false;
+			newCard.temporaryOverride = true;
+			newCard.singleUseOverride = true;
+			_firstCard = false;
 			combat.Queue([
 				new AAddCard
 				{
-					card = card, destination = CardDestination.Hand
-				}
+					card = newCard, destination = CardDestination.Hand
+				},
+				new AImpair {Amount = 1}
 			]);
 		}
 	}
@@ -45,6 +46,6 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 	public override void OnTurnEnd(State state, Combat combat)
 	{
 		base.OnTurnEnd(state, combat);
-		firstCard = true;
+		_firstCard = true;
 	}
 }
