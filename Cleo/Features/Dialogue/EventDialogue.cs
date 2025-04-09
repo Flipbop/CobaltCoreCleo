@@ -80,7 +80,7 @@ internal sealed class EventDialogue : BaseDialogue
 		saySwitchNodes[["LoseCharacterCard"]] = new()
 		{
 			who = cleoType,
-			loopTag = "neutral"
+			loopTag = "nervous"
 		};
 		saySwitchNodes[["CrystallizedFriendEvent"]] = new()
 		{
@@ -90,7 +90,7 @@ internal sealed class EventDialogue : BaseDialogue
 		saySwitchNodes[["ShopKeepBattleInsult"]] = new()
 		{
 			who = cleoType,
-			loopTag = "neutral"
+			loopTag = "nervous"
 		};
 		saySwitchNodes[["DraculaTime"]] = new()
 		{

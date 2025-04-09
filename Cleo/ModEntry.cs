@@ -239,14 +239,6 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = CleoDeck.UniqueName,
-			LoopTag = "happy",
-			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Happy/{i}.png")).Sprite)
-				.ToList()
-		});
 
 		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveA.png"));
 		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));

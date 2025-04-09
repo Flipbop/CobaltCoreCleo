@@ -23,7 +23,7 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 		});
 	}
 
-	private bool firstCard = true;
+	public bool firstCard = true;
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);

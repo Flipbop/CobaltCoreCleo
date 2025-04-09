@@ -39,8 +39,7 @@ internal sealed class DialogueExtensions
 		);
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
-			prefix: new HarmonyMethod(GetType(), nameof(AStatus_Begin_Prefix)),
-			postfix: new HarmonyMethod(GetType(), nameof(AStatus_Begin_Postfix))
+			prefix: new HarmonyMethod(GetType(), nameof(AStatus_Begin_Prefix))
 		);
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.NormalDamage)),
@@ -76,16 +75,7 @@ internal sealed class DialogueExtensions
 
 	private static void AStatus_Begin_Prefix(AStatus __instance, State s, ref int __state)
 		=> __state = __instance.targetPlayer ? s.ship.Get(__instance.status) : 0;
-
-
-	private static void AStatus_Begin_Postfix(AStatus __instance, State s, Combat c, ref int __state)
-	{
-		if (!__instance.targetPlayer)
-			return;
-
-		if (__instance.status == ModEntry.Instance.CleoCharacter.MissingStatus.Status && __state > 0 && s.ship.Get(ModEntry.Instance.CleoCharacter.MissingStatus.Status) <= 0)
-			c.QueueImmediate(new ADummyAction { dialogueSelector = $".{ModEntry.Instance.Package.Manifest.UniqueName}::ReturningFromMissing" });
-	}
+	
 
 	private static void Ship_NormalDamage_Prefix(Ship __instance, ref int __state)
 		=> __state = __instance.Get(Status.shield) + __instance.Get(Status.tempShield);

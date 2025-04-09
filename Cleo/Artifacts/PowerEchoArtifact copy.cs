@@ -23,7 +23,7 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 		});
 	}
 
-	private bool _firstCard = true;
+	public bool _firstCard = true;
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);

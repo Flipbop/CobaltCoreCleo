@@ -135,7 +135,7 @@
     },
     "HitArmor": {
         "Basic": [
-            [ "Armor never gets old." ]
+            [ "Dang armor always in the way." ]
         ]
     },
     "ExcessEnergy": {
@@ -156,12 +156,6 @@
     "PlayedRecycle": {
         "Basic": [
             [ "Let's circle back to this later." ]
-        ]
-    },
-    "NewNonCleoNonTrashTempCard": {
-        "Basic": [
-            [ "Time to spearhead something new." ],
-            [ "Think outside the box." ]
         ]
     },
     "StartedBattle": {
@@ -185,11 +179,6 @@
         "Basic": [
             [ "Wow this is slow." ],
             [ "Max was right, these things DO have solitaire!" ]
-        ]
-    },
-    "GoingMissing": {
-        "Basic": [
-            [ "<< Sorry, the number you are trying to reach is not available at this time. >>" ]
         ]
     },
     "ReturningFromMissing": {

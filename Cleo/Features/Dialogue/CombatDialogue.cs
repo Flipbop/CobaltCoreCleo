@@ -379,7 +379,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerRun = true,
 				allPresent = [cleoType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cleoType, loopTag = "squint" },
 				],
 			};
 
@@ -418,18 +418,6 @@ internal sealed class CombatDialogue : BaseDialogue
 			newNodes[["PlayedRecycle", "Basic", i.ToString()]] = new()
 			{
 				lookup = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::PlayedRecycle"],
-				allPresent = [cleoType],
-				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
-				],
-			};
-
-		for (var i = 0; i < 2; i++)
-			newNodes[["NewNonCleoNonTrashTempCard", "Basic", i.ToString()]] = new()
-			{
-				lookup = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::NewNonCleoNonTrashTempCard"],
-				oncePerCombat = true,
-				oncePerCombatTags = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::NewNonCleoNonTrashTempCard"],
 				allPresent = [cleoType],
 				lines = [
 					new Say { who = cleoType, loopTag = "neutral" },
@@ -486,18 +474,6 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerRun = true,
 				turnStart = true,
 				allPresent = [cleoType],
-				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
-				],
-			};
-
-		for (var i = 0; i < 1; i++)
-			newNodes[["GoingMissing", "Basic", i.ToString()]] = new()
-			{
-				priority = true,
-				lastTurnPlayerStatuses = [ModEntry.Instance.CleoCharacter.MissingStatus.Status],
-				oncePerCombatTags = ["cleoWentMissing"],
-				oncePerRun = true,
 				lines = [
 					new Say { who = cleoType, loopTag = "neutral" },
 				],

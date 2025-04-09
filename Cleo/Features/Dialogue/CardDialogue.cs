@@ -19,7 +19,7 @@ internal sealed class CardDialogue : BaseDialogue
 		};
 		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, [], [], e);
 
-		newNodes[["Played", "Quarter1"]] = new()
+		newNodes[["Played", "SmallRepairs"]] = new()
 		{
 			lookup = [$"Played::{new SmallRepairsCard().Key()}"],
 			priority = true,
@@ -31,7 +31,7 @@ internal sealed class CardDialogue : BaseDialogue
 		};
 
 		for (var i = 0; i < 3; i++)
-			newNodes[["Played", "Deadline", i.ToString()]] = new()
+			newNodes[["Played", "ApologizeNextLoop", i.ToString()]] = new()
 			{
 				lookup = [$"Played::{new ApologizeNextLoopCard().Key()}"],
 				priority = true,
@@ -43,21 +43,8 @@ internal sealed class CardDialogue : BaseDialogue
 				],
 			};
 
-		for (var i = 0; i < 3; i++)
-			newNodes[["Played", "LayoutOrStrategize", i.ToString()]] = new()
-			{
-				lookup = [$"Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize"],
-				priority = true,
-				oncePerRun = true,
-				oncePerCombatTags = [$"Played::{ModEntry.Instance.Package.Manifest.UniqueName}::LayoutOrStrategize"],
-				allPresent = [cleoType],
-				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
-				],
-			};
-
 		for (var i = 0; i < 2; i++)
-			newNodes[["Played", "Downsize", i.ToString()]] = new()
+			newNodes[["Played", "SeekerBarrage", i.ToString()]] = new()
 			{
 				lookup = [$"Played::{new SeekerBarrageCard().Key()}"],
 				priority = true,

@@ -32,8 +32,9 @@ internal sealed class CleanSlateCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 0 : 1,
-			exhaust = true,
+			cost = upgrade == Upgrade.B ? 3 : 2,
+			exhaust = upgrade != Upgrade.B,
+			retain = upgrade == Upgrade.A,
 			description = ModEntry.Instance.Localizations.Localize(["card", "CleanSlate", "description", upgrade.ToString()]),
 		};
 

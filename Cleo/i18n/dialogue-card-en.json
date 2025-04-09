@@ -1,21 +1,17 @@
 {
     "Played": {
-        "Quarter1": [
-            "Time to get the ball rolling."
+        "SmallRepairs": [
+            "I can fix it!"
         ],
-        "Deadline": [
-            [ "About time we finished this, no?" ],
-            [ "This has been fun, but let's wrap things up." ],
-            [ "Let's touch base on your imminent demise." ]
+        "ApologizeNextLoop": [
+            [ "Apologize. I'm not asking." ],
+            [ "Goodbye." ],
+            [ "You thought you stood a chance?" ]
         ],
-        "LayoutOrStrategize": [
-            [ "I think I have an idea." ],
-            [ "Something like this should do the trick." ],
-            [ "Let's see what I can bring to the table." ]
-        ],
-        "Downsize": [
-            [ "Sorry, looks like we're going to have to let you go." ],
-            [ "Make sure to clean out your desk by the end of the fight." ]
+        "SeekerBarrage": [
+            [ "Dodge this." ],
+            [ "Enough playing around." ],
+            [ "Goodbye." ]
         ]
     }
 }
