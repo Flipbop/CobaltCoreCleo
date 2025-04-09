@@ -37,12 +37,11 @@ internal sealed class UpgradedTerminalArtifact : Artifact, IRegisterable
 			} 
 			index--;
 		}
-
 		if (upgradeCount >= 3 && !_used)
 		{
 			_used = true;
 			combat.Queue([
-				new ADrawCard()
+				new ADrawCard {count = 1}
 			]);
 		}
 	}

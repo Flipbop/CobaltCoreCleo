@@ -14,7 +14,7 @@ internal static class ImpairedExt
 
 	public static void AddImpaired(this Card self, State s)
 	{
-		if (!self.GetImpaired() && self.upgrade != Upgrade.None && self.IsUpgradable())
+		if (!self.GetImpaired() && self.upgrade != Upgrade.None)
 		{
 			SetImpaired(self, true);
 			_upgradeContainer = self.upgrade;
