@@ -9,27 +9,27 @@
     },
     "action": {
         "UpgradesInHand": {
-            "name": "Upgraded Cards in Hand",
+            "name": " Upgraded Cards in Hand",
             "description": "Equal to the number of Upgraded cards in your hand."
         },
         "UpgradesInDiscard": {
-            "name": "Upgraded Cards in Discard",
+            "name": " Upgraded Cards in Discard",
             "description": "Equal to the number of Upgraded cards in your Discard pile."
         },
         "UpgradesInExhaust": {
-            "name": "Upgraded Cards in Exhaust",
+            "name": " Upgraded Cards in Exhaust",
             "description": "Equal to the number of Upgraded cards in your Exhaust pile."
         },
         "UpgradesInDraw": {
-            "name": "Upgraded Cards in Draw",
+            "name": " Upgraded Cards in Draw",
             "description": "Equal to the number of Upgraded cards in your Draw pile."
         },
         "ImproveA": {
-            "name": "Improve A",
+            "name": "  Improve A",
             "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveB": {
-            "name": "Improve B",
+            "name": "  Improve B",
             "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "Impair": {
@@ -37,19 +37,19 @@
             "description": "<c=boldPink>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "ImproveAHand": {
-            "name": "Improve Hand A",
+            "name": "  Improve Hand A",
             "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveBHand": {
-            "name": "Improve Hand B",
+            "name": "  Improve Hand B",
             "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImpairHand": {
-            "name": "Impair Hand",
+            "name": "  Impair Hand",
             "description": "<c=boldPink>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "DiscountHand": {
-            "name": "Discount Hand",
+            "name": "  Discount Hand",
             "description": "<c=cardtrait>Discount</c> every card in your hand."
         },
         "SelfImproveA": {
@@ -79,23 +79,6 @@
             "description": "The next time this card is played it acts as a <c=boldPink>Non-upgraded</c> version of itself. Lost on play and the end of the fight."
         }
     },
-    "status": {
-        "CleanUp": {
-            "name": "Clean Up",
-            "description": "At the end of your turn, exhaust the leftmost <c=boldPink>Non-upgraded</c> card in your hand and gain Temp Shield equal to its cost. <c=downside>Reduced by one afterwards.</c>"
-        },
-        "Swapper": {
-            "name": "Swapper",
-            "description": "During your turn, you may spend this on a card. If it is not upgraded, give it <c=cardtrait>Improved A</c>. Otherwise, give it <c=cardtrait>Discount</c> and <c=cardtrait>Impaired</c>."
-        },
-        "Nanomachines": {
-            "name": "Nanomachines",
-            "description": "When you are hit by an attack gain Temp Shield equal to the attack's damage. <c=downside>Goes away at the end of the turn.</c>"
-        }
-
-    },
-
-
 
     "artifact": {
         "EnhancedTools": {
@@ -116,7 +99,7 @@
         },
         "UpgradedTerminal": {
             "name": "UPGRADED TERMINAL",
-            "description": "Draw an extra card for every 2 upgraded cards you draw, to a max of 3 per turn."
+            "description": "If you have 3 <c=keyword>Upgraded</c> cards in hand when you draw a card, <c=keyword>draw an extra card</c>, once per turn."
         },
         "Retainer": {
             "name": "RETAINER",
