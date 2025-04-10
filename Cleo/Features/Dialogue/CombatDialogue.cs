@@ -37,8 +37,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cleoType, Deck.dizzy.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
-				new Say { who = Deck.dizzy.Key(), loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
 			],
 		};
 		newNodes[["TookDamage", "Riggs"]] = new()
@@ -47,7 +47,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cleoType, Deck.riggs.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "squint" },
 				new Say { who = Deck.riggs.Key(), loopTag = "neutral" },
 			],
 		};
@@ -78,7 +78,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.hacker.Key()],
 			lines = [
 				new Say { who = Deck.hacker.Key(), loopTag = "mad" },
-				new Say { who = cleoType, loopTag = "flashing" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 		newNodes[["TookDamage", "Books"]] = new()
@@ -97,7 +97,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cleoType, "comp"],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "neutral" },
 				new Say { who = "comp", loopTag = "grumpy" },
 			],
 		};
@@ -134,7 +134,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.dizzy.Key()],
 			lines = [
 				new Say { who = Deck.dizzy.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "explaining" },
 			],
 		};
 		newNodes[["DealtDamage", "Riggs"]] = new()
@@ -155,7 +155,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.peri.Key()],
 			lines = [
 				new Say { who = Deck.peri.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "explaining" },
 			],
 		};
 		newNodes[["DealtDamage", "Isaac"]] = new()
@@ -175,8 +175,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToEnemyThisTurn = 1,
 			allPresent = [cleoType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
-				new Say { who = Deck.eunice.Key(), loopTag = "mad" },
+				new Say { who = cleoType, loopTag = "explaining" },
+				new Say { who = Deck.eunice.Key(), loopTag = "smug" },
 			],
 		};
 		newNodes[["DealtDamage", "Max"]] = new()
@@ -186,7 +186,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.hacker.Key()],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Say { who = Deck.hacker.Key(), loopTag = "squint" },
+				new Say { who = Deck.hacker.Key(), loopTag = "neutral" },
 			],
 		};
 		newNodes[["DealtDamage", "Books"]] = new()
@@ -206,7 +206,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, "comp"],
 			lines = [
 				new Say { who = "comp", loopTag = "smug" },
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 		#endregion
@@ -267,7 +267,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Basic", "1"]] = new()
@@ -277,7 +277,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Basic", "2"]] = new()
@@ -298,8 +298,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType, Deck.dizzy.Key()],
 			lines = [
-				new Say { who = Deck.dizzy.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
+				new Say { who = cleoType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Riggs"]] = new()
@@ -310,7 +310,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.riggs.Key()],
 			lines = [
 				new Say { who = Deck.riggs.Key(), loopTag = "nervous" },
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
 		newNodes[["AboutToDie", "Peri"]] = new()
@@ -320,8 +320,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType, Deck.peri.Key()],
 			lines = [
-				new Say { who = Deck.peri.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = Deck.peri.Key(), loopTag = "mad" },
+				new Say { who = cleoType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Isaac"]] = new()
@@ -331,8 +331,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType, Deck.goat.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
-				new Say { who = Deck.goat.Key(), loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = Deck.goat.Key(), loopTag = "sad" },
 			],
 		};
 		newNodes[["AboutToDie", "Drake"]] = new()
@@ -342,7 +342,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "fiddling" },
+				new Say { who = cleoType, loopTag = "squint" },
 				new Say { who = Deck.eunice.Key(), loopTag = "mad" },
 			],
 		};
@@ -354,7 +354,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.shard.Key()],
 			lines = [
 				new Say { who = cleoType, loopTag = "squint" },
-				new Say { who = Deck.shard.Key(), loopTag = "intense" },
+				new Say { who = Deck.shard.Key(), loopTag = "squint" },
 			],
 		};
 		newNodes[["AboutToDie", "CAT"]] = new()
@@ -364,7 +364,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			allPresent = [cleoType, "comp"],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "nervous" },
 				new Say { who = "comp", loopTag = "mad" },
 			],
 		};
@@ -508,8 +508,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerCombatTags = ["OverheatGeneric"],
 			allPresent = [cleoType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
-				new Say { who = Deck.eunice.Key(), loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = Deck.eunice.Key(), loopTag = "smug" },
 			],
 		};
 		#endregion

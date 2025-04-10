@@ -38,7 +38,7 @@ internal sealed class ImprovedAManager
 		ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnPlayerPlayCard),
 			(State state, Card card) =>
 		{
-			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait) && !state.EnumerateAllArtifacts().Any((Artifact a) => a.GetType() == typeof(RetainerArtifact)))
+			if (ModEntry.Instance.Helper.Content.Cards.IsCardTraitActive(state, card, Trait) && !state.EnumerateAllArtifacts().Any((Artifact a) => a is RetainerArtifact))
 			{
 				card.RemoveImprovedA(state);
 			}

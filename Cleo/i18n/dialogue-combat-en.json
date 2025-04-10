@@ -11,7 +11,7 @@
         ],
         "Riggs": [
             /*CLeo*/ "Where are our shields?",
-            /*Riggs*/ "Why do we need shields when we could just move out of the way?"
+            /*Riggs*/ "Just move out of the way!"
         ],
         "Isaac": [
             /*Isaac*/ "Not good!",
@@ -64,7 +64,7 @@
         ],
         "Drake": [
             /*Cleo*/ "Feels good.",
-            /*Drake*/ "Oh yeah? Watch this!"
+            /*Drake*/ "Sure does."
         ],
         "Max": [
             /*Cleo*/ "That's gotta hurt!",

@@ -2,14 +2,14 @@
     "character": {
         "name": "Cleo",
         "description": [
-            "<c=2D3F61>CLEO</c>",
+            "<c=8A3388>CLEO</c>",
             "Your shopkeeper.",
             "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
         ]
     },
     "action": {
         "UpgradesInHand": {
-            "name": " Upgraded Cards in Hand",
+            "name": "Upgraded Cards in Hand",
             "description": "Equal to the number of Upgraded cards in your hand."
         },
         "UpgradesInDiscard": {
@@ -25,11 +25,11 @@
             "description": "Equal to the number of Upgraded cards in your Draw pile."
         },
         "ImproveA": {
-            "name": "  Improve A",
+            "name": "   Improve A",
             "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveB": {
-            "name": "  Improve B",
+            "name": "   Improve B",
             "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "Impair": {
@@ -37,19 +37,19 @@
             "description": "<c=boldPink>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "ImproveAHand": {
-            "name": "  Improve Hand A",
+            "name": "     Improve Hand A",
             "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveBHand": {
-            "name": "  Improve Hand B",
+            "name": "     Improve Hand B",
             "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImpairHand": {
-            "name": "  Impair Hand",
+            "name": "    Impair Hand",
             "description": "<c=boldPink>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "DiscountHand": {
-            "name": "  Discount Hand",
+            "name": "    Discount Hand",
             "description": "<c=cardtrait>Discount</c> every card in your hand."
         },
         "SelfImproveA": {

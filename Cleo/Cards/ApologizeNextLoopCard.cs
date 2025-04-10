@@ -46,13 +46,13 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AApologizeStrong {Amount = 1},
+				new AApologize {dmgRamp = 2, peirce = false},
 			],
 			Upgrade.B => [
-				new AApologizePierce {Amount = 1},
+				new AApologize {dmgRamp = 1, peirce = true},
 			],
 			_ => [
-				new AApologize {Amount = 1},
+				new AApologize {dmgRamp = 1, peirce = false},
 			]
 		};
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
