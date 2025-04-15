@@ -62,7 +62,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(DoItYourselfCard),
 		typeof(RepairedGlassesCard),
 		typeof(ScalpedPartsCard),
-		typeof(SwapNotesCard), 
+		typeof(MaximumEffortCard), 
 		typeof(NecessarySacrificeCard),
 	];
 
@@ -71,7 +71,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(PermaFixCard),
 		typeof(CleanSlateCard),
 		typeof(ApologizeNextLoopCard),
-		typeof(HardResetCard),
+		typeof(FlexibleDefenseCard),
 	];
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [
@@ -226,7 +226,7 @@ public sealed class ModEntry : SimpleMod
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CleoDeck.UniqueName,
-			LoopTag = "explaining",
+			LoopTag = "explain",
 			Frames = Enumerable.Range(0, 5)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Explain/{i}.png")).Sprite)
 				.ToList()

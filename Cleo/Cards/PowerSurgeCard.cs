@@ -43,12 +43,12 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 				new ADrawCard {count = 1},
 				new AImproveBHand(),
 				new ADiscountHand { Amount = -1},
-				new ADiscard {count = c.hand.Count + 1}
+				new ADiscard(),
 			],
 			_ => [
 				new ADrawCard {count = 2},
 				new AImproveAHand(),
-				new ADiscard {count = c.hand.Count + 1}
+				new ADiscard(),
 			]
 		};
 }

@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.Cleo;
 
-internal sealed class SwapNotesCard : Card, IRegisterable
+internal sealed class FlexibleDefenseCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class SwapNotesCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SwapNotes", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FlexibleDefense", "name"]).Localize
 		});
 	}
 
@@ -27,27 +27,22 @@ internal sealed class SwapNotesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
-			infinite = upgrade == Upgrade.B,
+			cost = upgrade == Upgrade.B? 3 : 2,
+			exhaust = upgrade == Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AImpair { Amount = 1 },
-				new AShuffleHand(),
-				new AImproveA { Amount = 3 },
+				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 2},
+				new AStatus {targetPlayer = true, status = Status.tempShield, statusAmount = 2},
 			],
 			Upgrade.B => [
-				new AImpair { Amount = 1 },
-				new AShuffleHand(),
-				new AImproveB { Amount = 1 },
+				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 4},
 			],
 			_ => [
-				new AImpair { Amount = 1 },
-				new AShuffleHand(),
-				new AImproveA { Amount = 2 },
+				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 2},
 			]
 		};
 }

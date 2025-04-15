@@ -153,11 +153,6 @@
             [ "This is gross." ]
         ]
     },
-    "PlayedRecycle": {
-        "Basic": [
-            [ "Let's circle back to this later." ]
-        ]
-    },
     "StartedBattle": {
         "Basic": [
             [ "I can work with this." ]

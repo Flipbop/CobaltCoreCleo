@@ -134,7 +134,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.dizzy.Key()],
 			lines = [
 				new Say { who = Deck.dizzy.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "explaining" },
+				new Say { who = cleoType, loopTag = "explain" },
 			],
 		};
 		newNodes[["DealtDamage", "Riggs"]] = new()
@@ -155,7 +155,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.peri.Key()],
 			lines = [
 				new Say { who = Deck.peri.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "explaining" },
+				new Say { who = cleoType, loopTag = "explain" },
 			],
 		};
 		newNodes[["DealtDamage", "Isaac"]] = new()
@@ -175,7 +175,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToEnemyThisTurn = 1,
 			allPresent = [cleoType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "explaining" },
+				new Say { who = cleoType, loopTag = "explain" },
 				new Say { who = Deck.eunice.Key(), loopTag = "smug" },
 			],
 		};
@@ -408,16 +408,6 @@ internal sealed class CombatDialogue : BaseDialogue
 			newNodes[["TrashHand", "Basic", i.ToString()]] = new()
 			{
 				handFullOfTrash = true,
-				allPresent = [cleoType],
-				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
-				],
-			};
-
-		for (var i = 0; i < 1; i++)
-			newNodes[["PlayedRecycle", "Basic", i.ToString()]] = new()
-			{
-				lookup = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::PlayedRecycle"],
 				allPresent = [cleoType],
 				lines = [
 					new Say { who = cleoType, loopTag = "neutral" },

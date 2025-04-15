@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.Cleo;
 
-internal sealed class HardResetCard : Card, IRegisterable
+internal sealed class MaximumEffortCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class HardResetCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "HardReset", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "MaximumEffort", "name"]).Localize
 		});
 	}
 
@@ -28,23 +28,26 @@ internal sealed class HardResetCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 2,
-			
+			infinite = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AImpair {Amount = 3},
-				new ADiscountHand {Amount = -1}
+				new AAttack{ damage = GetDmg(s, 2)},
+				new AImpairToAction { Amount = 1, action = new AAttack{ damage = GetDmg(s, 2)} },
+				new AImpairToAction { Amount = 1, action = new AAttack{ damage = GetDmg(s, 2)} },
 			],
 			Upgrade.B => [
-				new AImpairHand(),
-				new AImproveB {Amount = 3}
+				new AImpairToAction { Amount = 2, action = new AAttack{ damage = GetDmg(s, 3)} },
+				new AImpairToAction { Amount = 1, action = new AAttack{ damage = GetDmg(s, 2)} },
+				new AImpairToAction { Amount = 2, action = new AAttack{ damage = GetDmg(s, 4)} },
 			],
 			_ => [
-				new AImpairHand(),
-				new ADiscountHand {Amount = -1}
+				new AImpairToAction { Amount = 1, action = new AAttack{ damage = GetDmg(s, 2)} },
+				new AImpairToAction { Amount = 1, action = new AAttack{ damage = GetDmg(s, 2)} },
+				new AImpairToAction { Amount = 1, action = new AAttack{ damage = GetDmg(s, 2)} },
 			]
 		};
 }

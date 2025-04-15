@@ -27,7 +27,7 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = upgrade == Upgrade.A ? 1 : 2,
 			retain = upgrade == Upgrade.B,
 			exhaust = true,
 			description = ModEntry.Instance.Localizations.Localize(["card", "NecessarySacrifice", "description", upgrade.ToString()]),
@@ -36,7 +36,7 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new AStatus { targetPlayer = true, status = Status.shield, statusAmount = s.ship.GetMaxShield() },
-			new AImpair { Amount = upgrade == Upgrade.A ? 1 : 2}
+			new AImpairToAction {Amount = 1, 
+				action = new AStatus { targetPlayer = true, status = Status.shield, statusAmount = s.ship.GetMaxShield() }}
 		];
 }

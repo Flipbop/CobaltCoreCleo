@@ -37,11 +37,11 @@
             "description": "<c=boldPink>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "ImproveAHand": {
-            "name": "     Improve Hand A",
+            "name": "      Improve Hand A",
             "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveBHand": {
-            "name": "     Improve Hand B",
+            "name": "      Improve Hand B",
             "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImpairHand": {
@@ -206,15 +206,15 @@
         "ScalpedParts": {
             "name": "Scalped Parts"
         },
-        "SwapNotes": {
-            "name": "Swap Notes"
+        "MaximumEffort": {
+            "name": "Maximum Effort"
         },
         "NecessarySacrifice": {
             "name": "Necessary Sacrifice",
             "description": {
-                "None": "Gain <c=status>SHIELD</c> equal to your max Shield. Impair 2.",
-                "A": "Gain <c=status>SHIELD</c> equal to your max Shield. Impair 1.",
-                "B": "Gain <c=status>SHIELD</c> equal to your max Shield. Impair 2."
+                "None": "<c=keyword>Impair 1</c> to gain <c=status>SHIELD</c> equal to your max Shield.",
+                "A": "<c=keyword>Impair 1</c> to gain <c=status>SHIELD</c> equal to your max Shield.",
+                "B": "<c=keyword>Impair 1</c> to gain <c=status>SHIELD</c> equal to your max Shield."
             }
         },
         "SeekerBarrage": {
@@ -250,8 +250,8 @@
             }
         },
 
-        "HardReset": {
-            "name": "Hard Reset"
+        "FlexibleDefense": {
+            "name": "Flexible Defense"
         },
         "SmallRepairs": {
             "name": "Small Repairs"

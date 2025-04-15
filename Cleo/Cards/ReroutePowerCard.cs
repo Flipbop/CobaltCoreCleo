@@ -34,12 +34,10 @@ internal sealed class ReroutePowerCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AImpair {Amount = 2},
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 6 },
+				new AImpairToAction {Amount = 2, action = new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 6 }}
 			],
 			_ => [
-				new AImpair {Amount = 1},
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3 },
+				new AImpairToAction {Amount = 1, action = new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3 }}
 			]
 		};
 }

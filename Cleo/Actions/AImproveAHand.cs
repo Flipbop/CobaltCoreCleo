@@ -17,7 +17,7 @@ public sealed class AImproveAHand : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade == Upgrade.None)
 			{
-				if (!c.hand[index].GetImpaired() && c.hand[index].IsUpgradable())
+				if (!c.hand[index].GetImpaired() && c.hand[index].IsUpgradable() && c.hand[index].GetMeta().deck != Deck.trash)
 				{
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
 					ImprovedAExt.AddImprovedA(c.hand[index], s);
