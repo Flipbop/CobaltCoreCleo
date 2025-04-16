@@ -43,9 +43,14 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 		}
 	}
 
-	public override void OnTurnEnd(State state, Combat combat)
+	public override void OnTurnStart(State state, Combat combat)
 	{
-		base.OnTurnEnd(state, combat);
+		base.OnTurnStart(state, combat);
+		_firstCard = true;
+	}
+	public override void OnCombatEnd(State state)
+	{
+		base.OnCombatEnd(state);
 		_firstCard = true;
 	}
 }

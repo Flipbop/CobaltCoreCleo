@@ -29,7 +29,7 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade != Upgrade.None ? 0 : 1,
+			cost = 1,
 			floppable = upgrade == Upgrade.None
 		};
 

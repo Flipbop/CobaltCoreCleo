@@ -14,9 +14,17 @@ public sealed class AImproveASelf : DynamicWidthCardAction
 		if (s.FindCard(id) is Card card)
 		{
 			base.Begin(g, s, c);
-			ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedATrait, true, false);
-			ImprovedAExt.AddImprovedA(card, s);
-			Audio.Play(Event.CardHandling);
+			if (s.FindCard(id)!.GetImpaired())
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImpairedTrait, false, false);
+				ImpairedExt.RemoveImpaired(card, s, false);
+				Audio.Play(Event.CardHandling);
+			} else if (s.FindCard(id)!.upgrade == Upgrade.None)
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedATrait, true, false);
+				ImprovedAExt.AddImprovedA(card, s);
+				Audio.Play(Event.CardHandling);
+			}
 		}
 	}
 

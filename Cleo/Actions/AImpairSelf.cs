@@ -15,10 +15,21 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 		if (s.FindCard(id) is Card card)
 		{
 			base.Begin(g, s, c);
-			ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImpairedTrait, true,
-				false);
-			ImpairedExt.AddImpaired(card, s);
-			Audio.Play(Event.CardHandling);
+			if (s.FindCard(id)!.GetImprovedA() || s.FindCard(id)!.GetImprovedB())
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedATrait, false, false);
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedBTrait, false, false);
+				ImprovedAExt.RemoveImprovedA(s.FindCard(id)!, s);
+				ImprovedBExt.RemoveImprovedB(s.FindCard(id)!, s);
+				Audio.Play(Event.CardHandling);
+			}
+			else if (s.FindCard(id)!.upgrade != Upgrade.None)
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImpairedTrait, true,
+					false);
+				ImpairedExt.AddImpaired(card, s);
+				Audio.Play(Event.CardHandling);
+			}
 		}
 	}
 

@@ -39,12 +39,12 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new SmallRepairsCard { upgrade = Upgrade.A } },
+				new AAddCard { amount = 1, card = new SmallRepairsCard { upgrade = Upgrade.A }, destination = CardDestination.Deck},
 				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
 			],
 			_ =>
 			[
-				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new SmallRepairsCard() },
+				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new SmallRepairsCard(), destination = CardDestination.Deck },
 				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
 			]
 		};

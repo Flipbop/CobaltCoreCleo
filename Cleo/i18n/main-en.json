@@ -10,43 +10,43 @@
     "action": {
         "UpgradesInHand": {
             "name": "Upgraded Cards in Hand",
-            "description": "Equal to the number of Upgraded cards in your hand."
+            "description": "Equal to the number of upgraded cards in your hand."
         },
         "UpgradesInDiscard": {
             "name": " Upgraded Cards in Discard",
-            "description": "Equal to the number of Upgraded cards in your Discard pile."
+            "description": "Equal to the number of upgraded cards in your Discard pile."
         },
         "UpgradesInExhaust": {
             "name": " Upgraded Cards in Exhaust",
-            "description": "Equal to the number of Upgraded cards in your Exhaust pile."
+            "description": "Equal to the number of upgraded cards in your Exhaust pile."
         },
         "UpgradesInDraw": {
             "name": " Upgraded Cards in Draw",
-            "description": "Equal to the number of Upgraded cards in your Draw pile."
+            "description": "Equal to the number of upgraded cards in your Draw pile."
         },
         "ImproveA": {
             "name": "   Improve A",
-            "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveB": {
             "name": "   Improve B",
-            "description": "<c=boldPink>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "Impair": {
             "name": "Impair",
-            "description": "<c=boldPink>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "ImproveAHand": {
             "name": "      Improve Hand A",
-            "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveBHand": {
             "name": "      Improve Hand B",
-            "description": "<c=boldPink>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImpairHand": {
             "name": "    Impair Hand",
-            "description": "<c=boldPink>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "DiscountHand": {
             "name": "    Discount Hand",
@@ -54,64 +54,64 @@
         },
         "SelfImproveA": {
             "name": "Self Improve A",
-            "description": "<c=boldPink>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
         },
         "SelfImproveB": {
             "name": "Self Improve B",
-            "description": "<c=boldPink>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
         },
         "SelfImpair": {
             "name": "Self Impair",
-            "description": "<c=boldPink>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
+            "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
         }
     },
     "cardTrait": {
         "ImprovedA": {
             "name": "Improved A",
-            "description": "The next time this card is played it acts as an <c=boldPink>Upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
         },
         "ImprovedB": {
             "name": "Improved B",
-            "description": "The next time this card is played it acts as an <c=boldPink>Upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
         },
         "Impaired": {
             "name": "Impaired",
-            "description": "The next time this card is played it acts as a <c=boldPink>Non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
         }
     },
 
     "artifact": {
         "EnhancedTools": {
             "name": "ENHANCED TOOLS",
-            "description": "The first time you play an <c=cardtrait>Improved</c> card each fight, <c=keyword>Improve</c> another card with the same upgrade."
+            "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
         },
         "ReusableMaterials": {
             "name": "REUSABLE MATERIALS",
-            "description": "After playing a card with <c=cardtrait>Improved A or B</c>, gain 1 <c=status>SHIELD</c>."                                                              
+            "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."                                                              
         },
         "Kickstart": {
             "name": "KICKSTART",
-            "description": "At the start of each fight <c=keyword>Improve A</c> the first 2 eligible cards you draw."
+            "description": "At the start of each fight <c=action>improve A</c> the first 2 eligible cards you draw."
         },
         "MagnifiedLasers": {
             "name": "MAGNIFIED LASERS",
-            "description": "If your rightmost card is an upgraded card it has +1 to all <c=keyword>Attacks</c> on it."
+            "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
         },
         "UpgradedTerminal": {
             "name": "UPGRADED TERMINAL",
-            "description": "If you have 3 <c=keyword>Upgraded</c> cards in hand when you draw a card, <c=keyword>draw an extra card</c>, once per turn."
+            "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
         },
         "Retainer": {
             "name": "RETAINER",
-            "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
+            "description": "Cards no longer lose <c=cardtrait>improved</c> when played."
         },
         "ExpensiveEquipment": {
             "name": "EXPENSIVE EQUIPMENT",
-            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Discount</c>."
+            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
         },
         "PowerEcho": {
             "name": "POWER ECHO",
-            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>Single Use</c>, <c=cardtrait>Temporary</c> <c=keyword>copy</c> of it in your hand."
+            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
         },
         "Duo": {
             "CleoBooks": {
@@ -195,9 +195,9 @@
         "DoItYourself": {
             "name": "Do It Yourself",
             "description": {
-                "None": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 <c=status>SHIELD</c>.",
-                "A": "Gain a <c=cardtrait>temporary</c> <c=card>Small Repairs A</c>. Gain 2 <c=status>SHIELD</c>.",
-                "B": "Gain 2 <c=cardtrait>temporary</c> <c=card>Small Repairs</c>. Gain 2 <c=status>SHIELD</c>."
+                "None": "Add a <c=cardtrait>temporary</c> <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
+                "A": "Add a <c=cardtrait>temporary</c> <c=card>Small Repairs A</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
+                "B": "Add 2 <c=cardtrait>temporary</c> <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>."
             }
         },
         "RepairedGlasses": {
