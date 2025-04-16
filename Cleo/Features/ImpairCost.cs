@@ -12,7 +12,7 @@ internal sealed class ImpairedCostManager
     public ImpairedCostManager()
     {
         ModEntry.Instance.KokoroApi.ActionCosts.RegisterHook(new ImpairedCostHook());
-        ModEntry.Instance.KokoroApi.ActionCosts.RegisterResourceCostIcon(new ImpairedCost(), ModEntry.Instance.ImpairedIcon.Sprite, ModEntry.Instance.ImpairedIcon.Sprite);
+        ModEntry.Instance.KokoroApi.ActionCosts.RegisterResourceCostIcon(new ImpairedCost(), ModEntry.Instance.ImpairedIcon.Sprite, ModEntry.Instance.ImpairCostIcon.Sprite);
     }
 }
 

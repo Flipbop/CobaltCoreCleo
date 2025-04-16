@@ -36,6 +36,7 @@ public sealed class ModEntry : SimpleMod
 
 	internal ISpriteEntry UpgradesInDiscardIcon { get; }
 	internal ISpriteEntry UpgradesInExhaustIcon { get; }
+	internal ISpriteEntry ImpairCostIcon { get; }
 
 
 	internal ICardTraitEntry ImprovedATrait { get; }
@@ -250,7 +251,8 @@ public sealed class ModEntry : SimpleMod
 		UpgradesInDrawIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDraw.png"));
 		UpgradesInDiscardIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDiscard.png"));
 		UpgradesInExhaustIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInExhaust.png"));
-		
+		ImpairCostIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairedCost.png"));
+
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",

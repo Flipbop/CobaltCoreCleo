@@ -176,7 +176,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.eunice.Key()],
 			lines = [
 				new Say { who = cleoType, loopTag = "explain" },
-				new Say { who = Deck.eunice.Key(), loopTag = "smug" },
+				new Say { who = Deck.eunice.Key(), loopTag = "sly" },
 			],
 		};
 		newNodes[["DealtDamage", "Max"]] = new()
@@ -499,7 +499,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.eunice.Key()],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Say { who = Deck.eunice.Key(), loopTag = "smug" },
+				new Say { who = Deck.eunice.Key(), loopTag = "sly" },
 			],
 		};
 		#endregion
