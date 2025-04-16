@@ -34,10 +34,10 @@ internal sealed class ReroutePowerCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AImpairToAction {Amount = 2, action = new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 6 }}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.tempShield, statusAmount = 6}).AsCardAction,
 			],
 			_ => [
-				new AImpairToAction {Amount = 1, action = new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3 }}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AStatus{targetPlayer = true, status = Status.tempShield, statusAmount = 3}).AsCardAction,
 			]
 		};
 }

@@ -36,7 +36,6 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new AImpairToAction {Amount = 1, 
-				action = new AStatus { targetPlayer = true, status = Status.shield, statusAmount = s.ship.GetMaxShield() }}
+			ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AStatus{targetPlayer = true, status = Status.shield, statusAmount = s.ship.GetMaxShield()}).AsCardAction,
 		];
 }

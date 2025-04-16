@@ -143,9 +143,7 @@ public sealed class ModEntry : SimpleMod
 			new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
 		);
 		
-		_ = new ImprovedAManager();
-		_ = new ImprovedBManager();
-		_ = new ImpairedManager();
+		
 		ImprovedATrait = helper.Content.Cards.RegisterTrait("Improved A", new()
 		{
 			Name = this.AnyLocalizations.Bind(["status", "ImproveA", "name"]).Localize,
@@ -252,6 +250,7 @@ public sealed class ModEntry : SimpleMod
 		UpgradesInDrawIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDraw.png"));
 		UpgradesInDiscardIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDiscard.png"));
 		UpgradesInExhaustIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInExhaust.png"));
+		
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
@@ -267,7 +266,10 @@ public sealed class ModEntry : SimpleMod
 				}
 			)
 		);
-
+		_ = new ImprovedAManager();
+		_ = new ImprovedBManager();
+		_ = new ImpairedManager();
+		_ = new ImpairedCostManager();
 		_ = new DialogueExtensions();
 		_ = new CombatDialogue();
 		_ = new EventDialogue();
