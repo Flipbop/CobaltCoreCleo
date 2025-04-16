@@ -36,13 +36,13 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAttack { damage = GetDmg(s, 3) },
+				new AAttack { damage = GetDmg(s, 2) },
 				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 1 },
 				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
 			],
 			Upgrade.B => [
 				new AAttack { damage = GetDmg(s, 3) },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 4 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3 },
 			],
 			_ => [
 				new AAttack { damage = GetDmg(s, 2) },
