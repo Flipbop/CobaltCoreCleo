@@ -180,8 +180,8 @@
         "ReroutePower": {
             "name": "Reroute Power"
         },
-        "CapacitorSlug": {
-            "name": "Capacitor Slug"
+        "Rewrite": {
+            "name": "Rewrite"
         },
         "SlipShot": {
             "name": "Slip Shot"
@@ -195,9 +195,9 @@
         "DoItYourself": {
             "name": "Do It Yourself",
             "description": {
-                "None": "Add a <c=cardtrait>temporary</c> <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
-                "A": "Add a <c=cardtrait>temporary</c> <c=card>Small Repairs A</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
-                "B": "Add 2 <c=cardtrait>temporary</c> <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>."
+                "None": "Add a <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
+                "A": "Add a <c=card>Small Repairs A</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
+                "B": "Add 2 <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>."
             }
         },
         "RepairedGlasses": {
@@ -210,12 +210,7 @@
             "name": "Maximum Effort"
         },
         "NecessarySacrifice": {
-            "name": "Necessary Sacrifice",
-            "description": {
-                "None": "<c=keyword>Impair 1</c> to gain <c=status>SHIELD</c> equal to your max Shield.",
-                "A": "<c=keyword>Impair 1</c> to gain <c=status>SHIELD</c> equal to your max Shield.",
-                "B": "<c=keyword>Impair 1</c> to gain <c=status>SHIELD</c> equal to your max Shield."
-            }
+            "name": "Necessary Sacrifice"
         },
         "SeekerBarrage": {
             "name": "Seeker Barrage",

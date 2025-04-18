@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.Cleo;
 
-internal sealed class CapacitorSlugCard : Card, IRegisterable
+internal sealed class RewriteCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class CapacitorSlugCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CapacitorSlug", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Rewrite", "name"]).Localize
 		});
 	}
 
@@ -28,7 +28,7 @@ internal sealed class CapacitorSlugCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			exhaust = upgrade == Upgrade.B,
+			retain = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -36,15 +36,15 @@ internal sealed class CapacitorSlugCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AStatus { targetPlayer = true, status = Status.maxShield, statusAmount = 1 },
+				new AReverseHand(),
 				new AAttack { damage = GetDmg(s, 2) },
 			],
 			Upgrade.B => [
-				new AStatus { targetPlayer = true, status = Status.maxShield, statusAmount = 3 },
+				new AReverseHand(),
 				new AAttack { damage = GetDmg(s, 1) },
 			],
 			_ => [
-				new AStatus { targetPlayer = true, status = Status.maxShield, statusAmount = 1 },
+				new AReverseHand(),
 				new AAttack { damage = GetDmg(s, 1) },
 			]
 		};

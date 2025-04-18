@@ -30,12 +30,11 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 			cost = upgrade == Upgrade.A ? 1 : 2,
 			retain = upgrade == Upgrade.B,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "NecessarySacrifice", "description", upgrade.ToString()]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AStatus{targetPlayer = true, status = Status.shield, statusAmount = s.ship.GetMaxShield()}).AsCardAction,
+			ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.perfectShield, statusAmount = 1}).AsCardAction,
 		];
 }

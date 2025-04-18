@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using Nickel;
 using System.Linq;
 using FSPRO;
+using Microsoft.Extensions.Logging;
 using Shockah.Kokoro;
 
 namespace Flipbop.Cleo;
 internal sealed class ImpairedCostManager
 {
     internal static readonly ICardTraitEntry Trait = ModEntry.Instance.ImpairedTrait;
-	
+	internal readonly IKokoroApi.IV2.IActionCostsApi.IHook Hook = new ImpairedCostHook();
     public ImpairedCostManager()
     {
-        ModEntry.Instance.KokoroApi.ActionCosts.RegisterHook(new ImpairedCostHook());
+        ModEntry.Instance.KokoroApi.ActionCosts.RegisterHook(Hook);
         ModEntry.Instance.KokoroApi.ActionCosts.RegisterResourceCostIcon(new ImpairedCost(), ModEntry.Instance.ImpairedIcon.Sprite, ModEntry.Instance.ImpairCostIcon.Sprite);
     }
 }
@@ -23,18 +24,15 @@ internal sealed class ImpairedCost : IKokoroApi.IV2.IActionCostsApi.IResource
     {
         int index = combat.hand.Count -1;
         int upgradeCounter = 0;
-        int cardCounter = 0;
         int? currentCard = ModEntry.Instance.helper.ModData.ObtainModData<int?>(combat, "Card");
         while (index >= 0)
         {
-            if (combat.hand[index].uuid == currentCard)
+            if (combat.hand[index].uuid != currentCard)
             {
-                continue;
-            }
-            cardCounter++;
-            if (combat.hand[index].upgrade != Upgrade.None)
-            {
-                upgradeCounter++;
+	            if (combat.hand[index].upgrade != Upgrade.None)
+	            {
+		            upgradeCounter++;
+	            }
             }
             index--;
         }
@@ -77,7 +75,7 @@ internal sealed class ImpairedCost : IKokoroApi.IV2.IActionCostsApi.IResource
 
 internal sealed class ImpairedCostHook : IKokoroApi.IV2.IActionCostsApi.IHook
 {
-    bool ModifyActionCost(IKokoroApi.IV2.IActionCostsApi.IHook.IModifyActionCostArgs args)
+	public bool ModifyActionCost(IKokoroApi.IV2.IActionCostsApi.IHook.IModifyActionCostArgs args)
     {
         ModEntry.Instance.helper.ModData.SetModData(args.Combat, "Card", args.Card?.uuid);
         return false;

@@ -53,7 +53,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(ShuffleUpgradeCard),
 		typeof(ResourceSwapCard),
 		typeof(ReroutePowerCard),
-		typeof(CapacitorSlugCard),
+		typeof(RewriteCard),
 		typeof(SlipShotCard),
 	];
 
