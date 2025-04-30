@@ -1,5 +1,6 @@
 ﻿using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using FSPRO;
 
 namespace Flipbop.Cleo;
@@ -13,16 +14,22 @@ internal sealed class EventDialogue : BaseDialogue
 		var newNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var newHardcodedNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var saySwitchNodes = new Dictionary<IReadOnlyList<string>, Say>();
-
+		
 		ModEntry.Instance.Helper.Events.OnModLoadPhaseFinished += (_, phase) =>
 		{
 			if (phase != ModLoadPhase.AfterDbInit)
 				return;
 			InjectStory(newNodes, newHardcodedNodes, saySwitchNodes, NodeType.@event);
+			foreach (var node in DB.story.all.Values)
+			{
+				if (node.lookup?.Contains("shopBefore") == true && node.allPresent?.Contains(cleoType) == false)
+				{
+					node.nonePresent = [cleoType];
+				}
+			}
 		};
 		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
 		
-		DB.story.all["NewShop"].nonePresent = [cleoType];
 		
 		newNodes[["Shop", "0"]] = new()
 		{
@@ -31,7 +38,7 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+				new Say { who = "nerd", loopTag = "neutral", flipped = true},
 			],
 			choiceFunc = "NewShop",
 		};
@@ -42,7 +49,7 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+				new Say { who = "nerd", loopTag = "neutral", flipped = true},
 			],
 			choiceFunc = "NewShop",
 		};
