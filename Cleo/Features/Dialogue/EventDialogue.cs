@@ -1,5 +1,6 @@
 ﻿using Nickel;
 using System.Collections.Generic;
+using FSPRO;
 
 namespace Flipbop.Cleo;
 
@@ -20,7 +21,9 @@ internal sealed class EventDialogue : BaseDialogue
 			InjectStory(newNodes, newHardcodedNodes, saySwitchNodes, NodeType.@event);
 		};
 		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
-
+		
+		DB.story.all["NewShop"].nonePresent = [cleoType];
+		
 		newNodes[["Shop", "0"]] = new()
 		{
 			lookup = ["shopBefore"],
@@ -28,8 +31,9 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Jump() { key = "NewShop" }
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
 			],
+			choiceFunc = "NewShop",
 		};
 		newNodes[["Shop", "1"]] = new()
 		{
@@ -38,8 +42,9 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Jump() { key = "NewShop" }
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
 			],
+			choiceFunc = "NewShop",
 		};
 
 		newHardcodedNodes[["LoseCharacterCard_{{CharacterType}}"]] = new()

@@ -195,9 +195,9 @@
         "DoItYourself": {
             "name": "Do It Yourself",
             "description": {
-                "None": "Add a <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
-                "A": "Add a <c=card>Small Repairs A</c> to your deck. Gain 2 <c=status>SHIELD</c>.",
-                "B": "Add 2 <c=card>Small Repairs</c> to your deck. Gain 2 <c=status>SHIELD</c>."
+                "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>SHIELD</c>.",
+                "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>SHIELD</c>.",
+                "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. draw pile 2 <c=status>SHIELD</c>."
             }
         },
         "RepairedGlasses": {

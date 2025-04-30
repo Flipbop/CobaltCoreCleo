@@ -12,10 +12,12 @@
     "DraculaTime": "Hello Dracula. Long time no see.",
     "Shop": [
         [
-            /*Cleo*/ "Back to work."
+            "Back to work.",
+            "What do we need?"
         ],
         [
-            /*Cleo*/ "Home sweet home."
+            "Home sweet home.",
+            "What do we need?"
         ]
     ],
     "Soggins_Infinite": "Who gave you that USB?",
