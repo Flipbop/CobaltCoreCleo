@@ -26,6 +26,10 @@ internal sealed class EventDialogue : BaseDialogue
 				{
 					node.nonePresent = [cleoType];
 				}
+				if (node.bg?.Contains("BGShop") == true && node.allPresent?.Contains(cleoType) == false)
+				{
+					node.nonePresent = [cleoType];
+				}
 			}
 			DB.story.all["ShopkeeperInfinite_Comp_Multi_0"].nonePresent = [cleoType];
 			DB.story.all["ShopkeeperInfinite_Comp_Multi_1"].nonePresent = [cleoType];
@@ -165,7 +169,7 @@ internal sealed class EventDialogue : BaseDialogue
 		//Skip Back Out
 		newNodes[["Shop", "3"]] = new()
 		{
-			lookup = ["ShopSkipConfirm_No"],
+			lookup = ["shopSkipConfirm_No"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType],
 			priority = true,
@@ -196,7 +200,7 @@ internal sealed class EventDialogue : BaseDialogue
 				new Say { who = cleoType, loopTag = "neutral", flipped = true},
 			],
 		};
-		#endregion\
+		#endregion
 		
 		newHardcodedNodes[["LoseCharacterCard_{{CharacterType}}"]] = new()
 		{
