@@ -91,7 +91,7 @@
         },
         "Kickstart": {
             "name": "KICKSTART",
-            "description": "At the start of each fight <c=action>improve A</c> the first 2 eligible cards you draw."
+            "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
         },
         "MagnifiedLasers": {
             "name": "MAGNIFIED LASERS",
@@ -103,15 +103,15 @@
         },
         "Retainer": {
             "name": "RETAINER",
-            "description": "Cards no longer lose <c=cardtrait>improved</c> when played."
+            "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
         },
         "ExpensiveEquipment": {
             "name": "EXPENSIVE EQUIPMENT",
-            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
         },
         "PowerEcho": {
             "name": "POWER ECHO",
-            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
         },
         "Duo": {
             "CleoBooks": {

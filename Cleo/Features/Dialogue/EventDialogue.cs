@@ -19,20 +19,17 @@ internal sealed class EventDialogue : BaseDialogue
 		{
 			if (phase != ModLoadPhase.AfterDbInit)
 				return;
-			InjectStory(newNodes, newHardcodedNodes, saySwitchNodes, NodeType.@event);
 			foreach (var node in DB.story.all.Values)
 			{
-				if (node.lookup?.Contains("shopBefore") == true && node.allPresent?.Contains(cleoType) == false)
+				if (node.lookup?.Contains("shop") == true && node.allPresent?.Contains(cleoType) == false)
 				{
 					node.nonePresent = [cleoType];
-				}
-				if (node.bg?.Contains("BGShop") == true && node.allPresent?.Contains(cleoType) == false)
-				{
-					node.nonePresent = [cleoType];
+					node.priority = false;
 				}
 			}
 			DB.story.all["ShopkeeperInfinite_Comp_Multi_0"].nonePresent = [cleoType];
 			DB.story.all["ShopkeeperInfinite_Comp_Multi_1"].nonePresent = [cleoType];
+			InjectStory(newNodes, newHardcodedNodes, saySwitchNodes, NodeType.@event);
 		};
 		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
 		
@@ -199,6 +196,106 @@ internal sealed class EventDialogue : BaseDialogue
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral", flipped = true},
 			],
+		};
+		#endregion
+
+		#region Vanilla Yapping
+		newNodes[["Shop", "13"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			lines = [
+				new Say { who = "comp", loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "14"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "dizzy"],
+			lines = [
+				new Say { who = "dizzy", loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "explain"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "15"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "riggs"],
+			lines = [
+				new Say { who = "riggs", loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "16"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "peri"],
+			lines = [
+				new Say { who = "peri", loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "17"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "goat"],
+			lines = [
+				new Say { who = "goat", loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral"},
+				new Say { who = "goat", loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "18"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "eunice"],
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = "eunice", loopTag = "blush"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "19"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "hacker"],
+			lines = [
+				new Say { who = "hacker", loopTag = "squint" },
+				new Say { who = cleoType, loopTag = "explain"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
+		};
+		newNodes[["Shop", "20"]] = new()
+		{
+			lookup = ["shopBefore"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType, "shard"],
+			lines = [
+				new Say { who = "shard", loopTag = "neutral" },
+				new Say { who = cleoType, loopTag = "neutral"},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop",
 		};
 		#endregion
 		
