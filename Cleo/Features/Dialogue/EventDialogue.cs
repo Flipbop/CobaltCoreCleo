@@ -27,6 +27,8 @@ internal sealed class EventDialogue : BaseDialogue
 					node.nonePresent = [cleoType];
 				}
 			}
+			DB.story.all["ShopkeeperInfinite_Comp_Multi_0"].nonePresent = [cleoType];
+			DB.story.all["ShopkeeperInfinite_Comp_Multi_1"].nonePresent = [cleoType];
 		};
 		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
 		
@@ -38,7 +40,7 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Say { who = "nerd", loopTag = "neutral", flipped = true},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
 			],
 			choiceFunc = "NewShop",
 		};
@@ -49,11 +51,153 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cleoType],
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
-				new Say { who = "nerd", loopTag = "neutral", flipped = true},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
 			],
 			choiceFunc = "NewShop",
 		};
 
+		#region Shop Dialouge Replacements
+		//FIGHT ME
+		newNodes[["Shop", "2"]] = new()
+		{
+			lookup = ["shopAboutToDestroyYou"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "squint", flipped = true},
+				new Say { who = cleoType, loopTag = "explain", flipped = true},
+			],
+			choiceFunc = "ShopFightBackOut",
+		};
+		//maaaaaaaybe not
+		newNodes[["Shop", "3"]] = new()
+		{
+			lookup = ["shopFightBackOut_No"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		//Heal WOW
+		newNodes[["Shop", "4"]] = new()
+		{
+			lookup = ["shopHeal"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			maxHullPercent = 0.5,
+			lines = [
+				new Say { who = cleoType, loopTag = "squint", flipped = true},
+			],
+		};
+		//Heal
+		newNodes[["Shop", "5"]] = new()
+		{
+			lookup = ["shopHeal"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		//Skip Repairs
+		newNodes[["Shop", "6"]] = new()
+		{
+			lookup = ["shopSkip"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			maxHullPercent = 0.5,
+			lines = [
+				new Say { who = cleoType, loopTag = "squint", flipped = true},
+			],
+		};
+		//Skip 
+		newNodes[["Shop", "7"]] = new()
+		{
+			lookup = ["shopSkip"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "squint", flipped = true},
+			],
+		};
+		//Skip Confirm?
+		newNodes[["Shop", "8"]] = new()
+		{
+			lookup = ["shopSkip_Confirm"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "squint", flipped = true},
+			],
+			choiceFunc = "ShopSkipConfirm"
+		};
+		//Card Removed
+		newNodes[["Shop", "9"]] = new()
+		{
+			lookup = ["shopRemoveCard"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		//2 Cards Removed
+		newNodes[["Shop", "10"]] = new()
+		{
+			lookup = ["shopRemoveTwoCards"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		//Skip Back Out
+		newNodes[["Shop", "3"]] = new()
+		{
+			lookup = ["ShopSkipConfirm_No"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+			choiceFunc = "NewShop"
+		};
+		//Upgrade Card A
+		newNodes[["Shop", "11"]] = new()
+		{
+			lookup = ["shopUpgradeCard"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		//Upgrade Card B
+		newNodes[["Shop", "12"]] = new()
+		{
+			lookup = ["shopUpgradeCard"],
+			bg = typeof(BGShop).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		#endregion\
+		
 		newHardcodedNodes[["LoseCharacterCard_{{CharacterType}}"]] = new()
 		{
 			oncePerRun = true,

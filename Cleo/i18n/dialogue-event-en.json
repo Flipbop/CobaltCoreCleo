@@ -18,6 +18,41 @@
         [
             "Home sweet home.",
             "What do we need?"
+        ], 
+        [
+            "Not sure how I could do that, now that I'm on your side.",
+            "I guess I could use my autopilot if you really want to."
+        ],
+        [
+            "Good call.",
+            "Do we still need anything?"
+        ],
+        [
+            "We gotta be more careful."
+        ],
+        [
+            "Hull restored. Let's get going."
+        ],
+        [
+            "Could have patched up our hull..."
+        ], 
+        [
+            "Okay I guess..."
+        ],
+        [
+            "You sure? We could always use something."
+        ],
+        [
+            "All gone!"
+        ],
+        [
+            "Two for the price of one!"
+        ],
+        [
+            "This will go great with me!"
+        ],
+        [
+            "Done!"
         ]
     ],
     "Soggins_Infinite": "Who gave you that USB?",
