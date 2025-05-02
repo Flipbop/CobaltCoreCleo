@@ -24,7 +24,7 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ApologizeNextLoop.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ApologizeNextLoop", "name"]).Localize
 		});
 	}

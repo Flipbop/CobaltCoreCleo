@@ -8,8 +8,21 @@ namespace Flipbop.Cleo;
 
 internal sealed class ResourceSwapCard : Card, IRegisterable
 {
+	private static Spr _flippedSprite;
+	private static Spr _floppedSprite;
+	private static Spr _aSprite;
+	private static Spr _bSprite;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		_flippedSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ResourceSwapTop.png")).Sprite;
+		_floppedSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ResourceSwapBottom.png")).Sprite;
+		_aSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ResourceSwapA.png")).Sprite;
+		_bSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ResourceSwapB.png")).Sprite;
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -19,10 +32,10 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+			Art = _flippedSprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ResourceSwap", "name"]).Localize
 		});
+		
 	}
 
 	public override CardData GetData(State state)
@@ -30,7 +43,13 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			floppable = upgrade == Upgrade.None
+			floppable = upgrade == Upgrade.None,
+			art = upgrade switch {
+				Upgrade.A => _aSprite,
+				Upgrade.B => _bSprite,
+				_ => flipped ? _flippedSprite : _floppedSprite,
+			}
+			
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

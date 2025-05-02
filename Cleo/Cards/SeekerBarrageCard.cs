@@ -24,7 +24,7 @@ internal sealed class SeekerBarrageCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/SeekerBarrage.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SeekerBarrage", "name"]).Localize
 		});
 	}

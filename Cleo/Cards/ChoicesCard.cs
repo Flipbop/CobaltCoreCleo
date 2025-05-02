@@ -7,8 +7,11 @@ namespace Flipbop.Cleo;
 
 internal sealed class ChoicesCard : Card, IRegisterable
 {
+	private static Spr _bSprite;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		_bSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ChoicesB.png")).Sprite;
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -18,7 +21,7 @@ internal sealed class ChoicesCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+			Art = _bSprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Choices", "name"]).Localize
 		});
 	}
@@ -29,6 +32,10 @@ internal sealed class ChoicesCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A? 0 : 1,
 			floppable = upgrade != Upgrade.B, 
+			art = upgrade switch {
+				Upgrade.B => _bSprite,
+				_ => flipped ? StableSpr.cards_Adaptability_Top : StableSpr.cards_Adaptability_Bottom,
+			}
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

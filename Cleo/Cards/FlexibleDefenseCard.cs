@@ -18,7 +18,7 @@ internal sealed class FlexibleDefenseCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/colorless.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/FlexibleDefense.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FlexibleDefense", "name"]).Localize
 		});
 	}

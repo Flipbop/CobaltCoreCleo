@@ -21,8 +21,19 @@ internal sealed class EventDialogue : BaseDialogue
 				return;
 			foreach (var node in DB.story.all.Values)
 			{
-				if (node.lookup?.Contains("shop") == true && node.allPresent?.Contains(cleoType) == false)
+				if ((node.lookup?.Contains("shopBefore") == true 
+				     || node.lookup?.Contains("shopFightBackOut_No") == true 
+				     || node.lookup?.Contains("shopSkipConfirm_No") == true 
+				     || node.lookup?.Contains("shopAboutToDestroyYou") == true
+				     || node.lookup?.Contains("shopHeal") == true 
+				     || node.lookup?.Contains("shopSkip") == true 
+				     || node.lookup?.Contains("shopSkip_Confirm") == true
+				     || node.lookup?.Contains("shopRemoveCard") == true 
+				     || node.lookup?.Contains("shopRemoveTwoCards") == true 
+				     || node.lookup?.Contains("shopUpgradeCard") == true) 
+				    && node.allPresent?.Contains(cleoType) == false)
 				{
+					node.never = true;
 					node.nonePresent = [cleoType];
 					node.priority = false;
 				}
@@ -39,6 +50,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType],
+			priority = true,
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral", flipped = true},
@@ -50,6 +62,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType],
+			priority = true,
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral", flipped = true},
@@ -205,6 +218,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType],
+			priority = true,
 			lines = [
 				new Say { who = "comp", loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral"},
@@ -217,6 +231,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "dizzy"],
+			priority = true,
 			lines = [
 				new Say { who = "dizzy", loopTag = "squint" },
 				new Say { who = cleoType, loopTag = "explain"},
@@ -229,6 +244,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "riggs"],
+			priority = true,
 			lines = [
 				new Say { who = "riggs", loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral"},
@@ -241,6 +257,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "peri"],
+			priority = true,
 			lines = [
 				new Say { who = "peri", loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral"},
@@ -253,6 +270,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "goat"],
+			priority = true,
 			lines = [
 				new Say { who = "goat", loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral"},
@@ -266,6 +284,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "eunice"],
+			priority = true,
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral" },
 				new Say { who = "eunice", loopTag = "blush"},
@@ -278,6 +297,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "hacker"],
+			priority = true,
 			lines = [
 				new Say { who = "hacker", loopTag = "squint" },
 				new Say { who = cleoType, loopTag = "explain"},
@@ -290,6 +310,7 @@ internal sealed class EventDialogue : BaseDialogue
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
 			allPresent = [cleoType, "shard"],
+			priority = true,
 			lines = [
 				new Say { who = "shard", loopTag = "neutral" },
 				new Say { who = cleoType, loopTag = "neutral"},
