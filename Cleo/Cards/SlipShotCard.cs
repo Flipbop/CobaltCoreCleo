@@ -7,8 +7,15 @@ namespace Flipbop.Cleo;
 
 internal sealed class SlipShotCard : Card, IRegisterable
 {
+	private static Spr _nSprite;
+	private static Spr _bSprite;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		_nSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/SlipShot.png")).Sprite;
+		_bSprite = helper.Content.Sprites
+			.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/SlipShotFlip.png")).Sprite;
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -18,7 +25,7 @@ internal sealed class SlipShotCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/SlipShot.png")).Sprite,
+			Art = _nSprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlipShot", "name"]).Localize
 		});
 	}
@@ -26,9 +33,13 @@ internal sealed class SlipShotCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = upgrade == Upgrade.B ? 0 : 1,
-			exhaust = upgrade == Upgrade.B ? true : false,
+			exhaust = upgrade == Upgrade.B,
+			art = upgrade switch {
+				Upgrade.B => _bSprite,
+				_ => _nSprite,
+			}
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

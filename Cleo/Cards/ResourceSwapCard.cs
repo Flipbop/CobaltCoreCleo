@@ -41,13 +41,13 @@ internal sealed class ResourceSwapCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = 1,
 			floppable = upgrade == Upgrade.None,
 			art = upgrade switch {
 				Upgrade.A => _aSprite,
 				Upgrade.B => _bSprite,
-				_ => flipped ? _flippedSprite : _floppedSprite,
+				_ => flipped ? _floppedSprite : _flippedSprite,
 			}
 			
 		};

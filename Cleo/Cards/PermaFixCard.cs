@@ -30,7 +30,7 @@ internal sealed class PermaFixCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = upgrade switch
 			{
 				Upgrade.B => 3,

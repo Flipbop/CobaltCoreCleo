@@ -29,7 +29,7 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = 2,
 			exhaust = true,
 		};

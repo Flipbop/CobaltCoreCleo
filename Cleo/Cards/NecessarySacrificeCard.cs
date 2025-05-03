@@ -26,7 +26,7 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = upgrade == Upgrade.A ? 1 : 2,
 			retain = upgrade == Upgrade.B,
 			exhaust = true,

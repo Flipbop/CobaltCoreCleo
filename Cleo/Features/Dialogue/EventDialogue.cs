@@ -21,25 +21,26 @@ internal sealed class EventDialogue : BaseDialogue
 				return;
 			foreach (var node in DB.story.all.Values)
 			{
-				if ((node.lookup?.Contains("shopBefore") == true 
-				     || node.lookup?.Contains("shopFightBackOut_No") == true 
-				     || node.lookup?.Contains("shopSkipConfirm_No") == true 
-				     || node.lookup?.Contains("shopAboutToDestroyYou") == true
-				     || node.lookup?.Contains("shopHeal") == true 
-				     || node.lookup?.Contains("shopSkip") == true 
-				     || node.lookup?.Contains("shopSkip_Confirm") == true
-				     || node.lookup?.Contains("shopRemoveCard") == true 
-				     || node.lookup?.Contains("shopRemoveTwoCards") == true 
-				     || node.lookup?.Contains("shopUpgradeCard") == true) 
-				    && node.allPresent?.Contains(cleoType) == false)
+				if (node.lookup?.Contains("shopBefore") == true && node.allPresent?.Contains(cleoType) == false)
 				{
-					node.never = true;
 					node.nonePresent = [cleoType];
 					node.priority = false;
 				}
 			}
 			DB.story.all["ShopkeeperInfinite_Comp_Multi_0"].nonePresent = [cleoType];
 			DB.story.all["ShopkeeperInfinite_Comp_Multi_1"].nonePresent = [cleoType];
+			
+			DB.story.all["ShopFightBackOut_No"].nonePresent = [cleoType];
+			DB.story.all["ShopSkipConfirm_No"].nonePresent = [cleoType];
+			
+			DB.story.all["ShopAboutToDestroyYou"].nonePresent = [cleoType];
+			DB.story.all["ShopHeal"].nonePresent = [cleoType];
+			DB.story.all["ShopSkip"].nonePresent = [cleoType];
+			DB.story.all["ShopSkip_Confirm"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveTwoCards"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard"].nonePresent = [cleoType];
+			
 			InjectStory(newNodes, newHardcodedNodes, saySwitchNodes, NodeType.@event);
 		};
 		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);

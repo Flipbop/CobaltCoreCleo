@@ -26,7 +26,7 @@ internal sealed class RewriteCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = 1,
 			retain = upgrade == Upgrade.B,
 		};

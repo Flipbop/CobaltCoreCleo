@@ -26,7 +26,7 @@ internal sealed class FlexibleDefenseCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = upgrade == Upgrade.B? 3 : 2,
 			exhaust = upgrade == Upgrade.B
 		};
