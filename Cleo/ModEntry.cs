@@ -163,7 +163,8 @@ public sealed class ModEntry : SimpleMod
 		
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
-
+		DontLetCleoBecomeAnNPC.Apply(Harmony);
+		
 		CleoDeck = helper.Content.Decks.RegisterDeck("Cleo", new()
 		{
 			Definition = new() { color = new("8A3388"), titleColor = Colors.white },

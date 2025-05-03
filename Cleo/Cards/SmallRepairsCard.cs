@@ -28,7 +28,7 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "8A3388",
 			cost = 1,
 			temporary = true,
 			exhaust = upgrade != Upgrade.B,

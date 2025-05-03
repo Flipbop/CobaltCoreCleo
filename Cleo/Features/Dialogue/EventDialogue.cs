@@ -2,11 +2,75 @@
 using System.Collections.Generic;
 using System.Linq;
 using FSPRO;
+using HarmonyLib;
+using System;
+using Microsoft.Extensions.Logging;
 
 namespace Flipbop.Cleo;
 
+
+internal static class DontLetCleoBecomeAnNPC
+{
+	public static void Apply(IHarmony harmony)
+	{
+		harmony.Patch(
+			original: typeof(Events).GetMethod(nameof(Events.ShopFightBackOut))!,
+			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(ShopFightBackOutCleoEdition))
+		);
+		harmony.Patch(
+			original: typeof(Events).GetMethod(nameof(Events.ShopSkipConfirm))!,
+			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(ShopSkipConfirmCleoEdition))
+		);
+	}
+
+    private static void ShopSkipConfirmCleoEdition(State s, ref List<Choice> __result)
+    {
+		foreach (Character character in s.characters)  // There's no way to get Character from CleoCharacter or CleoDeck, so had to do it this way.
+		{
+			if (character.type == ModEntry.Instance.CleoCharacter.CharacterType)  // Checks if Cleo is in your crew, so it doesn't do anything if Cleo is not present
+			{
+				for (int x = 0; x < __result.Count; x++)
+				{
+					if (__result[x] is Choice c && c.key == "ShopSkipConfirm_No")
+					{
+						__result[x] = new Choice
+						{
+							label = "Nevermind",
+							key = "Flipbop.Cleo::Shop.3"
+						};
+						return;
+					}
+				}
+			}
+		}
+    }
+
+    private static void ShopFightBackOutCleoEdition(State s, ref List<Choice> __result)
+    {
+		foreach (Character character in s.characters)
+		{
+			if (character.type == ModEntry.Instance.CleoCharacter.CharacterType)
+			{
+				for (int x = 0; x < __result.Count; x++)
+				{
+					if (__result[x] is Choice c && c.key == "ShopFightBackOut_No")
+					{
+						__result[x] = new Choice
+						{
+							label = "mmmmaybe not...",
+							key = "Flipbop.Cleo::Shop.3"
+						};
+						return;
+					}
+				}
+			}
+		}
+    }
+}
+
 internal sealed class EventDialogue : BaseDialogue
 {
+
 	public EventDialogue() : base(locale => ModEntry.Instance.Package.PackageRoot.GetRelativeFile($"i18n/dialogue-event-{locale}.json").OpenRead())
 	{
 		var cleoDeck = ModEntry.Instance.CleoDeck.Deck;
@@ -18,32 +82,65 @@ internal sealed class EventDialogue : BaseDialogue
 		ModEntry.Instance.Helper.Events.OnModLoadPhaseFinished += (_, phase) =>
 		{
 			if (phase != ModLoadPhase.AfterDbInit)
-				return;
-			foreach (var node in DB.story.all.Values)
-			{
-				if (node.lookup?.Contains("shopBefore") == true && node.allPresent?.Contains(cleoType) == false)
-				{
-					node.nonePresent = [cleoType];
-					node.priority = false;
-				}
-			}
-			DB.story.all["ShopkeeperInfinite_Comp_Multi_0"].nonePresent = [cleoType];
-			DB.story.all["ShopkeeperInfinite_Comp_Multi_1"].nonePresent = [cleoType];
-			
-			DB.story.all["ShopFightBackOut_No"].nonePresent = [cleoType];
-			DB.story.all["ShopSkipConfirm_No"].nonePresent = [cleoType];
-			
-			DB.story.all["ShopAboutToDestroyYou"].nonePresent = [cleoType];
-			DB.story.all["ShopHeal"].nonePresent = [cleoType];
-			DB.story.all["ShopSkip"].nonePresent = [cleoType];
-			DB.story.all["ShopSkip_Confirm"].nonePresent = [cleoType];
-			DB.story.all["ShopRemoveCard"].nonePresent = [cleoType];
-			DB.story.all["ShopRemoveTwoCards"].nonePresent = [cleoType];
-			DB.story.all["ShopUpgradeCard"].nonePresent = [cleoType];
-			
+				return;			
 			InjectStory(newNodes, newHardcodedNodes, saySwitchNodes, NodeType.@event);
 		};
-		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
+		ModEntry.Instance.Helper.Events.OnLoadStringsForLocale += (_, e) => 
+		{
+			foreach (KeyValuePair<string, StoryNode> node in DB.story.all)
+			{
+				if ((node.Value.lookup?.Contains("shopBefore") == true || node.Key.StartsWith("Shop")) && node.Value.allPresent?.Contains(cleoType) == false)
+				{
+					node.Value.nonePresent = [cleoType];
+				}
+			}
+
+			#region Manual Overrides
+			DB.story.all["ShopkeeperInfinite_Comp_Multi_0"].nonePresent = [cleoType];
+			DB.story.all["ShopkeeperInfinite_Comp_Multi_1"].nonePresent = [cleoType];
+			DB.story.all["ShopFightBackOut_No"].nonePresent = [cleoType];
+			DB.story.all["ShopSkipConfirm_No"].nonePresent = [cleoType];
+			DB.story.all["ShopAboutToDestroyYou"].nonePresent = [cleoType];
+			DB.story.all["ShopHullWow_A"].nonePresent = [cleoType];
+			DB.story.all["ShopHullWow_B"].nonePresent = [cleoType];
+			DB.story.all["ShopHull_A"].nonePresent = [cleoType];
+			DB.story.all["ShopHull_B"].nonePresent = [cleoType];
+			DB.story.all["ShopHull_C"].nonePresent = [cleoType];
+			DB.story.all["ShopNothingBadHull_A"].nonePresent = [cleoType];
+			DB.story.all["ShopNothingBadHull_B"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_0"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_1"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_2"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_3"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_4"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_5"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_6"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_7"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_8"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_9"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_10"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_11"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_1_Multi_12"].nonePresent = [cleoType];
+			DB.story.all["ShopNothing_Confirm"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard_Multi_0"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard_Multi_1"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard_Multi_2"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard_Multi_3"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard_Multi_4"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveCard_Multi_5"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveTwoCards_Multi_0"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveTwoCards_Multi_1"].nonePresent = [cleoType];
+			DB.story.all["ShopRemoveTwoCards_Multi_2"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_0"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_1"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_2"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_3"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_4"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_5"].nonePresent = [cleoType];
+			DB.story.all["ShopUpgradeCard_Multi_6"].nonePresent = [cleoType];
+			#endregion
+			InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
+		};
 		
 		
 		newNodes[["Shop", "0"]] = new()
