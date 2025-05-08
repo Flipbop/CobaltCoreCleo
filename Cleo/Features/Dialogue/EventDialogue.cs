@@ -21,6 +21,7 @@ internal static class DontLetCleoBecomeAnNPC
 			original: typeof(Events).GetMethod(nameof(Events.ShopSkipConfirm))!,
 			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(ShopSkipConfirmCleoEdition))
 		);
+		
 	}
 
     private static void ShopSkipConfirmCleoEdition(State s, ref List<Choice> __result)

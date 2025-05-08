@@ -1,4 +1,5 @@
-﻿using FSPRO;
+﻿using System;
+using FSPRO;
 using Nickel;
 using System.Collections.Generic;
 
@@ -35,4 +36,32 @@ public sealed class AApologize : DynamicWidthCardAction
 	public override Icon? GetIcon(State s)
 		=> new(ModEntry.Instance.ImpairHandIcon.Sprite, null, Colors.textMain);
 	
+	public override List<Tooltip> GetTooltips(State s)
+      {
+        List<Tooltip> tooltips = new List<Tooltip>();
+        int x = s.ship.x;
+        foreach (Part part in s.ship.parts)
+        {
+          if (part.type == PType.cannon && part.active)
+          {
+            if (s.route is Combat route && route.stuff.ContainsKey(x))
+              route.stuff[x].hilight = 2;
+            part.hilight = true;
+          }
+          ++x;
+        }
+        if (s.route is Combat route1)
+        {
+          foreach (StuffBase stuffBase in route1.stuff.Values)
+          {
+            if (stuffBase is JupiterDrone)
+              stuffBase.hilight = 2;
+          }
+        }
+        if (peirce)
+          tooltips.Add(new TTGlossary("action.attackPiercing"));
+        else
+          tooltips.Add(new TTGlossary("action.attack.name"));
+        return tooltips;
+      }
 }

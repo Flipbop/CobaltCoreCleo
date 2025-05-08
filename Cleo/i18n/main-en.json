@@ -9,20 +9,16 @@
     },
     "action": {
         "UpgradesInHand": {
-            "name": "Upgraded Cards in Hand",
-            "description": "Equal to the number of upgraded cards in your hand."
+            "description": "<c=action>X</c> = The number of upgraded cards in your hand."
         },
         "UpgradesInDiscard": {
-            "name": " Upgraded Cards in Discard",
-            "description": "Equal to the number of upgraded cards in your Discard pile."
+            "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
         },
         "UpgradesInExhaust": {
-            "name": " Upgraded Cards in Exhaust",
-            "description": "Equal to the number of upgraded cards in your Exhaust pile."
+            "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
         },
         "UpgradesInDraw": {
-            "name": " Upgraded Cards in Draw",
-            "description": "Equal to the number of upgraded cards in your Draw pile."
+            "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
         },
         "ImproveA": {
             "name": "   Improve A",

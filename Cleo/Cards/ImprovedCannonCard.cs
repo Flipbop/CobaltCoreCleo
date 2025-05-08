@@ -60,10 +60,7 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		public override List<Tooltip> GetTooltips(State s)
 			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInHand")
 			{
-				Icon = ModEntry.Instance.UpgradesInHandIcon.Sprite,
-				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "description"])
+				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand"])
 			}];
 	}
 	
@@ -76,10 +73,7 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		public override List<Tooltip> GetTooltips(State s)
 			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInDiscard")
 			{
-				Icon = ModEntry.Instance.UpgradesInDiscardIcon.Sprite,
-				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInDiscard", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInDiscard", "description"])
+				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInDiscard"])
 			}];
 	}
 	public sealed class AUpgradeExhaustHint : AVariableHint
@@ -91,10 +85,7 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		public override List<Tooltip> GetTooltips(State s)
 			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInExhaust")
 			{
-				Icon = ModEntry.Instance.UpgradesInDiscardIcon.Sprite,
-				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInExhaust", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInExhaust", "description"])
+				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInExhaust"])
 			}];
 	}
 }

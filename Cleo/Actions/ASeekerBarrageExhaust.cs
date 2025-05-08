@@ -27,4 +27,11 @@ public sealed class ASeekerBarrageExhaust : DynamicWidthCardAction
 	public override Icon? GetIcon(State s)
 		=> new(ModEntry.Instance.ImpairHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
 	
+	public override List<Tooltip> GetTooltips(State s)
+	{
+		List<Tooltip> tooltips = new List<Tooltip>();
+		tooltips.AddRange(new AMove {dir = 1 + s.ship.Get(Status.hermes), targetPlayer = true}.GetTooltips(s));
+		tooltips.AddRange(new ASpawn { thing = new Missile { missileType = MissileType.seeker } }.GetTooltips(s));
+		return tooltips;
+	}
 }
