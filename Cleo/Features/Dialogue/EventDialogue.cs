@@ -21,7 +21,10 @@ internal static class DontLetCleoBecomeAnNPC
 			original: typeof(Events).GetMethod(nameof(Events.ShopSkipConfirm))!,
 			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(ShopSkipConfirmCleoEdition))
 		);
-		
+		harmony.Patch(
+			original: typeof(Shopkeep).GetMethod(nameof(Shopkeep.BuildShipForSelf))!,
+			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(NoneOfYourBusinessCleoEdition))
+		);
 	}
 
     private static void ShopSkipConfirmCleoEdition(State s, ref List<Choice> __result)
@@ -67,28 +70,19 @@ internal static class DontLetCleoBecomeAnNPC
 			}
 		}
     }
-    /*
-    private static void NoneOfYourBusinessCleoEdition(State s, ref List<Choice> __result)
+
+    private static void NoneOfYourBusinessCleoEdition(State s)
     {
-	    foreach (Character character in s.characters)  
+	    var cleoKiwi = ModEntry.Instance.KiwiCharacter.CharacterType;
+
+	    foreach (Character character in s.characters)
 	    {
-		    if (character.type == ModEntry.Instance.CleoCharacter.CharacterType)  
+		    if (character.type == ModEntry.Instance.CleoCharacter.CharacterType)
 		    {
-			    for (int x = 0; x < __result.Count; x++)
-			    {
-				    if (__result[x] is Choice c && c.key == "ShopSkipConfirm_No")
-				    {
-					    __result[x] = new Choice
-					    {
-						    label = "Nevermind",
-						    key = "Flipbop.Cleo::Shop.3"
-					    };
-					    return;
-				    }
-			    }
+			    
 		    }
 	    }
-    */
+    }
 }
 
 internal sealed class EventDialogue : BaseDialogue

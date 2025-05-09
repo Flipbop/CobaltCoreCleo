@@ -23,6 +23,7 @@ public sealed class ModEntry : SimpleMod
 
 	internal IDeckEntry CleoDeck { get; }
 	internal IPlayableCharacterEntryV2 CleoCharacter { get; }
+	internal INonPlayableCharacterEntryV2 KiwiCharacter { get; }
 	internal ISpriteEntry ImproveAIcon { get; }
 	internal ISpriteEntry ImproveBIcon { get; }
 	internal ISpriteEntry ImpairedIcon { get; }
@@ -176,6 +177,16 @@ public sealed class ModEntry : SimpleMod
 		foreach (var registerableType in RegisterableTypes)
 			AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 
+		KiwiCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kiwi", new NonPlayableCharacterConfigurationV2()
+		{
+			NeutralAnimation = new CharacterAnimationConfigurationV2()
+			{
+				CharacterType = CleoDeck.UniqueName,
+				LoopTag = "neutral",
+				Frames = Enumerable.Range(0,0).Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Kiwi/{i}.png")).Sprite).ToList()
+			}
+		});
+		
 		CleoCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cleo", new()
 		{
 			Deck = CleoDeck.Deck,
