@@ -67,6 +67,28 @@ internal static class DontLetCleoBecomeAnNPC
 			}
 		}
     }
+    /*
+    private static void NoneOfYourBusinessCleoEdition(State s, ref List<Choice> __result)
+    {
+	    foreach (Character character in s.characters)  
+	    {
+		    if (character.type == ModEntry.Instance.CleoCharacter.CharacterType)  
+		    {
+			    for (int x = 0; x < __result.Count; x++)
+			    {
+				    if (__result[x] is Choice c && c.key == "ShopSkipConfirm_No")
+				    {
+					    __result[x] = new Choice
+					    {
+						    label = "Nevermind",
+						    key = "Flipbop.Cleo::Shop.3"
+					    };
+					    return;
+				    }
+			    }
+		    }
+	    }
+    */
 }
 
 internal sealed class EventDialogue : BaseDialogue

@@ -68,9 +68,15 @@ internal sealed class ImpairedCost : IKokoroApi.IV2.IActionCostsApi.IResource
     }
 
     public IReadOnlyList<Tooltip> GetTooltips(State state, Combat combat, int amount)
-    {
-        return [];
-    }
+	    => [
+		    new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Impair")
+		    {
+			    Icon = ModEntry.Instance.ImpairedIcon.Sprite,
+			    TitleColor = Colors.action,
+			    Title = ModEntry.Instance.Localizations.Localize(["action", "ImpairCost", "name"]),
+			    Description = ModEntry.Instance.Localizations.Localize(["action", "ImpairCost", "description"])
+		    }
+	    ];
 }
 
 internal sealed class ImpairedCostHook : IKokoroApi.IV2.IActionCostsApi.IHook
