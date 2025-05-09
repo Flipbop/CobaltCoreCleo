@@ -1,10 +1,8 @@
 ﻿using Nickel;
 using System.Collections.Generic;
-using System.Linq;
-using FSPRO;
+
 using HarmonyLib;
-using System;
-using Microsoft.Extensions.Logging;
+
 
 namespace Flipbop.Cleo;
 
@@ -79,10 +77,11 @@ internal static class DontLetCleoBecomeAnNPC
 	    {
 		    if (crew.type == ModEntry.Instance.CleoCharacter.CharacterType)
 		    {
-			    __instance.character.type = cleoKiwi;
+			    __instance.character = new Character() { type = cleoKiwi };
 		    }
 	    }
     }
+    
 }
 
 internal sealed class EventDialogue : BaseDialogue
@@ -106,7 +105,7 @@ internal sealed class EventDialogue : BaseDialogue
 		{
 			foreach (KeyValuePair<string, StoryNode> node in DB.story.all)
 			{
-				if ((node.Value.lookup?.Contains("shopBefore") == true || node.Key.StartsWith("Shop")) && node.Value.allPresent?.Contains(cleoType) == false)
+				if (node.Value.lookup?.Contains("shopBefore") == true && node.Value.allPresent?.Contains(cleoType) == false)
 				{
 					node.Value.nonePresent = [cleoType];
 				}
@@ -155,6 +154,7 @@ internal sealed class EventDialogue : BaseDialogue
 			DB.story.all["ShopUpgradeCard_Multi_4"].nonePresent = [cleoType];
 			DB.story.all["ShopUpgradeCard_Multi_5"].nonePresent = [cleoType];
 			DB.story.all["ShopUpgradeCard_Multi_6"].nonePresent = [cleoType];
+			DB.story.all["EmptyShop"].nonePresent = [cleoType];
 			#endregion
 			InjectLocalizations(newNodes, newHardcodedNodes, saySwitchNodes, e);
 		};
@@ -323,6 +323,22 @@ internal sealed class EventDialogue : BaseDialogue
 			priority = true,
 			lines = [
 				new Say { who = cleoType, loopTag = "neutral", flipped = true},
+			],
+		};
+		//Empty Shop
+		newNodes[["Shop", "21"]] = new()
+		{
+			hasArtifacts = ["BrokenGlasses"],
+			lookup = ["shopBefore"],
+			bg = typeof(BGShopEmpty).Name,
+			allPresent = [cleoType],
+			priority = true,
+			lines = [
+				new Say { who = "comp", loopTag = "grumpy" },
+				new Say { who = "comp", loopTag = "grumpy"},
+				new Say { who = "comp", loopTag = "grumpy"},
+				new Say { who = cleoType, loopTag = "squint"},
+				new Say { who = "comp", loopTag = "grumpy"},
 			],
 		};
 		#endregion

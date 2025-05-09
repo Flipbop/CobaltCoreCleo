@@ -180,7 +180,7 @@ public sealed class ModEntry : SimpleMod
 		KiwiCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kiwi", new NonPlayableCharacterConfigurationV2()
 		{
 			CharacterType = "Cleo::Kiwi",
-			Name = this.AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
+			Name = AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
 			NeutralAnimation = new CharacterAnimationConfigurationV2()
 			{
 				CharacterType = "Cleo::Kiwi",
