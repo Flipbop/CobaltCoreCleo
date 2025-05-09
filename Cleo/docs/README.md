@@ -5,15 +5,12 @@
 **Cleo** -- Your shopkeeper. Capable of *upgrading* and *downgrading* cards mid-battle.
 
 Core mechanics:
-* ![](icons/Improved.png) **Improve**: Cleo's main method of upgrading your cards. It will always target the rightmost eligible card in your hand to the letter specified. 
-* ![](icons/Impaired.png) **Impair**: The opposite of Improve. Downgrades your rightmost eligible card to its non-upgraded version. Usually has some other benefit following suit.
+* ![](icons/Improved.png) **Improve**: Cleo's main method of upgrading your cards. It will always target the rightmost eligible card in your hand, upgrading it to the letter specified. 
+* ![](icons/Impaired.png) **Impair**: The opposite of Improve. Downgrades your rightmost eligible card to its non-upgraded version. Always has some other benefit following suit if you can successfully impair a card.
 
-Code by Flipbop  
-Art and Design by Flipbop
-
-[![Card preview screenshot](images/preview-none-thumb.png)](images/preview-none.png)
-[![Card A upgrade preview screenshot](images/preview-a-thumb.png)](images/preview-a.png)
-[![Card B upgrade preview screenshot](images/preview-b-thumb.png)](images/preview-b.png)
+Code by Flipbop (with help from rft50 and Urufudoggo)  
+Design by Flipbop
+Artwork by Soggoru Waffle
 
 ## See also
 * [NexusMods](https://www.nexusmods.com/cobaltcore/mods/10)

@@ -179,11 +179,15 @@ public sealed class ModEntry : SimpleMod
 
 		KiwiCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kiwi", new NonPlayableCharacterConfigurationV2()
 		{
+			CharacterType = "Cleo::Kiwi",
+			Name = this.AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
 			NeutralAnimation = new CharacterAnimationConfigurationV2()
 			{
-				CharacterType = CleoDeck.UniqueName,
+				CharacterType = "Cleo::Kiwi",
 				LoopTag = "neutral",
-				Frames = Enumerable.Range(0,0).Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Kiwi/{i}.png")).Sprite).ToList()
+				Frames = Enumerable.Range(0,1)
+					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Kiwi/{i}.png")).Sprite)
+					.ToList()
 			}
 		});
 		
