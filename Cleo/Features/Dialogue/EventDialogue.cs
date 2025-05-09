@@ -71,15 +71,15 @@ internal static class DontLetCleoBecomeAnNPC
 		}
     }
 
-    private static void NoneOfYourBusinessCleoEdition(State s)
+    private static void NoneOfYourBusinessCleoEdition(State s, ref Shopkeep __instance)
     {
 	    var cleoKiwi = ModEntry.Instance.KiwiCharacter.CharacterType;
 
-	    foreach (Character character in s.characters)
+	    foreach (Character crew in s.characters)
 	    {
-		    if (character.type == ModEntry.Instance.CleoCharacter.CharacterType)
+		    if (crew.type == ModEntry.Instance.CleoCharacter.CharacterType)
 		    {
-			    
+			    __instance.character.type = cleoKiwi;
 		    }
 	    }
     }
