@@ -284,6 +284,17 @@ public sealed class ModEntry : SimpleMod
 				}
 			)
 		);
+		helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
+			{
+				foreach (Character crew in state.characters)
+				{
+					if (crew.type == CleoCharacter.CharacterType)
+					{
+						if ((state?.route as Combat)?.otherShip.ai is Shopkeep)
+							state?.GetCurrentQueue().Add(new BRINGITBACK());
+					}
+				}
+			});
 		_ = new ImprovedAManager();
 		_ = new ImprovedBManager();
 		_ = new ImpairedManager();

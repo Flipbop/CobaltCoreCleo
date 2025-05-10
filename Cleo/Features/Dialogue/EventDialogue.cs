@@ -81,7 +81,6 @@ internal static class DontLetCleoBecomeAnNPC
 		    }
 	    }
     }
-    
 }
 
 internal sealed class EventDialogue : BaseDialogue
