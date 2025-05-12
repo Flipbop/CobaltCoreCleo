@@ -179,16 +179,8 @@ public sealed class ModEntry : SimpleMod
 
 		KiwiCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kiwi", new NonPlayableCharacterConfigurationV2()
 		{
-			CharacterType = "Cleo::Kiwi",
+			CharacterType = "kiwi",
 			Name = AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
-			NeutralAnimation = new CharacterAnimationConfigurationV2()
-			{
-				CharacterType = "Cleo::Kiwi",
-				LoopTag = "neutral",
-				Frames = Enumerable.Range(0,1)
-					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Kiwi/{i}.png")).Sprite)
-					.ToList()
-			}
 		});
 		
 		CleoCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cleo", new()
@@ -219,9 +211,30 @@ public sealed class ModEntry : SimpleMod
 					new TurtleShotCard()
 				]
 			},
+			SoloStarters = new StarterDeck()
+			{
+				cards = [
+					new QuickBoostCard(),
+					new TurtleShotCard(),
+					new RewriteCard(),
+					new ShuffleUpgradeCard(),
+					new CannonColorless(),
+					new DodgeColorless()
+					]
+			},
 			ExeCardType = typeof(CleoExeCard)
 		});
 
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KiwiCharacter.CharacterType,
+			LoopTag = "neutral",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Kiwi/{i}.png")).Sprite)
+				.ToList()
+		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CleoDeck.UniqueName,

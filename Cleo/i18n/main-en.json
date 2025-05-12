@@ -6,7 +6,7 @@
             "Your shopkeeper.",
             "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
         ],
-        "nameKiwi": "Kiwi Drone"
+        "nameKiwi": "Kiwi"
     },
     "action": {
         "UpgradesInHand": {
