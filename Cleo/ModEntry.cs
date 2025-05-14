@@ -73,7 +73,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(PermaFixCard),
 		typeof(CleanSlateCard),
 		typeof(ApologizeNextLoopCard),
-		typeof(FlexibleDefenseCard),
+		typeof(DefensivePositionsCard),
 	];
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [

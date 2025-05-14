@@ -92,11 +92,11 @@
         },
         "Kickstart": {
             "name": "KICKSTART",
-            "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            "description": "At the start of each combat <c=action>Improve A</c> the first 2 eligible cards you draw."
         },
         "MagnifiedLasers": {
             "name": "MAGNIFIED LASERS",
-            "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            "description": "If your rightmost card is an <c=keyword>upgraded</c> card it does +1 damage."
         },
         "UpgradedTerminal": {
             "name": "UPGRADED TERMINAL",
@@ -246,8 +246,8 @@
             }
         },
 
-        "FlexibleDefense": {
-            "name": "Flexible Defense"
+        "DefensivePositions": {
+            "name": "Defensive Positions"
         },
         "SmallRepairs": {
             "name": "Small Repairs"
