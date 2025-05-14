@@ -84,7 +84,7 @@
     "artifact": {
         "EnhancedTools": {
             "name": "ENHANCED TOOLS",
-            "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            "description": "The first time you play an <c=cardtrait>improved</c> card each combat, <c=action>improve</c> another card with the same upgrade."
         },
         "ReusableMaterials": {
             "name": "REUSABLE MATERIALS",
