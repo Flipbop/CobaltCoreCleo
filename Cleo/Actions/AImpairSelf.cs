@@ -1,6 +1,7 @@
 ﻿using FSPRO;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Flipbop.Cleo;
@@ -29,6 +30,10 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 					false);
 				ImpairedExt.AddImpaired(card, s);
 				Audio.Play(Event.CardHandling);
+			}
+			if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
+			{
+				c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = 1 });
 			}
 		}
 	}

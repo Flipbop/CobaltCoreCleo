@@ -1,6 +1,7 @@
 ﻿using FSPRO;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Flipbop.Cleo;
@@ -21,8 +22,6 @@ public sealed class AImpair : DynamicWidthCardAction
 				{
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImpairedTrait, true, false);
 					ImpairedExt.AddImpaired(c.hand[index], s);
-					Amount--;
-					Audio.Play(Event.CardHandling);
 				}
 				else
 				{
@@ -30,8 +29,12 @@ public sealed class AImpair : DynamicWidthCardAction
 					ImprovedAExt.RemoveImprovedA(c.hand[index], s);
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, false, false);
 					ImprovedBExt.RemoveImprovedB(c.hand[index], s);
-					Amount--;
-					Audio.Play(Event.CardHandling);
+				}
+				Amount--;
+				Audio.Play(Event.CardHandling);
+				if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
+				{
+					c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = 1 });
 				}
 			}
 			index--;

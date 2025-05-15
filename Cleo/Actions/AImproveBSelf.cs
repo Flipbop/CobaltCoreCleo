@@ -1,6 +1,7 @@
 ﻿using FSPRO;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Flipbop.Cleo;
@@ -24,6 +25,10 @@ public sealed class AImproveBSelf : DynamicWidthCardAction
 				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedBTrait, true, false);
 				ImprovedBExt.AddImprovedB(card, s);
 				Audio.Play(Event.CardHandling);
+			}
+			if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
+			{
+				c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = -1 });
 			}
 		}
 	}

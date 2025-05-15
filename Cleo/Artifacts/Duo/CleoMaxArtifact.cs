@@ -33,78 +33,14 @@ internal sealed class CleoMaxArtifact : Artifact, IRegisterable
 
 		api.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!, [ModEntry.Instance.CleoDeck.Deck, Deck.hacker]);
 	}
+	
 
-	public override int? GetDisplayNumber(State s)
-		=> TurnCounter;
-
-	public override List<Tooltip>? GetExtraTooltips()
+	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
-		List<Tooltip> tooltips = [];
-
-		var state = MG.inst.g.state ?? DB.fakeState;
-		if (!state.IsOutsideRun() && state != DB.fakeState)
+		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
+		if (card.upgrade != Upgrade.None && card.GetData(state).exhaust)
 		{
-			var combat = state.route as Combat;
-			IEnumerable<Card> cards = [..state.deck, ..combat?.discard ?? [], ..combat?.hand ?? []];
-
-			var groups = cards
-				.GroupBy(card => card.Key())
-				.OrderByDescending(group => group.Count())
-				.Take(2)
-				.ToList();
-
-			var hasEffect = groups.Count == 1 || (groups.Count == 2 && groups[0].Count() != groups[1].Count());
-			tooltips.Add(
-				hasEffect
-					? new TTText(ModEntry.Instance.Localizations.Localize(["artifact", "Duo", "CleoMax", "hasEffect"], new { CardName = Loc.T($"card.{groups[0].First().Key()}.name") }))
-					: new TTText(ModEntry.Instance.Localizations.Localize(["artifact", "Duo", "CleoMax", "hasNoEffect"]))
-			);
-		}
-
-		tooltips.Add(new TTGlossary("cardtrait.discount", 1));
-		return tooltips;
-	}
-
-	public override void OnTurnStart(State state, Combat combat)
-	{
-		base.OnTurnStart(state, combat);
-		if (!combat.isPlayerTurn)
-			return;
-		if (++TurnCounter < 3)
-			return;
-
-		TurnCounter -= 3;
-
-		var groups = state.deck.Concat(combat.discard).Concat(combat.hand)
-			.GroupBy(card => card.Key())
-			.OrderByDescending(group => group.Count())
-			.Take(2)
-			.ToList();
-		if (groups.Count == 2 && groups[0].Count() == groups[1].Count())
-			return;
-
-		combat.Queue(new Action
-		{
-			CardIds = groups[0].Select(card => card.uuid).ToList(),
-			artifactPulse = Key()
-		});
-	}
-
-	private sealed class Action : CardAction
-	{
-		public required List<int> CardIds;
-
-		public override void Begin(G g, State s, Combat c)
-		{
-			base.Begin(g, s, c);
-
-			foreach (var cardId in CardIds)
-			{
-				if (s.FindCard(cardId) is not { } card)
-					continue;
-				card.discount -= 1;
-			}
-			Audio.Play(Event.CardHandling);
+			combat.Queue(new ADrawUpgrade());
 		}
 	}
 }

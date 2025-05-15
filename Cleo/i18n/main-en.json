@@ -116,38 +116,48 @@
         },
         "Duo": {
             "CleoBooks": {
-                "name": "SUMMONING STAFF",
-                "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+                "name": "IMPROVED SHARDS",
+                "description": "If you gain any <c=status>SHARD</c> while at max Shard, <c=action>Improve A</c> 1."
             },
             "CleoCat": {
-                "name": "NEVERMIND",
-                "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+                "name": "NEXT GEN OS",
+                "description": "Upon pickup, <c=boldPink>Upgrade</c> 3 of your <c=card>Basic</c> cards to their <c=boldPink>A upgrade</c>."
             },
             "CleoDizzy": {
-                "name": "FORTIFY",
-                "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+                "name": "SHIELD BOOSTERS",
+                "description": "All <c=status>SHIELD</c> and <c=status>TEMP SHIELD</c> gain on <c=cardtrait>Improved</c> and <c=cardtrait>Impaired</c> cards is increased by 1."
             },
             "CleoDrake": {
-                "name": "ICED COFFEE",
-                "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+                "name": "THERMAL INHIBITORS",
+                "description": "When you <c=action>Improve</c> a card lose 1 <c=status>HEAT</c>. When you <c=action>Impair</c> a card gain 1 <c=status>HEAT</c>."
             },
             "CleoIsaac": {
-                "name": "CARE PACKAGE",
-                "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+                "name": "REMOTE WORKSPACE",
+                "description": "When you <c=action>Improve</c> a card, turn an <c=keyword>Attack Drone</c> in the midrow into an <c=keyword>Attack Drone Mk 2</c>."
             },
             "CleoMax": {
-                "name": "TREND CHASER",
-                "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
-                "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
-                "hasNoEffect": "Currently has no effect."
+                "name": "FILE REROUTING",
+                "description": "When you <c=action>exhaust</c> an <c=cardtrait>upgraded</c> card, <c=action>draw</c> an upgraded card from your Draw pile."
             },
             "CleoPeri": {
-                "name": "MILITARY SPENDING",
-                "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+                "name": "PERI-PIERCER",
+                "description": "All <c=boldPink>upgraded</c> Peri cards <c=keyword>pierce</c>."
             },
             "CleoRiggs": {
-                "name": "PLAN B",
-                "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+                "name": "BOBA+",
+                "description": "If you don't have any <c=status>EVADE</c>, you can <c=action>Impair</c> cards in your hand to move anyway."
+            },
+            "CleoJohnson": {
+                "name": "INVESTMENT",
+                "description": "Add a <c=card>Hold...</c> to your deck."
+            },
+            "CleoSoggins": {
+                "name": "FROGPROOF COATING",
+                "description": "<c=cardtrait>Improved</c> cards are also <c=cardtrait>Frogproof</c>."
+            },
+            "CleoPhilip": {
+                "name": "SUBSTANDARD DUPLICATOR",
+                "description": "When you <c=action>Improve</c> a <c=card>mod</c>, <c=action>Improve A</c>."
             }
         }
     },
@@ -264,14 +274,20 @@
         },
 
         "Duo": {
-            "CleoCatNoneOfTheAbove": {
-                "name": "None of the Above"
+            "Hold1": {
+                "name": "Hold...",
+                "description": "When this is <c=boldPink>upgraded</c>, add a <c=card>HOLD...</c> to your deck and remove this from your deck."
             },
-            "CleoIsaacSupply": {
-                "name": "Supply"
+            "Hold2": {
+                "name": "HOLD...",
+                "description": "When this is <c=boldPink>upgraded</c>, add a <c=card>NOW</c> to your deck and remove this from your deck."
             },
-            "CleoIsaacDemand": {
-                "name": "Demand"
+            "Hold3": {
+                "name": "NOW",
+                "description": "When this is <c=boldPink>upgraded</c>, add a <c=card>Profits</c> to your deck and remove this from your deck."
+            },
+            "Profits": {
+                "name": "Profits"
             }
         }
     }

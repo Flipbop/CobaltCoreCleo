@@ -27,7 +27,21 @@ internal sealed class CleoPeriArtifact : Artifact, IRegisterable
 
 		api.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!, [ModEntry.Instance.CleoDeck.Deck, Deck.peri]);
 	}
-
-	public override List<Tooltip>? GetExtraTooltips()
-		=> [ModEntry.Instance.Api.GetImprovedATooltip(true)];
+	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
+	{
+		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
+		if (card.GetMeta().deck == Deck.peri )
+		{
+		}
+	}
+	public override bool? OnPlayerAttackMakeItPierce(State state, Combat combat)
+	{
+		base.OnPlayerAttackMakeItPierce(state, combat);
+		if (combat.currentCardAction?.whoDidThis == Deck.peri &&
+		    ModEntry.Instance.KokoroApi.ActionInfo.GetSourceCard(state, combat.currentCardAction)?.upgrade != Upgrade.None)
+		{
+			return true;
+		}
+		return false;
+	}
 }

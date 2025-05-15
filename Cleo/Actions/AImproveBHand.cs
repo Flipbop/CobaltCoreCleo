@@ -1,6 +1,7 @@
 ﻿using FSPRO;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Flipbop.Cleo;
@@ -30,6 +31,12 @@ public sealed class AImproveBHand : DynamicWidthCardAction
 					ImpairedExt.RemoveImpaired(c.hand[index], s, true);
 					Amount--;
 					Audio.Play(Event.CardHandling);
+				}
+				Amount--;
+				Audio.Play(Event.CardHandling);
+				if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
+				{
+					c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = -1 });
 				}
 			}
 			index--;

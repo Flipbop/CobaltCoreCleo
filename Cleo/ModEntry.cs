@@ -7,6 +7,9 @@ using Shockah.Kokoro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using clay.PhilipTheMechanic;
+using Shockah.Johnson;
+using Shockah.Soggins;
 
 namespace Flipbop.Cleo;
 
@@ -18,6 +21,10 @@ public sealed class ModEntry : SimpleMod
 	internal IHarmony Harmony { get; }
 	internal IKokoroApi.IV2 KokoroApi { get; }
 	internal IDuoArtifactsApi? DuoArtifactsApi { get; }
+	internal IJohnsonApi IJohnsonApi { get; }
+	internal ISogginsApi ISogginsApi { get; }
+	internal IPhilipAPI IPhilipApi { get; }
+
 	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
@@ -105,7 +112,10 @@ public sealed class ModEntry : SimpleMod
 		typeof(CleoIsaacArtifact),
 		typeof(CleoMaxArtifact),
 		typeof(CleoPeriArtifact),
-		typeof(CleoRiggsArtifact), */
+		typeof(CleoRiggsArtifact), 
+		typeof(CleoJohnsonArtifact)
+		typeof(CleoSogginsArtifact)
+		typeof(CleoPhilipArtifact)*/
 	];
 
 	internal static IEnumerable<Type> AllArtifactTypes
@@ -117,11 +127,14 @@ public sealed class ModEntry : SimpleMod
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
 		= DuoArtifacts;
 
-	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
+	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger, IJohnsonApi johnsonApi, ISogginsApi sogginsApi, IPhilipAPI philipApi) : base(package, helper, logger)
 	{
 		Spr improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png")).Sprite; 
 		Spr impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png")).Sprite;
 		this.helper = helper;
+		IJohnsonApi = johnsonApi;
+		ISogginsApi = sogginsApi;
+		IPhilipApi = philipApi;
 
 		Instance = this;
 		Harmony = helper.Utilities.Harmony;

@@ -30,22 +30,6 @@ internal sealed class CleoDrakeArtifact : Artifact, IRegisterable
 
 	public override List<Tooltip>? GetExtraTooltips()
 		=> [
-			new TTCard { card = new SmallRepairsCard() },
 			..StatusMeta.GetTooltips(Status.heat, 1)
 		];
-
-	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
-	{
-		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card is not SmallRepairsCard)
-			return;
-
-		combat.QueueImmediate(new AStatus
-		{
-			targetPlayer = true,
-			status = Status.heat,
-			statusAmount = -1,
-			artifactPulse = Key()
-		});
-	}
 }
