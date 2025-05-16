@@ -7,9 +7,7 @@ using Shockah.Kokoro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using clay.PhilipTheMechanic;
 using Shockah.Johnson;
-using Shockah.Soggins;
 
 namespace Flipbop.Cleo;
 
