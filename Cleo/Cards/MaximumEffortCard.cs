@@ -26,7 +26,7 @@ internal sealed class MaximumEffortCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "996699",
 			cost = 2,
 		};
 
@@ -34,19 +34,19 @@ internal sealed class MaximumEffortCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AAttack{ damage = GetDmg(s, 2)},
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
+				new AAttack{ damage = GetDmg(s, 3)},
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
 			],
 			Upgrade.B => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AAttack{ damage = GetDmg(s, 4)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 4)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AAttack{ damage = GetDmg(s, 5)}).AsCardAction,
 			],
 			_ => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
 			]
 		};
 }

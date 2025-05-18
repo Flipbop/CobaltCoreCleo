@@ -29,7 +29,7 @@ internal sealed class ChoicesCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "996699",
 			cost = upgrade == Upgrade.A? 0 : 1,
 			floppable = upgrade != Upgrade.B, 
 			art = upgrade switch {

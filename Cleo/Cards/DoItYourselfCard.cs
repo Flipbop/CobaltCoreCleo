@@ -27,7 +27,7 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "996699",
 			cost = 2,
 			exhaust = upgrade != Upgrade.B,
 			singleUse = upgrade == Upgrade.B,

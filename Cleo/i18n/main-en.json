@@ -108,7 +108,7 @@
         },
         "ExpensiveEquipment": {
             "name": "EXPENSIVE EQUIPMENT",
-            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            "description": "<c=boldPink>Non-upgraded</c> cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. All other cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
         },
         "PowerEcho": {
             "name": "POWER ECHO",
@@ -149,7 +149,7 @@
             },
             "CleoJohnson": {
                 "name": "INVESTMENT",
-                "description": "Add a <c=card>Hold...</c> to your deck."
+                "description": "Add an <c=card>Invest</c> to your deck."
             },
             "CleoSoggins": {
                 "name": "FROGPROOF COATING",
@@ -177,9 +177,9 @@
         "MemoryRecovery": {
             "name": "Memory Recovery",
             "description": {
-                "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
+                "None": "Draw an <c=boldPink>Upgraded</c> card from your <c=keyword>Draw pile</c>.",
+                "A": "Draw an <c=boldPink>Upgraded</c> card from your <c=keyword>Draw pile</c>.",
+                "B": "Draw three <c=boldPink>Upgraded</c> cards from your <c=keyword>Draw pile</c>."
             }
         },
         "ShuffleUpgrade": {
@@ -226,33 +226,33 @@
         "SeekerBarrage": {
             "name": "Seeker Barrage",
             "description": {
-                "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
-                "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
-                "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
+                "None": "Move right 1 and fire a <c=keyword>Seeker</c> for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
+                "A": "Move right 1 and fire a <c=keyword>Seeker</c> for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
+                "B": "Move right 1 and fire a <c=keyword>Seeker</c> for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
             }
         },
         "PermaFix": {
             "name": "Perma-Fix",
             "description": {
-                "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
+                "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=boldPink>A upgrade</c>.",
+                "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=boldPink>A upgrade</c>.",
+                "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=boldPink>B upgrades</c>."
             }
         },
         "CleanSlate": {
             "name": "Clean Slate",
             "description": {
-                "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
+                "None": "<c=keyword>Exhaust</c> all <c=boldPink>non-upgraded</c> cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                "A": "<c=keyword>Exhaust</c> all <c=boldPink>non-upgraded</c> cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                "B": "<c=keyword>Exhaust</c> all <c=boldPink>non-upgraded</c> cards in hand, then <c=cardtrait>Discount</c> your hand."
             }
         },
         "ApologizeNextLoop": {
             "name": "Apologize Next Loop",
             "description": {                                                                       
-                "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
-                "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
-                "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
+                "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>. +1 dmg after each attack.",
+                "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>. +2 dmg after each attack",
+                "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>. +1 dmg after each attack"
             }
         },
 
@@ -274,20 +274,28 @@
         },
 
         "Duo": {
+            "Hold0": {
+                "name": "Invest",
+                "description0": "Add a <c=card>Hold...</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
+                "description1": "Add a <c=card>Hold...</c> to your hand."
+            },
             "Hold1": {
                 "name": "Hold...",
-                "description": "When this is <c=boldPink>upgraded</c>, add a <c=card>HOLD...</c> to your deck and remove this from your deck."
+                "description0": "Add a <c=card>HOLD...</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
+                "description1": "Add a <c=card>HOLD...</c> to your hand."
             },
             "Hold2": {
                 "name": "HOLD...",
-                "description": "When this is <c=boldPink>upgraded</c>, add a <c=card>NOW</c> to your deck and remove this from your deck."
+                "description0": "Add a <c=card>NOW</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
+                "description1": "Add a <c=card>NOW</c> to your hand."
             },
             "Hold3": {
                 "name": "NOW",
-                "description": "When this is <c=boldPink>upgraded</c>, add a <c=card>Profits</c> to your deck and remove this from your deck."
+                "description0": "Add a <c=card>Return On Investment</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
+                "description1": "Add a <c=card>Return On Investment</c> to your hand."
             },
-            "Profits": {
-                "name": "Profits"
+            "ReturnOnInvestment": {
+                "name": "Return On Investment"
             }
         }
     }

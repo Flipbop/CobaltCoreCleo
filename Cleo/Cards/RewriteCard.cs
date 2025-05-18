@@ -26,9 +26,10 @@ internal sealed class RewriteCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
-			cost = 1,
-			retain = upgrade == Upgrade.B,
+			artTint = "996699",
+			cost = 0,
+			retain = true,
+			infinite = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -37,15 +38,10 @@ internal sealed class RewriteCard : Card, IRegisterable
 			Upgrade.A =>
 			[
 				new AReverseHand(),
-				new AAttack { damage = GetDmg(s, 2) },
-			],
-			Upgrade.B => [
-				new AReverseHand(),
 				new AAttack { damage = GetDmg(s, 1) },
 			],
 			_ => [
 				new AReverseHand(),
-				new AAttack { damage = GetDmg(s, 1) },
 			]
 		};
 }

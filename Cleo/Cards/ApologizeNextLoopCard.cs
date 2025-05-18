@@ -32,7 +32,7 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "996699",
 			cost = 3,
 			description =
 				ModEntry.Instance.Localizations.Localize([

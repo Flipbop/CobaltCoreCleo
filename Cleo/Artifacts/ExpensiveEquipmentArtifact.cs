@@ -24,22 +24,22 @@ internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
 	}
 
 	public override List<Tooltip>? GetExtraTooltips()
-		=> [new TTGlossary("cardtrait.discount")];
+		=> [new TTGlossary("cardtrait.discount", 1)];
 
 	public override void OnCombatStart(State state, Combat combat)
 	{
 		base.OnCombatStart(state, combat);
 		
 		foreach (var card in state.deck)
-			if (card.GetCurrentCost(state) >= 3 && card.IsUpgradable())
+			if (card.GetCurrentCost(state) >= 3 )
 			{
-				if (card.upgrade == Upgrade.None)
+				if (card.IsUpgradable() && card.upgrade == Upgrade.None)
 				{
 					combat.Queue([
 						new AImproveASelf {id = card.uuid},
 					]);
 				}
-				else
+				else if (card.upgrade != Upgrade.None)
 				{
 					card.discount -= -1;
 				}

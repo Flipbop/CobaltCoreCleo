@@ -26,7 +26,7 @@ internal sealed class MemoryRecoveryCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "996699",
 			cost = upgrade == Upgrade.A? 0 : 1,
 			description = ModEntry.Instance.Localizations.Localize(["card", "MemoryRecovery", "description", upgrade.ToString()])
 		};
