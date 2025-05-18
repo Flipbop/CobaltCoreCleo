@@ -72,6 +72,7 @@ internal sealed class Hold0Card : Card
 		{
 			artTint = "996699",
 			cost = 0,
+			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
 			description = upgrade == Upgrade.None ? ModEntry.Instance.Localizations.Localize(["Duo", "Hold0", "description0", upgrade.ToString()]) : ModEntry.Instance.Localizations.Localize(["Duo", "Hold0", "description1", upgrade.ToString()]),
 		};
@@ -106,6 +107,7 @@ internal sealed class Hold0Card : Card
 		{
 			artTint = "996699",
 			cost = 0,
+			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
 			description = upgrade == Upgrade.None ? ModEntry.Instance.Localizations.Localize(["Duo", "Hold1", "description0", upgrade.ToString()]) : ModEntry.Instance.Localizations.Localize(["Duo", "Hold1", "description1", upgrade.ToString()]),
 		};
@@ -140,6 +142,7 @@ internal sealed class Hold0Card : Card
 		{
 			artTint = "996699",
 			cost = 0,
+			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
 			description = upgrade == Upgrade.None ? ModEntry.Instance.Localizations.Localize(["Duo", "Hold2", "description0", upgrade.ToString()]) : ModEntry.Instance.Localizations.Localize(["Duo", "Hold2", "description1", upgrade.ToString()]),
 		};
@@ -174,6 +177,7 @@ internal sealed class Hold0Card : Card
 		{
 			artTint = "996699",
 			cost = 0,
+			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
 			description = upgrade == Upgrade.None ? ModEntry.Instance.Localizations.Localize(["Duo", "Hold3", "description0", upgrade.ToString()]) : ModEntry.Instance.Localizations.Localize(["Duo", "Hold3", "description1", upgrade.ToString()]),
 		};
