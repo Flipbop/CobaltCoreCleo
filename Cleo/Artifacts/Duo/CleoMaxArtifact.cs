@@ -10,8 +10,6 @@ namespace Flipbop.Cleo;
 
 internal sealed class CleoMaxArtifact : Artifact, IRegisterable
 {
-	[JsonProperty]
-	public int TurnCounter;
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -40,7 +38,7 @@ internal sealed class CleoMaxArtifact : Artifact, IRegisterable
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
 		if (card.upgrade != Upgrade.None && card.GetData(state).exhaust)
 		{
-			combat.Queue(new ADrawUpgrade());
+			combat.Queue(new ADrawUpgrade {Amount = 1});
 		}
 	}
 }

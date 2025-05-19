@@ -1,6 +1,6 @@
 ﻿using Nickel;
 
-namespace Flipbop.Cleo;
+namespace Shockah.Soggins;
 
 public interface ISogginsApi
 {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flipbop.Cleo
+namespace clay.PhilipTheMechanic
 {
     public interface IPhilipAPI
     {

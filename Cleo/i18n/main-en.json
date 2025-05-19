@@ -23,22 +23,22 @@
         },
         "ImproveA": {
             "name": "   Improve A",
-            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played (unless it <c=boldPurple>exhausts</c>), or until combat ends."
         },
         "ImproveB": {
             "name": "   Improve B",
-            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played (unless it <c=boldPurple>exhausts</c>), or until combat ends."
         },
         "Impair": {
             "name": "Impair",
             "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
         },
         "ImproveAHand": {
-            "name": "      Improve Hand A",
+            "name": "       Improve Hand A",
             "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImproveBHand": {
-            "name": "      Improve Hand B",
+            "name": "       Improve Hand B",
             "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
         },
         "ImpairHand": {
@@ -137,7 +137,7 @@
             },
             "CleoMax": {
                 "name": "FILE REROUTING",
-                "description": "When you <c=action>exhaust</c> an <c=cardtrait>upgraded</c> card, <c=action>draw</c> an upgraded card from your Draw pile."
+                "description": "When you <c=action>exhaust</c> an <c=boldPink>upgraded</c> card, <c=action>draw</c> an <c=boldPink>upgraded</c> card from your <c=keyword>Draw pile</c>."
             },
             "CleoPeri": {
                 "name": "PERI-PIERCER",
@@ -276,23 +276,35 @@
         "Duo": {
             "Hold0": {
                 "name": "Invest",
-                "description0": "Add a <c=card>Hold...</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
-                "description1": "Add a <c=card>Hold...</c> to your hand."
+                "description": {
+                    "None": "Add a <c=card>Hold</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
+                    "A":"Add a <c=card>Hold</c> to the <c=boldPink>exhaust pile</c>.",
+                    "B":"Add a <c=card>Hold</c> to the <c=boldPink>exhaust pile</c>."
+                }
             },
             "Hold1": {
-                "name": "Hold...",
-                "description0": "Add a <c=card>HOLD...</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
-                "description1": "Add a <c=card>HOLD...</c> to your hand."
+                "name": "Hold",
+                "description": {
+                    "None": "Add a <c=card>HOLD</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
+                    "A":"Add a <c=card>HOLD</c> to the <c=boldPink>exhaust pile</c>.",
+                    "B":"Add a <c=card>HOLD</c> to the <c=boldPink>exhaust pile</c>."
+                }
             },
             "Hold2": {
-                "name": "HOLD...",
-                "description0": "Add a <c=card>NOW</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
-                "description1": "Add a <c=card>NOW</c> to your hand."
+                "name": "HOLD",
+                "description": {
+                    "None": "Add a <c=card>NOW</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
+                    "A":"Add a <c=card>NOW</c> to the <c=boldPink>exhaust pile</c>.",
+                    "B":"Add a <c=card>NOW</c> to the <c=boldPink>exhaust pile</c>."
+                }
             },
             "Hold3": {
                 "name": "NOW",
-                "description0": "Add a <c=card>Return On Investment</c> to your hand. <c=boldPink>Upgrade</c> this to make it playable.",
-                "description1": "Add a <c=card>Return On Investment</c> to your hand."
+                "description": {
+                    "None": "Add a <c=card>Return On Investment</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
+                    "A":"Add a <c=card>Return On Investment</c> to the <c=boldPink>exhaust pile</c>.",
+                    "B":"Add a <c=card>Return On Investment</c> to the <c=boldPink>exhaust pile</c>."
+                }
             },
             "ReturnOnInvestment": {
                 "name": "Return On Investment"
