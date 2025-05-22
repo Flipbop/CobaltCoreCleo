@@ -28,31 +28,17 @@ internal sealed class CleoRiggsArtifact : Artifact, IRegisterable
 		});
 
 		api.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!, [ModEntry.Instance.CleoDeck.Deck, Deck.riggs]);
-
-		ModEntry.Instance.Harmony.Patch(
-			original: AccessTools.DeclaredMethod(typeof(AEndTurn), nameof(AEndTurn.Begin)),
-			prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AEndTurn_Begin_Prefix))
-		);
 	}
 
 	public override List<Tooltip>? GetExtraTooltips()
 		=> StatusMeta.GetTooltips(Status.evade, 1);
 
-	private static void AEndTurn_Begin_Prefix(State s, Combat c)
+	public int UpgradeCount = 0;
+	private static void OnDrawCard(State state, Combat combat, int count)
 	{
-		if (c.cardActions.Any(a => a is AEndTurn))
-			return;
-		if (!c.hand.Any(card => card.upgrade == Upgrade.B))
-			return;
-		if (s.EnumerateAllArtifacts().FirstOrDefault(a => a is CleoRiggsArtifact) is not { } artifact)
-			return;
-
-		c.QueueImmediate(new AStatus
+		if (combat.hand[^1].upgrade != Upgrade.None)
 		{
-			targetPlayer = true,
-			status = Status.evade,
-			statusAmount = 1,
-			artifactPulse = artifact.Key()
-		});
+			
+		}
 	}
 }

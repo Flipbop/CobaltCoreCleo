@@ -6,7 +6,7 @@ public interface ISogginsApi
 {
 	Deck SogginsVanillaDeck { get; }
 
-	ICardTraitEntry FrogproofTrait { get; }
+	ICardTraitEntry? FrogproofTrait { get; }
 	Tooltip FrogproofCardTraitTooltip { get; }
 
 	Status FrogproofingVanillaStatus { get; }

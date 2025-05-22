@@ -16,7 +16,7 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 		if (s.FindCard(id) is Card card)
 		{
 			base.Begin(g, s, c);
-			if (s.FindCard(id)!.GetImprovedA() || s.FindCard(id)!.GetImprovedB())
+			if (s.FindCard(id)!.GetIsImprovedA() || s.FindCard(id)!.GetIsImprovedB())
 			{
 				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedATrait, false, false);
 				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedBTrait, false, false);
@@ -34,6 +34,14 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 			if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
 			{
 				c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = 1 });
+			}
+			if (s.EnumerateAllArtifacts().Any((a) => a is CleoDizzyArtifact))
+			{
+				c.Queue(new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 });
+				if (card.GetMeta().deck == Deck.dizzy)
+				{
+					c.Queue(new AImproveASelf() { id = card.uuid });
+				}
 			}
 		}
 	}

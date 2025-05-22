@@ -6,17 +6,17 @@ namespace Flipbop.Cleo;
 internal static class ImpairedExt
 {
 	private static Upgrade _upgradeContainer = Upgrade.None;
-	public static bool GetImpaired(this Card self)
+	public static bool GetIsImpaired(this Card self)
 		=> ModEntry.Instance.Helper.ModData.GetModDataOrDefault<bool>(self, "Impaired");
 
-	public static void SetImpaired(this Card self, bool value)
+	public static void SetIsImpaired(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "Impaired", value);
 
 	public static void AddImpaired(this Card self, State s)
 	{
-		if (!self.GetImpaired() && self.upgrade != Upgrade.None)
+		if (!self.GetIsImpaired() && self.upgrade != Upgrade.None)
 		{
-			SetImpaired(self, true);
+			SetIsImpaired(self, true);
 			_upgradeContainer = self.upgrade;
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.None);
 		}
@@ -24,7 +24,7 @@ internal static class ImpairedExt
 
 	public static void RemoveImpaired(this Card self, State s, bool useStorage)
 	{
-		SetImpaired(self, false);
+		SetIsImpaired(self, false);
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
 		if (useStorage)
 		{
@@ -51,7 +51,7 @@ internal sealed class ImpairedManager
 		{
 			foreach (var card in state.deck)
 			{
-				if (card.GetImpaired())
+				if (card.GetIsImpaired())
 				{
 					card.RemoveImpaired(state, true);
 				}

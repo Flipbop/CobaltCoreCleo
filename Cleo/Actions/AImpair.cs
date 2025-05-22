@@ -18,7 +18,7 @@ public sealed class AImpair : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade != Upgrade.None)
 			{
-				if (!c.hand[index].GetImprovedA() && !c.hand[index].GetImprovedB())
+				if (!c.hand[index].GetIsImprovedA() && !c.hand[index].GetIsImprovedB())
 				{
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImpairedTrait, true, false);
 					ImpairedExt.AddImpaired(c.hand[index], s);
@@ -35,6 +35,14 @@ public sealed class AImpair : DynamicWidthCardAction
 				if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
 				{
 					c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = 1 });
+				}
+				if (s.EnumerateAllArtifacts().Any((a) => a is CleoDizzyArtifact))
+				{
+					c.Queue(new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 });
+					if (c.hand[index].GetMeta().deck == Deck.dizzy)
+					{
+						c.Queue(new AImproveASelf() { id = c.hand[index].uuid });
+					}
 				}
 			}
 			index--;

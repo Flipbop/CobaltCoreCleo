@@ -459,7 +459,7 @@ internal sealed class EventDialogue : BaseDialogue
 				new Say { who = cleoType, loopTag = "neutral" },
 			],
 		};
-		newHardcodedNodes[["CrystallizedFriendEvent_{{CharacterType}}"]] = new()
+		newHardcodedNodes[["CrystallizedFriendEvent_{{CharacterType}}", "0"]] = new()
 		{
 			oncePerRun = true,
 			bg = typeof(BGCrystalizedFriend).Name,

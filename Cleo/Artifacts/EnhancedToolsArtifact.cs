@@ -27,14 +27,14 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.GetImprovedA() && firstCard)
+		if (card.GetIsImprovedA() && firstCard)
 		{
 			firstCard = false;
 			combat.Queue([
 				new AImproveA { Amount = 1}
 			]);
 		}
-		if (card.GetImprovedB() && firstCard)
+		if (card.GetIsImprovedB() && firstCard)
 		{
 			firstCard = false;
 			combat.Queue([

@@ -107,15 +107,15 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
 //		typeof(CleoBooksArtifact),
-//		typeof(CleoCatArtifact),
-//		typeof(CleoDizzyArtifact),
+		typeof(CleoCatArtifact),
+		typeof(CleoDizzyArtifact),
 		typeof(CleoDrakeArtifact),
 //		typeof(CleoIsaacArtifact),
 		typeof(CleoMaxArtifact),
 		typeof(CleoPeriArtifact),
 //		typeof(CleoRiggsArtifact), 
 		typeof(CleoJohnsonArtifact),
-//		typeof(CleoSogginsArtifact),
+		typeof(CleoSogginsArtifact),
 //		typeof(CleoPhilipArtifact)
 	];
 

@@ -18,7 +18,7 @@ public sealed class AImproveA : DynamicWidthCardAction
 		{
 			if (c.hand[index].upgrade == Upgrade.None && c.hand[index].IsUpgradable() && c.hand[index].GetMeta().deck != Deck.trash)
 			{
-				if (!c.hand[index].GetImpaired())
+				if (!c.hand[index].GetIsImpaired())
 				{
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
 					ImprovedAExt.AddImprovedA(c.hand[index], s);
@@ -33,6 +33,10 @@ public sealed class AImproveA : DynamicWidthCardAction
 				if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
 				{
 					c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = -1 });
+				}
+				if (s.EnumerateAllArtifacts().Any((a) => a is CleoIsaacArtifact))
+				{
+					
 				}
 			}
 			index--;

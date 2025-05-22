@@ -46,7 +46,7 @@ internal sealed class ImpairedCost : IKokoroApi.IV2.IActionCostsApi.IResource
 	    {
 		    if (c.hand[index].upgrade != Upgrade.None)
 		    {
-			    if (!c.hand[index].GetImprovedA() && !c.hand[index].GetImprovedB())
+			    if (!c.hand[index].GetIsImprovedA() && !c.hand[index].GetIsImprovedB())
 			    {
 				    ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImpairedTrait, true, false);
 				    ImpairedExt.AddImpaired(c.hand[index], s);

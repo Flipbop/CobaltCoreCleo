@@ -36,7 +36,7 @@ internal sealed class CleoMaxArtifact : Artifact, IRegisterable
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.upgrade != Upgrade.None && card.GetData(state).exhaust)
+		if (card.upgrade != Upgrade.None && combat.exhausted.Contains(card))
 		{
 			combat.Queue(new ADrawUpgrade {Amount = 1});
 		}

@@ -15,7 +15,7 @@ public sealed class AImproveASelf : DynamicWidthCardAction
 		if (s.FindCard(id) is Card card)
 		{
 			base.Begin(g, s, c);
-			if (s.FindCard(id)!.GetImpaired())
+			if (s.FindCard(id)!.GetIsImpaired())
 			{
 				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImpairedTrait, false, false);
 				ImpairedExt.RemoveImpaired(card, s, false);

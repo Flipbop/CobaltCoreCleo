@@ -121,11 +121,11 @@
             },
             "CleoCat": {
                 "name": "NEXT GEN OS",
-                "description": "Upon pickup, <c=boldPink>Upgrade</c> 3 of your <c=card>Basic</c> cards to their <c=boldPink>A upgrade</c>."
+                "description": "Upon pickup, gain an <c=boldPink>A upgraded</c> <c=card>Basic Shot</c>, <c=card>Basic Dodge</c>, and <c=card>Basic Block</c>."
             },
             "CleoDizzy": {
-                "name": "SHIELD BOOSTERS",
-                "description": "All <c=status>SHIELD</c> and <c=status>TEMP SHIELD</c> gain on <c=cardtrait>Improved</c> and <c=cardtrait>Impaired</c> cards is increased by 1."
+                "name": "REACTIVE SHIELDS",
+                "description": "When you <c=action>Impair</c> a card gain 1 <c=status>TEMP SHIELD</c> If it is a <c=40a4fc>Dizzy</c> card, give it <c=cardtrait>Improved A</c>."
             },
             "CleoDrake": {
                 "name": "THERMAL INHIBITORS",
@@ -141,11 +141,11 @@
             },
             "CleoPeri": {
                 "name": "PERI-PIERCER",
-                "description": "All <c=boldPink>upgraded</c> Peri cards <c=keyword>pierce</c>."
+                "description": "All <c=boldPink>upgraded</c> <c=c54ff5>Peri</c> cards <c=keyword>pierce</c>."
             },
             "CleoRiggs": {
                 "name": "BOBA+",
-                "description": "If you don't have any <c=status>EVADE</c>, you can <c=action>Impair</c> cards in your hand to move anyway."
+                "description": "For every 2 <c=boldPink>upgraded</c> cards you draw, gain 1 <c=status>EVADE</c>."
             },
             "CleoJohnson": {
                 "name": "INVESTMENT",

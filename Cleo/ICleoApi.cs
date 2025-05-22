@@ -11,13 +11,13 @@ public interface ICleoApi
 	Tooltip GetImprovedATooltip(bool onOrOff);
 	Tooltip GetImprovedBTooltip(bool onOrOff);
 	Tooltip GetImpairedTooltip(bool onOrOff);
-	bool GetImprovedA(Card card);
-	void SetImprovedA(Card card, bool value);
+	bool GetIsImprovedA(Card card);
+	void SetIsImprovedA(Card card, bool value);
 	void AddImprovedA(Card card, State s);
-	bool GetImprovedB(Card card);
-	void SetImprovedB(Card card, bool value);
+	bool GetIsImprovedB(Card card);
+	void SetIsImprovedB(Card card, bool value);
 	void AddImprovedB(Card card, State s);
-	bool GetImpaired(Card card);
-	void SetImpaired(Card card, bool value);
+	bool GetIsImpaired(Card card);
+	void SetIsImpaired(Card card, bool value);
 	void AddImpaired(Card card, State s);
 }

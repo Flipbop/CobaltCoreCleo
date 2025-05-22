@@ -4,6 +4,7 @@ using Nickel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Flipbop.Cleo;
 
@@ -33,13 +34,8 @@ internal sealed class CleoCatArtifact : Artifact, IRegisterable
 	public override void OnReceiveArtifact(State state)
 	{
 		base.OnReceiveArtifact(state);
-		state.GetCurrentQueue().InsertRange(0, [
-			new ACardSelect
-			{
-				browseAction = new BasicUpgradeBrowseAction { Upgrade = Upgrade.A, },
-				browseSource = CardBrowse.Source.Deck,
-				filterTemporary = false,
-			}
-		]);
+		state.GetCurrentQueue().Add(new AAddCard { amount = 1, card = new CannonColorless {upgrade = Upgrade.A}});
+		state.GetCurrentQueue().Add(new AAddCard { amount = 1, card = new BasicShieldColorless {upgrade = Upgrade.A}}); 
+		state.GetCurrentQueue().Add(new AAddCard { amount = 1, card = new DodgeColorless() {upgrade = Upgrade.A}}); 
 	}
 }

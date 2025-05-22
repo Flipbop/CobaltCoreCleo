@@ -41,28 +41,28 @@ public sealed class ApiImplementation : ICleoApi
 			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Impaired", "description"])
 		};
 	
-	public bool GetImprovedA(Card card)
-		=> card.GetImprovedA();
+	public bool GetIsImprovedA(Card card)
+		=> card.GetIsImprovedA();
 
-	public void SetImprovedA(Card card, bool value)
-		=> card.SetImprovedA(value);
+	public void SetIsImprovedA(Card card, bool value)
+		=> card.SetIsImprovedA(value);
 
 	public void AddImprovedA(Card card, State s)
 		=> card.AddImprovedA(s);
 	
-	public bool GetImprovedB(Card card)
-		=> card.GetImprovedB();
+	public bool GetIsImprovedB(Card card)
+		=> card.GetIsImprovedB();
 
-	public void SetImprovedB(Card card, bool value)
-		=> card.SetImprovedB(value);
+	public void SetIsImprovedB(Card card, bool value)
+		=> card.SetIsImprovedB(value);
 
 	public void AddImprovedB(Card card, State s)
 		=> card.AddImprovedB(s);
-	public bool GetImpaired(Card card)
-		=> card.GetImprovedB();
+	public bool GetIsImpaired(Card card)
+		=> card.GetIsImpaired();
 
-	public void SetImpaired(Card card, bool value)
-		=> card.SetImprovedB(value);
+	public void SetIsImpaired(Card card, bool value)
+		=> card.SetIsImpaired(value);
 
 	public void AddImpaired(Card card, State s)
 		=> card.AddImprovedB(s);

@@ -5,23 +5,30 @@ namespace Flipbop.Cleo;
 
 internal static class ImprovedBExt
 {
-	public static bool GetImprovedB(this Card self)
+	public static bool GetIsImprovedB(this Card self)
 		=> ModEntry.Instance.Helper.ModData.GetModDataOrDefault<bool>(self, "ImprovedB");
 
-	public static void SetImprovedB(this Card self, bool value)
+	public static void SetIsImprovedB(this Card self, bool value)
 		=> ModEntry.Instance.Helper.ModData.SetModData(self, "ImprovedB", value);
 
 	public static void AddImprovedB(this Card self, State s)
 	{
-		if (!self.GetImprovedA() && !self.GetImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B && self.IsUpgradable())
+		if (!self.GetIsImprovedA() && !self.GetIsImprovedB() && self.upgrade != Upgrade.A && self.upgrade != Upgrade.B && self.IsUpgradable())
 		{
-			SetImprovedB(self, true);
+			SetIsImprovedB(self, true);
 			ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, Upgrade.B);
+			if (ModEntry.Instance.ISogginsApi is { } soggins)
+			{
+				if (s.EnumerateAllArtifacts().Any((a) => a is CleoSogginsArtifact))
+				{
+					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, soggins.FrogproofTrait!, true, false);
+				}
+			}
 		}
 	}
 	public static void RemoveImprovedB(this Card self, State s)
 	{
-		SetImprovedB(self, false);
+		SetIsImprovedB(self, false);
 		ModEntry.Instance.KokoroApi.TemporaryUpgrades.SetTemporaryUpgrade(self, null);
 		ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, self, ModEntry.Instance.ImprovedBTrait, false, false);
 	}
@@ -40,6 +47,13 @@ internal sealed class ImprovedBManager
 				if (!card.GetData(state).exhaust)
 				{
 					card.RemoveImprovedB(state);
+					if (ModEntry.Instance.ISogginsApi is { } soggins)
+					{
+						if (state.EnumerateAllArtifacts().Any((a) => a is CleoSogginsArtifact))
+						{
+							ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, card, soggins.FrogproofTrait!, false, false);
+						}
+					}
 				}
 			}
 		});
@@ -47,7 +61,7 @@ internal sealed class ImprovedBManager
 		{
 			foreach (var card in state.deck)
 			{
-				if (card.GetImprovedB())
+				if (card.GetIsImprovedB())
 				{
 					card.RemoveImprovedB(state);
 				}
