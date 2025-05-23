@@ -69,11 +69,11 @@
     "cardTrait": {
         "ImprovedA": {
             "name": "Improved A",
-            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>exhaust</c>) and the end of the fight."
         },
         "ImprovedB": {
             "name": "Improved B",
-            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>exhaust</c>) and the end of the fight."
         },
         "Impaired": {
             "name": "Impaired",

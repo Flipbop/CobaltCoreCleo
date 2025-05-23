@@ -35,6 +35,9 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry ImproveAIcon { get; }
 	internal ISpriteEntry ImproveBIcon { get; }
 	internal ISpriteEntry ImpairedIcon { get; }
+	internal ISpriteEntry ImproveASelfIcon { get; }
+	internal ISpriteEntry ImproveBSelfIcon { get; }
+	internal ISpriteEntry ImpairSelfIcon { get; }
 	internal ISpriteEntry ImproveAHandIcon { get; }
 	internal ISpriteEntry ImproveBHandIcon { get; }
 	internal ISpriteEntry ImpairHandIcon { get; }
@@ -113,7 +116,7 @@ public sealed class ModEntry : SimpleMod
 //		typeof(CleoIsaacArtifact),
 		typeof(CleoMaxArtifact),
 		typeof(CleoPeriArtifact),
-//		typeof(CleoRiggsArtifact), 
+		typeof(CleoRiggsArtifact), 
 		typeof(CleoJohnsonArtifact),
 		typeof(CleoSogginsArtifact),
 //		typeof(CleoPhilipArtifact)
@@ -160,21 +163,47 @@ public sealed class ModEntry : SimpleMod
 			new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
 		);
 		
-		
 		ImprovedATrait = helper.Content.Cards.RegisterTrait("Improved A", new()
 		{
 			Name = this.AnyLocalizations.Bind(["status", "ImproveA", "name"]).Localize,
 			Icon = (state, card) => improvedSpr,
+			Tooltips = (state, card) => [
+				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Improved A")
+				{
+					Icon = improvedSpr,
+					TitleColor = Colors.cardtrait,
+					Title = Localizations.Localize(["cardTrait", "ImprovedA", "name"]),
+					Description = Localizations.Localize(["cardTrait", "ImprovedA", "description"])
+				}
+			]
 		});
 		ImprovedBTrait = helper.Content.Cards.RegisterTrait("Improved B", new()
 		{
 			Name = this.AnyLocalizations.Bind(["status", "ImproveB", "name"]).Localize,
 			Icon = (state, card) => improvedSpr,
+			Tooltips = (state, card) => [
+				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Improved B")
+				{
+					Icon = improvedSpr,
+					TitleColor = Colors.cardtrait,
+					Title = Localizations.Localize(["cardTrait", "ImprovedB", "name"]),
+					Description = Localizations.Localize(["cardTrait", "ImprovedB", "description"])
+				}
+			]
 		});
 		ImpairedTrait = helper.Content.Cards.RegisterTrait("ImpairedTrait", new()
 		{
 			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
 			Icon = (state, card) => impairedSpr,
+			Tooltips = (state, card) => [
+				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Impaired")
+				{
+					Icon = impairedSpr,
+					TitleColor = Colors.cardtrait,
+					Title = Localizations.Localize(["cardTrait", "Impaired", "name"]),
+					Description = Localizations.Localize(["cardTrait", "Impaired", "description"])
+				}
+			]
 		});
 		
 
@@ -286,6 +315,9 @@ public sealed class ModEntry : SimpleMod
 		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveA.png"));
 		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));
 		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
+		ImproveASelfIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveASelf.png"));
+		ImproveBSelfIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveBSelf.png"));
+		ImpairSelfIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairSelf.png"));
 		ImproveAHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveAHand.png"));
 		ImproveBHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveBHand.png"));
 		ImpairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairHand.png"));
@@ -296,7 +328,6 @@ public sealed class ModEntry : SimpleMod
 		UpgradesInDiscardIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDiscard.png"));
 		UpgradesInExhaustIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInExhaust.png"));
 		ImpairCostIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairedCost.png"));
-
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",

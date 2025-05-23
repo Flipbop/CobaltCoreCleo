@@ -26,7 +26,8 @@ internal sealed class UpgradedTerminalArtifact : Artifact, IRegisterable
 	public bool _used = false;
 	public override void OnDrawCard(State state, Combat combat, int count)
 	{
-		int index = combat.hand.Count -1;
+		base.OnDrawCard(state, combat, count);
+		int index = combat.hand.Count -1-count;
 		int upgradeCount = 0;
 		
 		while (index >= 0)

@@ -33,12 +33,20 @@ internal sealed class CleoRiggsArtifact : Artifact, IRegisterable
 	public override List<Tooltip>? GetExtraTooltips()
 		=> StatusMeta.GetTooltips(Status.evade, 1);
 
-	public int UpgradeCount = 0;
-	private static void OnDrawCard(State state, Combat combat, int count)
+	public static int UpgradeCount = 0;
+	public override void OnDrawCard(State state, Combat combat, int count)
 	{
-		if (combat.hand[^1].upgrade != Upgrade.None)
+		base.OnDrawCard(state, combat, count);
+		int index = combat.hand.Count-1-count;
+		if (combat.hand[index].upgrade != Upgrade.None)
 		{
-			
+			UpgradeCount++;
+			if (UpgradeCount <= 3)
+			{
+				combat.Queue(new AStatus {status = Status.evade, statusAmount = 1, targetPlayer = true});
+				UpgradeCount = 0;
+			}
+			index++;
 		}
 	}
 }
