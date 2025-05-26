@@ -116,8 +116,8 @@
         },
         "Duo": {
             "CleoBooks": {
-                "name": "IMPROVED SHARDS",
-                "description": "If you gain any <c=status>SHARD</c> while at max Shard, <c=action>Improve A</c> 1."
+                "name": "CRYSTALLINE REFINEMENT",
+                "description": "When you play a <c=card>Crystal Shard</c>, the card you draw gains <c=cardtrait>Improved A</c>."
             },
             "CleoCat": {
                 "name": "NEXT GEN OS",
@@ -132,8 +132,8 @@
                 "description": "When you <c=action>Improve</c> a card lose 1 <c=status>HEAT</c>. When you <c=action>Impair</c> a card gain 1 <c=status>HEAT</c>."
             },
             "CleoIsaac": {
-                "name": "REMOTE WORKSPACE",
-                "description": "When you <c=action>Improve</c> a card, turn an <c=keyword>Attack Drone</c> in the midrow into an <c=keyword>Attack Drone Mk 2</c>."
+                "name": "IMPROVED PLATING",
+                "description": "After playing an <c=boldPink>upgraded</c> <c=>Isaac</c> card, gain <c=status>BUBBLE</c>."
             },
             "CleoMax": {
                 "name": "FILE REROUTING",
@@ -145,7 +145,7 @@
             },
             "CleoRiggs": {
                 "name": "BOBA+",
-                "description": "For every 2 <c=boldPink>upgraded</c> cards you draw, gain 1 <c=status>EVADE</c>."
+                "description": "For every 3 <c=boldPink>upgraded</c> cards you draw, gain 1 <c=status>EVADE</c>."
             },
             "CleoJohnson": {
                 "name": "INVESTMENT",
@@ -308,6 +308,9 @@
             },
             "ReturnOnInvestment": {
                 "name": "Return On Investment"
+            },
+            "ImprovementMod": {
+                "name": "Improvement Mod"
             }
         }
     }

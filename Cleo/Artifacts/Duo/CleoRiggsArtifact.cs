@@ -36,17 +36,22 @@ internal sealed class CleoRiggsArtifact : Artifact, IRegisterable
 	public static int UpgradeCount = 0;
 	public override void OnDrawCard(State state, Combat combat, int count)
 	{
-		base.OnDrawCard(state, combat, count);
-		int index = combat.hand.Count-1-count;
-		if (combat.hand[index].upgrade != Upgrade.None)
+		int index = combat.hand.Count-1;
+		int counter = 0;
+		while (counter <= count && index >= 0)
 		{
-			UpgradeCount++;
-			if (UpgradeCount <= 3)
+			if (combat.hand[index].upgrade != Upgrade.None)
 			{
-				combat.Queue(new AStatus {status = Status.evade, statusAmount = 1, targetPlayer = true});
-				UpgradeCount = 0;
+				UpgradeCount++;
+				if (UpgradeCount <= 3)
+				{
+					combat.Queue(new AStatus {status = Status.evade, statusAmount = 1, targetPlayer = true});
+					UpgradeCount = 0;
+				}
 			}
-			index++;
+			index--;
+			counter++;
 		}
+		
 	}
 }

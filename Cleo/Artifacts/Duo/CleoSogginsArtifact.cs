@@ -14,7 +14,7 @@ internal sealed class CleoSogginsArtifact : Artifact, IRegisterable
 		if (ModEntry.Instance.ISogginsApi is not { } soggins)
 			return;
 		
-		helper.Content.Artifacts.RegisterArtifact("CleoIsaac", new()
+		helper.Content.Artifacts.RegisterArtifact("CleoSoggins", new()
 		{
 			
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -23,9 +23,9 @@ internal sealed class CleoSogginsArtifact : Artifact, IRegisterable
 				owner = api.DuoArtifactVanillaDeck,
 				pools = [ArtifactPool.Common]
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoIsaac.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoIsaac", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoIsaac", "description"]).Localize
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoCat.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoSoggins", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoSoggins", "description"]).Localize
 		});
 
 		api.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!, [ModEntry.Instance.CleoDeck.Deck, soggins.SogginsVanillaDeck]);

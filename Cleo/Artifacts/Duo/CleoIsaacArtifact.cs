@@ -28,4 +28,16 @@ internal sealed class CleoIsaacArtifact : Artifact, IRegisterable
 		api.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!, [ModEntry.Instance.CleoDeck.Deck, Deck.goat]);
 		
 	}
+
+	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition,
+		int handCount)
+	{
+		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
+		if (((card.GetIsImprovedA() || card.GetIsImprovedB()) || card.upgrade != Upgrade.None) && card.GetMeta().deck == Deck.goat)
+		{
+			combat.Queue([
+				new AStatus { targetPlayer = true, status = Status.bubbleJuice, statusAmount = 1 }
+			]);
+		}
+	}
 }

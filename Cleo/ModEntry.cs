@@ -7,7 +7,6 @@ using Shockah.Kokoro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using clay.PhilipTheMechanic;
 using Shockah.Johnson;
 using Shockah.Soggins;
 
@@ -24,7 +23,6 @@ public sealed class ModEntry : SimpleMod
 	internal IJohnsonApi? IJohnsonApi { get; private set; }
 
 	internal ISogginsApi? ISogginsApi { get; private set; }
-	//internal IPhilipAPI? IPhilipApi { get; private set; }
 
 	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
@@ -109,17 +107,16 @@ public sealed class ModEntry : SimpleMod
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
-//		typeof(CleoBooksArtifact),
+		typeof(CleoBooksArtifact),
 		typeof(CleoCatArtifact),
 		typeof(CleoDizzyArtifact),
 		typeof(CleoDrakeArtifact),
-//		typeof(CleoIsaacArtifact),
+		typeof(CleoIsaacArtifact),
 		typeof(CleoMaxArtifact),
 		typeof(CleoPeriArtifact),
 		typeof(CleoRiggsArtifact), 
 		typeof(CleoJohnsonArtifact),
 		typeof(CleoSogginsArtifact),
-//		typeof(CleoPhilipArtifact)
 	];
 
 	internal static IEnumerable<Type> AllArtifactTypes
@@ -149,7 +146,6 @@ public sealed class ModEntry : SimpleMod
 			
 			IJohnsonApi = helper.ModRegistry.GetApi<IJohnsonApi>("Shockah.Johnson");
 			ISogginsApi = helper.ModRegistry.GetApi<ISogginsApi>("Shockah.Soggins");
-			//IPhilipApi = helper.ModRegistry.GetApi<IPhilipAPI>("clay.PhilipTheMechanic");
 
 			foreach (var registerableType in LateRegisterableTypes)
 				AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
