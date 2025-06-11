@@ -29,6 +29,10 @@ internal sealed class CleoIsaacArtifact : Artifact, IRegisterable
 		
 	}
 
+	public override List<Tooltip>? GetExtraTooltips()
+		=> [
+			..StatusMeta.GetTooltips(Status.bubbleJuice, 1),
+		];
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition,
 		int handCount)
 	{

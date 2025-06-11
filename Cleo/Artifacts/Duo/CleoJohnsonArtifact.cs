@@ -27,7 +27,7 @@ internal sealed class CleoJohnsonArtifact : Artifact, IRegisterable
 				owner = api.DuoArtifactVanillaDeck,
 				pools = [ArtifactPool.Common]
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoCat.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoJohnson.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoJohnson", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoJohnson", "description"]).Localize
 		});
@@ -70,7 +70,7 @@ internal sealed class Hold0Card : Card
 				dontOffer = true,
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold0", "name"]).Localize
 		});
 	}
@@ -78,7 +78,7 @@ internal sealed class Hold0Card : Card
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "ED2938",
 			cost = 0,
 			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
@@ -107,7 +107,7 @@ internal sealed class Hold0Card : Card
 				dontOffer = true,
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold1", "name"]).Localize
 		});
 	}
@@ -115,7 +115,7 @@ internal sealed class Hold0Card : Card
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "B25F4A",
 			cost = 0,
 			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
@@ -142,7 +142,7 @@ internal sealed class Hold0Card : Card
 				dontOffer = true,
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold2", "name"]).Localize
 		});
 	}
@@ -150,7 +150,7 @@ internal sealed class Hold0Card : Card
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "77945C",
 			cost = 0,
 			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
@@ -166,8 +166,6 @@ internal sealed class Hold0Card : Card
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -179,7 +177,7 @@ internal sealed class Hold0Card : Card
 				dontOffer = true,
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold3", "name"]).Localize
 		});
 	}
@@ -187,7 +185,7 @@ internal sealed class Hold0Card : Card
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "3BCA6D",
 			cost = 0,
 			singleUse = true,
 			unplayable = upgrade == Upgrade.None,
@@ -199,15 +197,6 @@ internal sealed class Hold0Card : Card
 		[
 			new AAddCard() {amount = 1, card = new ReturnOnInvestmentCard(), destination = CardDestination.Exhaust}
 		];
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is not Hold3Card || args.Card.upgrade != Upgrade.None)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
 }internal sealed class ReturnOnInvestmentCard : Card
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
@@ -223,7 +212,7 @@ internal sealed class Hold0Card : Card
 				dontOffer = true,
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "ReturnOnInvestment", "name"]).Localize
 		});
 	}
@@ -231,7 +220,7 @@ internal sealed class Hold0Card : Card
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "FFFFFF",
+			artTint = "00FF7F",
 			cost = 1,
 			exhaust = true,
 		};

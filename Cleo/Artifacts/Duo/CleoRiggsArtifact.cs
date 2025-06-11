@@ -54,4 +54,10 @@ internal sealed class CleoRiggsArtifact : Artifact, IRegisterable
 		}
 		
 	}
+
+	public override int? GetDisplayNumber(State s)
+	{
+		return UpgradeCount;
+	}
+
 }

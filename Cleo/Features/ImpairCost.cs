@@ -50,8 +50,6 @@ internal sealed class ImpairedCost : IKokoroApi.IV2.IActionCostsApi.IResource
 			    {
 				    ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImpairedTrait, true, false);
 				    ImpairedExt.AddImpaired(c.hand[index], s);
-				    amount--;
-				    Audio.Play(Event.CardHandling);
 			    }
 			    else
 			    {
@@ -59,8 +57,20 @@ internal sealed class ImpairedCost : IKokoroApi.IV2.IActionCostsApi.IResource
 				    ImprovedAExt.RemoveImprovedA(c.hand[index], s);
 				    ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, false, false);
 				    ImprovedBExt.RemoveImprovedB(c.hand[index], s);
-				    amount--;
-				    Audio.Play(Event.CardHandling);
+			    }
+			    amount--;
+			    Audio.Play(Event.CardHandling);
+			    if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))
+			    {
+				    c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = 1 });
+			    }
+			    if (s.EnumerateAllArtifacts().Any((a) => a is CleoDizzyArtifact))
+			    {
+				    c.Queue(new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 });
+				    if (c.hand[index].GetMeta().deck == Deck.dizzy)
+				    {
+					    c.Queue(new AImproveASelf() { id = c.hand[index].uuid });
+				    }
 			    }
 		    }
 		    index--;

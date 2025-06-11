@@ -50,15 +50,15 @@
             "description": "<c=cardtrait>Discount</c> every card in your hand."
         },
         "SelfImproveA": {
-            "name": "Self Improve A",
+            "name": "    Self Improve A",
             "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
         },
         "SelfImproveB": {
-            "name": "Self Improve B",
+            "name": "    Self Improve B",
             "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
         },
         "SelfImpair": {
-            "name": "Self Impair",
+            "name": "   Self Impair",
             "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
         },
         "ImpairCost": {
@@ -148,16 +148,12 @@
                 "description": "For every 3 <c=boldPink>upgraded</c> cards you draw, gain 1 <c=status>EVADE</c>."
             },
             "CleoJohnson": {
-                "name": "INVESTMENT",
-                "description": "Add an <c=card>Invest</c> to your deck."
+                "name": "GREAT OPPORTUNITY",
+                "description": "Add an <c=card>RPYD Shares</c> to your deck."
             },
             "CleoSoggins": {
                 "name": "FROGPROOF COATING",
                 "description": "<c=cardtrait>Improved</c> cards are also <c=cardtrait>Frogproof</c>."
-            },
-            "CleoPhilip": {
-                "name": "SUBSTANDARD DUPLICATOR",
-                "description": "When you <c=action>Improve</c> a <c=card>mod</c>, <c=action>Improve A</c>."
             }
         }
     },
@@ -275,7 +271,7 @@
 
         "Duo": {
             "Hold0": {
-                "name": "Invest",
+                "name": "RPYD Shares",
                 "description": {
                     "None": "Add a <c=card>Hold</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
                     "A":"Add a <c=card>Hold</c> to the <c=boldPink>exhaust pile</c>.",
@@ -301,16 +297,13 @@
             "Hold3": {
                 "name": "NOW",
                 "description": {
-                    "None": "Add a <c=card>Return On Investment</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
-                    "A":"Add a <c=card>Return On Investment</c> to the <c=boldPink>exhaust pile</c>.",
-                    "B":"Add a <c=card>Return On Investment</c> to the <c=boldPink>exhaust pile</c>."
+                    "None": "Add a <c=card>Returns</c> to the <c=boldPink>exhaust pile</c>. <c=boldPink>Upgrade</c> to become playable.",
+                    "A":"Add a <c=card>Returns</c> to the <c=boldPink>exhaust pile</c>.",
+                    "B":"Add a <c=card>Returns</c> to the <c=boldPink>exhaust pile</c>."
                 }
             },
             "ReturnOnInvestment": {
-                "name": "Return On Investment"
-            },
-            "ImprovementMod": {
-                "name": "Improvement Mod"
+                "name": "Returns"
             }
         }
     }
