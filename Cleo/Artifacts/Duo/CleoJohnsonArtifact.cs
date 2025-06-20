@@ -11,6 +11,7 @@ namespace Flipbop.Cleo;
 
 internal sealed class CleoJohnsonArtifact : Artifact, IRegisterable
 {
+	internal static Spr RPYDShares;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		
@@ -18,7 +19,7 @@ internal sealed class CleoJohnsonArtifact : Artifact, IRegisterable
 			return;
 		if (ModEntry.Instance.IJohnsonApi is not { } johnsonApi)
 			return;
-		
+		RPYDShares = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite;
 		helper.Content.Artifacts.RegisterArtifact("CleoJohnson", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -69,8 +70,7 @@ internal sealed class Hold0Card : Card
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
+			Art = CleoJohnsonArtifact.RPYDShares,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold0", "name"]).Localize
 		});
 	}
@@ -106,8 +106,7 @@ internal sealed class Hold0Card : Card
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
+			Art = CleoJohnsonArtifact.RPYDShares,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold1", "name"]).Localize
 		});
 	}
@@ -141,8 +140,7 @@ internal sealed class Hold0Card : Card
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
+			Art = CleoJohnsonArtifact.RPYDShares,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold2", "name"]).Localize
 		});
 	}
@@ -176,8 +174,7 @@ internal sealed class Hold0Card : Card
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
+			Art = CleoJohnsonArtifact.RPYDShares,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "Hold3", "name"]).Localize
 		});
 	}
@@ -211,8 +208,7 @@ internal sealed class Hold0Card : Card
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Shares.png")).Sprite,
+			Art = CleoJohnsonArtifact.RPYDShares,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "ReturnOnInvestment", "name"]).Localize
 		});
 	}

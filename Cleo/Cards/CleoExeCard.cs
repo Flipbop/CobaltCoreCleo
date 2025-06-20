@@ -18,7 +18,7 @@ internal sealed class CleoExeCard : Card, IRegisterable
 				rarity = Rarity.common,
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/CleanSlate.png")).Sprite,
+			Art = ModEntry.Instance.CleanSlateSprite.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CleoExe", "name"]).Localize
 		});
 	}

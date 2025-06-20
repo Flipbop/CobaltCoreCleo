@@ -54,7 +54,10 @@ public sealed class ModEntry : SimpleMod
 	internal ICardTraitEntry ImpairedTrait { get; }
 	public IModHelper helper { get; }
 	
+	public ISpriteEntry CleanSlateSprite { get; }
 	
+	public ISpriteEntry TurtleShotSprite { get; }
+
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
 		typeof(QuickBoostCard),
 		typeof(TurtleShotCard),
@@ -130,8 +133,10 @@ public sealed class ModEntry : SimpleMod
 
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
-		Spr improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png")).Sprite; 
-		Spr impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png")).Sprite;
+		ISpriteEntry improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png")); 
+		ISpriteEntry impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
+		CleanSlateSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/CleanSlate.png"));
+		TurtleShotSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png"));
 		this.helper = helper;
 
 		Instance = this;
@@ -161,12 +166,12 @@ public sealed class ModEntry : SimpleMod
 		
 		ImprovedATrait = helper.Content.Cards.RegisterTrait("Improved A", new()
 		{
-			Name = this.AnyLocalizations.Bind(["status", "ImproveA", "name"]).Localize,
-			Icon = (state, card) => improvedSpr,
+			Name = this.AnyLocalizations.Bind(["cardtrait", "ImprovedA", "name"]).Localize,
+			Icon = (state, card) => improvedSpr.Sprite,
 			Tooltips = (state, card) => [
 				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Improved A")
 				{
-					Icon = improvedSpr,
+					Icon = improvedSpr.Sprite,
 					TitleColor = Colors.cardtrait,
 					Title = Localizations.Localize(["cardTrait", "ImprovedA", "name"]),
 					Description = Localizations.Localize(["cardTrait", "ImprovedA", "description"])
@@ -175,12 +180,12 @@ public sealed class ModEntry : SimpleMod
 		});
 		ImprovedBTrait = helper.Content.Cards.RegisterTrait("Improved B", new()
 		{
-			Name = this.AnyLocalizations.Bind(["status", "ImproveB", "name"]).Localize,
-			Icon = (state, card) => improvedSpr,
+			Name = this.AnyLocalizations.Bind(["cardtrait", "ImprovedB", "name"]).Localize,
+			Icon = (state, card) => improvedSpr.Sprite,
 			Tooltips = (state, card) => [
 				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Improved B")
 				{
-					Icon = improvedSpr,
+					Icon = improvedSpr.Sprite,
 					TitleColor = Colors.cardtrait,
 					Title = Localizations.Localize(["cardTrait", "ImprovedB", "name"]),
 					Description = Localizations.Localize(["cardTrait", "ImprovedB", "description"])
@@ -189,12 +194,12 @@ public sealed class ModEntry : SimpleMod
 		});
 		ImpairedTrait = helper.Content.Cards.RegisterTrait("ImpairedTrait", new()
 		{
-			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
-			Icon = (state, card) => impairedSpr,
+			Name = this.AnyLocalizations.Bind(["cardtrait", "Impaired", "name"]).Localize,
+			Icon = (state, card) => impairedSpr.Sprite,
 			Tooltips = (state, card) => [
 				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Impaired")
 				{
-					Icon = impairedSpr,
+					Icon = impairedSpr.Sprite,
 					TitleColor = Colors.cardtrait,
 					Title = Localizations.Localize(["cardTrait", "Impaired", "name"]),
 					Description = Localizations.Localize(["cardTrait", "Impaired", "description"])
@@ -221,6 +226,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = "kiwi",
 			Name = AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
+			
 		});
 		
 		CleoCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cleo", new()
@@ -264,7 +270,7 @@ public sealed class ModEntry : SimpleMod
 			},
 			ExeCardType = typeof(CleoExeCard)
 		});
-
+		
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
 		{
 			CharacterType = KiwiCharacter.CharacterType,
@@ -280,7 +286,7 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = CleoDeck.UniqueName,
 			LoopTag = "gameover",
 			Frames = Enumerable.Range(0, 1)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Squint/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/GameOver/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -310,14 +316,14 @@ public sealed class ModEntry : SimpleMod
 
 		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveA.png"));
 		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));
-		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
+		ImpairedIcon = impairedSpr;
 		ImproveASelfIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveASelf.png"));
 		ImproveBSelfIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveBSelf.png"));
 		ImpairSelfIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairSelf.png"));
 		ImproveAHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveAHand.png"));
 		ImproveBHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveBHand.png"));
 		ImpairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairHand.png"));
-		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png"));
+		ImprovedIcon = improvedSpr;
 		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/DiscountHand.png"));
 		UpgradesInHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInHand.png"));
 		UpgradesInDrawIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDraw.png"));
