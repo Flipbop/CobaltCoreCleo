@@ -41,7 +41,7 @@ internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
 				}
 				else if (card.upgrade != Upgrade.None)
 				{
-					card.discount -= -1;
+					card.discount -= 1;
 				}
 			}
 		

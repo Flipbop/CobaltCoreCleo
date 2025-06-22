@@ -38,7 +38,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cleoType, Deck.dizzy.Key()],
 			lines = [
 				new Say { who = cleoType, loopTag = "squint" },
-				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
+				new Say { who = Deck.dizzy.Key(), loopTag = "intense" },
 			],
 		};
 		newNodes[["TookDamage", "Riggs"]] = new()

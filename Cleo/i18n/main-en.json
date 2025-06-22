@@ -50,11 +50,11 @@
             "description": "<c=cardtrait>Discount</c> every card in your hand."
         },
         "SelfImproveA": {
-            "name": "    Self Improve A",
+            "name": "     Self Improve A",
             "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
         },
         "SelfImproveB": {
-            "name": "    Self Improve B",
+            "name": "     Self Improve B",
             "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
         },
         "SelfImpair": {

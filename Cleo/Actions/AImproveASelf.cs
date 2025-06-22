@@ -40,7 +40,7 @@ public sealed class AImproveASelf : DynamicWidthCardAction
 		=> [
 			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Self Improve A")
 			{
-				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+				Icon = ModEntry.Instance.ImproveASelfIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["action", "SelfImproveA", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["action", "SelfImproveA", "description"])
