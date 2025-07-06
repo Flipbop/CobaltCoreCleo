@@ -32,20 +32,27 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
 			}];
 
+	public int Amount = 2;
+
+	public override void OnDrawCard(State state, Combat combat, int count)
+	{
+		base.OnDrawCard(state, combat, count);
+		if (combat.hand[^1].upgrade == Upgrade.None && combat.hand[^1].IsUpgradable() && Amount > 0)
+		{
+			ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, combat.hand[^1], ModEntry.Instance.ImprovedATrait, true, false);
+			ImprovedAExt.AddImprovedA(combat.hand[^1], state);
+			Amount--;
+		}
+	}
+
 	public override void OnCombatStart(State state, Combat combat)
 	{
 		base.OnCombatStart(state, combat);
-		int Amount = 2;
-		int index = state.deck.Count -1;
-		while (index >= 0 && Amount > 0)
-		{
-			if (state.deck[index].upgrade == Upgrade.None && state.deck[index].IsUpgradable())
-			{
-				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, state.deck[index], ModEntry.Instance.ImprovedATrait, true, false);
-				ImprovedAExt.AddImprovedA(state.deck[index], state);
-				Amount--;
-			}
-			index--;
-		}
+		Amount = 2;
+	}
+	
+	public override int? GetDisplayNumber(State s)
+	{
+		return Amount;
 	}
 }

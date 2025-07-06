@@ -1,6 +1,6 @@
 {
   "UniqueName": "Flipbop.Cleo",
-  "Version": "1.1.2",
+  "Version": "1.1.3",
   "RequiredApiVersion": "1.6.0",
   "EntryPointAssembly": "Cleo.dll",
   "LoadPhase": "AfterDbInit",
