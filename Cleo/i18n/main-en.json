@@ -112,7 +112,7 @@
         },
         "PowerEcho": {
             "name": "POWER ECHO",
-            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand. <c=downside>Cannot duplicate Single Use cards!</c>"
         },
         "Duo": {
             "CleoBooks": {

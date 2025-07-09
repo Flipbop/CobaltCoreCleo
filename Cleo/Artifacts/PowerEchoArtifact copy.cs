@@ -28,7 +28,7 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
 		Card newCard = card.CopyWithNewId();
-		if ((card.upgrade != Upgrade.None) && _firstCard)
+		if ((card.upgrade != Upgrade.None) && _firstCard && !card.GetData(state).singleUse)
 		{
 			newCard.temporaryOverride = true;
 			newCard.singleUseOverride = true;
