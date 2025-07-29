@@ -27,8 +27,11 @@ public sealed class AImproveBSelf : DynamicWidthCardAction
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedATrait, true, false);
 					ImprovedAExt.AddImprovedA(card, s);
 				}
-				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedBTrait, true, false);
-				ImprovedBExt.AddImprovedB(card, s);
+				else
+				{
+					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, card, ModEntry.Instance.ImprovedBTrait, true, false);
+					ImprovedBExt.AddImprovedB(card, s);
+				}
 				Audio.Play(Event.CardHandling);
 			}
 			if (s.EnumerateAllArtifacts().Any((a) => a is CleoDrakeArtifact))

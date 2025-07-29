@@ -25,8 +25,11 @@ public sealed class AImproveB : DynamicWidthCardAction
 						ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
 						ImprovedAExt.AddImprovedA(c.hand[index], s);
 					}
-					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
-					ImprovedBExt.AddImprovedB(c.hand[index], s);
+					else
+					{
+						ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
+						ImprovedBExt.AddImprovedB(c.hand[index], s);
+					}
 				}
 				else
 				{
