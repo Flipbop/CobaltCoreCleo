@@ -92,7 +92,7 @@
         },
         "Kickstart": {
             "name": "KICKSTART",
-            "description": "<c=action>Improve A</c> the first 2 eligible cards you draw each combat."
+            "descriptionA": "<c=action>Improve A</c> the first 2 eligible cards you draw each combat. Will instead use the B upgrade if A is not an option."
         },
         "MagnifiedLasers": {
             "name": "MAGNIFIED LASERS",
@@ -108,7 +108,7 @@
         },
         "ExpensiveEquipment": {
             "name": "EXPENSIVE EQUIPMENT",
-            "description": "<c=boldPink>Non-upgraded</c> cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. All other cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            "description": "<c=boldPink>Non-upgraded</c> cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. All other cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>. Will instead use the B upgrade if A is not an option."
         },
         "PowerEcho": {
             "name": "POWER ECHO",
@@ -117,7 +117,7 @@
         "Duo": {
             "CleoBooks": {
                 "name": "CRYSTALLINE REFINEMENT",
-                "description": "When you play a <c=card>Crystal Shard</c>, the card you draw gains <c=cardtrait>Improved A</c>."
+                "description": "When you play a <c=card>Crystal Shard</c>, the card you draw gains <c=cardtrait>Improved A</c>. Will instead use the B upgrade if A is not an option."
             },
             "CleoCat": {
                 "name": "NEXT GEN OS",
@@ -125,7 +125,7 @@
             },
             "CleoDizzy": {
                 "name": "REACTIVE SHIELDS",
-                "description": "When you <c=action>Impair</c> a card gain 1 <c=status>TEMP SHIELD</c> If it is a <c=40a4fc>Dizzy</c> card, give it <c=cardtrait>Improved A</c>."
+                "description": "When you <c=action>Impair</c> a card gain 1 <c=status>TEMP SHIELD</c> If it is a <c=40a4fc>Dizzy</c> card, give it <c=cardtrait>Improved A</c>. Will instead use the B upgrade if A is not an option."
             },
             "CleoDrake": {
                 "name": "THERMAL INHIBITORS",

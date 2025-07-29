@@ -40,7 +40,18 @@ public sealed class AImpairSelf : DynamicWidthCardAction
 				c.Queue(new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 });
 				if (card.GetMeta().deck == Deck.dizzy)
 				{
-					c.Queue(new AImproveASelf() { id = card.uuid });
+					if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+					{
+						c.Queue([
+							new AImproveBSelf {id = card.uuid},
+						]);
+					}
+					else
+					{
+						c.Queue([
+							new AImproveASelf {id = card.uuid},
+						]);
+					}
 				}
 			}
 		}

@@ -1,6 +1,7 @@
 ﻿using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Flipbop.Cleo;
@@ -35,9 +36,18 @@ internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
 			{
 				if (card.IsUpgradable() && card.upgrade == Upgrade.None)
 				{
-					combat.Queue([
-						new AImproveASelf {id = card.uuid},
-					]);
+					if (state.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+					{
+						combat.Queue([
+							new AImproveBSelf {id = card.uuid},
+						]);
+					}
+					else
+					{
+						combat.Queue([
+							new AImproveASelf {id = card.uuid},
+						]);
+					}
 				}
 				else if (card.upgrade != Upgrade.None)
 				{

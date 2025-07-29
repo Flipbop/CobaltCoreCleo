@@ -20,6 +20,11 @@ public sealed class AImproveA : DynamicWidthCardAction
 			{
 				if (!c.hand[index].GetIsImpaired())
 				{
+					if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+					{
+						ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
+						ImprovedBExt.AddImprovedB(c.hand[index], s);
+					}
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
 					ImprovedAExt.AddImprovedA(c.hand[index], s);
 				}
@@ -34,26 +39,41 @@ public sealed class AImproveA : DynamicWidthCardAction
 				{
 					c.Queue(new AStatus { targetPlayer = true, status = Status.heat, statusAmount = -1 });
 				}
-				if (s.EnumerateAllArtifacts().Any((a) => a is CleoIsaacArtifact))
-				{
-					
-				}
+				
 			}
 			index--;
 		}
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImproveAIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+	{
+		if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+		{
+			return new(ModEntry.Instance.ImproveBIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		}
+		return new(ModEntry.Instance.ImproveAIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+	}
 
 	public override List<Tooltip> GetTooltips(State s)
-		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
-			{
-				Icon = ModEntry.Instance.ImproveAIcon.Sprite,
-				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
-			}
+	{
+		if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+		{
+			return [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::ImproveB")
+				{
+					Icon = ModEntry.Instance.ImproveBIcon.Sprite,
+					TitleColor = Colors.action,
+					Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "name"]),
+					Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveB", "description"])
+				}
+			];
+		}
+		return [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
+		{
+			Icon = ModEntry.Instance.ImproveAIcon.Sprite,
+			TitleColor = Colors.action,
+			Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])
+		}
 		];
+	} 
 }

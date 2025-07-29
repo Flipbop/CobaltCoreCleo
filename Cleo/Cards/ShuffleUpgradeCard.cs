@@ -37,7 +37,6 @@ internal sealed class ShuffleUpgradeCard : Card, IRegisterable
 				new AImproveB { Amount = 1 },
 				new AShuffleHand(),
 				new AImproveB { Amount = 1 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
 			],
 			Upgrade.A => [
 				new AShuffleHand(),
@@ -47,7 +46,6 @@ internal sealed class ShuffleUpgradeCard : Card, IRegisterable
 			_ => [
 				new AShuffleHand(),
 				new AImproveA { Amount = 2 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
 			]
 		};
 }

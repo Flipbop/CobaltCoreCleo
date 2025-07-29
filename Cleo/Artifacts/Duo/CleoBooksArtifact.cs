@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Flipbop.Cleo;
@@ -42,8 +43,16 @@ internal sealed class CleoBooksArtifact : Artifact, IRegisterable
 		{
 			if (state.deck[^1].upgrade == Upgrade.None && state.deck[^1].IsUpgradable())
 			{
-				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, state.deck[^1], ModEntry.Instance.ImprovedATrait, true, false);
-				ImprovedAExt.AddImprovedA(state.deck[^1], state);
+				if (state.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+				{
+					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, combat.hand[^1], ModEntry.Instance.ImprovedBTrait, true, false);
+					ImprovedBExt.AddImprovedB(combat.hand[^1], state);
+				}
+				else
+				{
+					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, combat.hand[^1], ModEntry.Instance.ImprovedATrait, true, false);
+					ImprovedAExt.AddImprovedA(combat.hand[^1], state);
+				}
 			}
 		}
 	}

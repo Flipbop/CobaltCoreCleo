@@ -1,6 +1,7 @@
 ﻿using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Flipbop.Cleo;
@@ -22,7 +23,8 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Kickstart", "description"]).Localize
 		});
 	}
-
+	
+	
 	public override List<Tooltip>? GetExtraTooltips()
 		=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
 			{
@@ -39,8 +41,16 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 		base.OnDrawCard(state, combat, count);
 		if (combat.hand[^1].upgrade == Upgrade.None && combat.hand[^1].IsUpgradable() && Amount > 0)
 		{
-			ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, combat.hand[^1], ModEntry.Instance.ImprovedATrait, true, false);
-			ImprovedAExt.AddImprovedA(combat.hand[^1], state);
+			if (state.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, combat.hand[^1], ModEntry.Instance.ImprovedBTrait, true, false);
+				ImprovedBExt.AddImprovedB(combat.hand[^1], state);
+			}
+			else
+			{
+				ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(state, combat.hand[^1], ModEntry.Instance.ImprovedATrait, true, false);
+				ImprovedAExt.AddImprovedA(combat.hand[^1], state);
+			}
 			Amount--;
 		}
 	}

@@ -20,6 +20,11 @@ public sealed class AImproveBHand : DynamicWidthCardAction
 			{
 				if (!c.hand[index].GetIsImpaired() && c.hand[index].IsUpgradable() && c.hand[index].GetMeta().deck != Deck.trash)
 				{
+					if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyA))
+					{
+						ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedATrait, true, false);
+						ImprovedAExt.AddImprovedA(c.hand[index], s);
+					}
 					ModEntry.Instance.helper.Content.Cards.SetCardTraitOverride(s, c.hand[index], ModEntry.Instance.ImprovedBTrait, true, false);
 					ImprovedBExt.AddImprovedB(c.hand[index], s);
 					Amount--;
@@ -44,11 +49,28 @@ public sealed class AImproveBHand : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImproveBHandIcon.Sprite, null, Colors.textMain);
+	{
+		if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyA))
+		{
+			return new(ModEntry.Instance.ImproveAHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		}
+		return new(ModEntry.Instance.ImproveBHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+	}
 
 	public override List<Tooltip> GetTooltips(State s)
-		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve B Hand")
+	{
+		if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyA))
+		{
+			return [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A Hand")
+				{
+					Icon = ModEntry.Instance.ImproveAHandIcon.Sprite,
+					TitleColor = Colors.action,
+					Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveAHand", "name"]),
+					Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveAHand", "description"])
+				}
+			];
+		}
+		return [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve B Hand")
 			{
 				Icon = ModEntry.Instance.ImproveBHandIcon.Sprite,
 				TitleColor = Colors.action,
@@ -56,4 +78,5 @@ public sealed class AImproveBHand : DynamicWidthCardAction
 				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveBHand", "description"])
 			}
 		];
+	} 
 }
