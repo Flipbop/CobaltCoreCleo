@@ -106,7 +106,7 @@
     "/Users/christopherfranson/.nuget/packages/": {}
   },
   "project": {
-    "version": "1.1.2",
+    "version": "1.1.4",
     "restore": {
       "projectUniqueName": "/Users/christopherfranson/Desktop/Cobalt Core Mods/CleoGit/Cleo/Cleo.csproj",
       "projectName": "Cleo",

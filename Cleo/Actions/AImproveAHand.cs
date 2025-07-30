@@ -51,9 +51,9 @@ public sealed class AImproveAHand : DynamicWidthCardAction
 	{
 		if (s.EnumerateAllArtifacts().Any((a) => a is DailyUpgradesOnlyB))
 		{
-			return new(ModEntry.Instance.ImproveBHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+			return new(ModEntry.Instance.ImproveBHandIcon.Sprite, null, Colors.textMain);
 		}
-		return new(ModEntry.Instance.ImproveAHandIcon.Sprite, Amount == -1 ? null : Amount, Colors.textMain);
+		return new(ModEntry.Instance.ImproveAHandIcon.Sprite, null, Colors.textMain);
 	}
 
 	public override List<Tooltip> GetTooltips(State s)
