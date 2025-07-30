@@ -92,7 +92,7 @@
         },
         "Kickstart": {
             "name": "KICKSTART",
-            "descriptionA": "<c=action>Improve A</c> the first 2 eligible cards you draw each combat. Will instead use the B upgrade if A is not an option."
+            "description": "<c=action>Improve A</c> the first 2 eligible cards you draw each combat. Will instead use the B upgrade if A is not an option."
         },
         "MagnifiedLasers": {
             "name": "MAGNIFIED LASERS",

@@ -28,7 +28,7 @@ internal sealed class KickstartArtifact : Artifact, IRegisterable
 	public override List<Tooltip>? GetExtraTooltips()
 		=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Improve A")
 			{
-				Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+				Icon = ModEntry.Instance.ImproveAIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["action", "ImproveA", "description"])

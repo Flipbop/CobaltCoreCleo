@@ -262,7 +262,7 @@ public sealed class ModEntry : SimpleMod
 				cards = [
 					new QuickBoostCard(),
 					new TurtleShotCard(),
-					new RewriteCard(),
+					new ReroutePowerCard(),
 					new ShuffleUpgradeCard(),
 					new CannonColorless(),
 					new DodgeColorless()
