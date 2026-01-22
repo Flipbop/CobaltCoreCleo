@@ -27,7 +27,7 @@ internal sealed class DefensivePositionsCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "996699",
-			cost = upgrade == Upgrade.B? 3 : 2,
+			cost = 2,
 			exhaust = upgrade == Upgrade.B
 		};
 
@@ -36,14 +36,14 @@ internal sealed class DefensivePositionsCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new AStatus {targetPlayer = true, status = Status.tempShield, statusAmount = 4},
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.tempPayback, statusAmount = 1}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.tempPayback, statusAmount = 2}).AsCardAction,
 			],
 			Upgrade.B => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 3), new AStatus{targetPlayer = true, status = Status.payback, statusAmount = 1}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 3), new AStatus{targetPlayer = true, status = Status.payback, statusAmount = 2}).AsCardAction,
 			],
 			_ => [
 				new AStatus {targetPlayer = true, status = Status.tempShield, statusAmount = 2},
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.tempPayback, statusAmount = 1}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.tempPayback, statusAmount = 2}).AsCardAction,
 			]
 		};
 }

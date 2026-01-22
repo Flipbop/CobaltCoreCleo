@@ -1,6 +1,8 @@
 {
   "UniqueName": "Flipbop.Cleo",
-  "Version": "1.1.5",
+  "DisplayName": "Playable Cleo",
+  "Description": "Adds Cleo, your shopkeeper, as a playable character.",
+  "Version": "1.1.6",
   "RequiredApiVersion": "1.6.0",
   "EntryPointAssembly": "Cleo.dll",
   "LoadPhase": "AfterDbInit",
